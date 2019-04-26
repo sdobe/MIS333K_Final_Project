@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace sp19team9finalproject.Models
 {
+    public enum PositionType { FullTime , Internship }
     public class AppUser
     {
         public Int32 AppUserID { get; set; }
@@ -19,6 +20,16 @@ namespace sp19team9finalproject.Models
 
         [Display(Name = "Last Name")
         public String LastName { get; set; }
+         
+        //for student
+        [Display(Name = "Graduation Date")]
+        public DateTime GradDate { get; set; }
+
+        //Position Type for student 
+        public PositionType PositionType { get; set; }
+
+        //GPA for student 
+        public decimal GPA { get; set; }
 
         public Major Major { get; set; }
 
