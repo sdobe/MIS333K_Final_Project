@@ -13,10 +13,10 @@ namespace sp19team9finalproject.Models
 
         public String RoomNumber { get; set; }
 
-        [InverseProperty("Interviewer")]
+        [InverseProperty("InterviewsGiven")]
         public AppUser Interviewer { get; set; }
 
-        [InverseProperty("Interviewee")]
+        [InverseProperty("InterviewsSuffered")]
         public AppUser Interviewee { get; set; }
     }
 }
