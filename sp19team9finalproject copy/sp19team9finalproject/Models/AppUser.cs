@@ -18,7 +18,7 @@ namespace sp19team9finalproject.Models
         [Display(Name = "First Name")]
         public String FirstName { get; set; }
 
-        [Display(Name = "Last Name")
+        [Display(Name = "Last Name")]
         public String LastName { get; set; }
          
         //for student
