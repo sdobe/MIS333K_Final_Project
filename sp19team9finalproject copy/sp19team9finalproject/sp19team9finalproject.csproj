@@ -13,5 +13,16 @@
 
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Views\Home\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Views\Home\DetailedSearch.cshtml" />
+    <Content Remove="Views\Home\Index.cshtml" />
+    <Content Remove="Views\Home\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Home\DetailedSearch.cshtml" />
+    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\Details.cshtml" />
   </ItemGroup>
 </Project>

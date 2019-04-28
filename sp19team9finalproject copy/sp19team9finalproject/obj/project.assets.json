@@ -12075,11 +12075,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/sophiadobe/Google Drive/Spring 2019/MIS 333K/sp19team9finalproject/sp19team9finalproject/sp19team9finalproject.csproj",
+      "projectUniqueName": "/Users/sophiadobe/Documents/GitHub/sp19team9finalproject/sp19team9finalproject copy/sp19team9finalproject/sp19team9finalproject.csproj",
       "projectName": "sp19team9finalproject",
-      "projectPath": "/Users/sophiadobe/Google Drive/Spring 2019/MIS 333K/sp19team9finalproject/sp19team9finalproject/sp19team9finalproject.csproj",
+      "projectPath": "/Users/sophiadobe/Documents/GitHub/sp19team9finalproject/sp19team9finalproject copy/sp19team9finalproject/sp19team9finalproject.csproj",
       "packagesPath": "/Users/sophiadobe/.nuget/packages/",
-      "outputPath": "/Users/sophiadobe/Google Drive/Spring 2019/MIS 333K/sp19team9finalproject/sp19team9finalproject/obj",
+      "outputPath": "/Users/sophiadobe/Documents/GitHub/sp19team9finalproject/sp19team9finalproject copy/sp19team9finalproject/obj",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
