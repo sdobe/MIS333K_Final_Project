@@ -11,18 +11,24 @@ namespace sp19team9finalproject.Models
         public Int32 AppUserID { get; set; }
 
         [Display(Name = "Email")]
+        [Required (ErrorMessage = "Email is Required")]
         public String EmailAddress { get; set; }
 
         public String Password { get; set; }
 
         [Display(Name = "First Name")]
+        [Required(ErrorMessage = "Last Name is Required")]
         public String FirstName { get; set; }
 
         [Display(Name = "Last Name")]
+        [Required (ErrorMessage = "Last Name is Required")]
         public String LastName { get; set; }
+
+        public string MiddleInitial { get; set; }
          
         //for student
         [Display(Name = "Graduation Date")]
+        [DisplayFormat(DataFormatString = "{0:MM/yyyy}")]
         public DateTime GradDate { get; set; }
 
         //Position Type for student 

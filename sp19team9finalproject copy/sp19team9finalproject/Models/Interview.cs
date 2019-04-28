@@ -11,6 +11,7 @@ namespace sp19team9finalproject.Models
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy hh:mm tt}")]
         public DateTime DateTime { get; set; }
 
+
         public String RoomNumber { get; set; }
 
         [InverseProperty("InterviewsGiven")]
@@ -18,5 +19,7 @@ namespace sp19team9finalproject.Models
 
         [InverseProperty("InterviewsSuffered")]
         public AppUser Interviewee { get; set; }
+
+        public Position Position { get; set; }
     }
 }
