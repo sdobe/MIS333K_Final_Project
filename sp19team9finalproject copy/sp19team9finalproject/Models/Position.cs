@@ -24,6 +24,5 @@ namespace sp19team9finalproject.Models
 
         public Company Company { get; set; }
 
-        //hi
     }
 }
