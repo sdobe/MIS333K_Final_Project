@@ -6,6 +6,15 @@
 
 <h1>Index</h1>
 
+<form asp-action="Index" asp-controller="Position" method="get">
+    <p class="form-group">
+        Search: <input name="SearchString" class="form-control" /><br />
+        <button type="submit" class="btn btn-secondary">Search</button>
+        <a asp-action="DetailedSearch" class="btn btn-success">Detailed Search</a>
+        <a asp-action="Index" class="btn btn-danger">Show All</a>
+    </p>
+</form>
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>

@@ -11,7 +11,7 @@ namespace sp19team9finalproject.Models
 
         public String Description { get; set; }
 
-        public String Type { get; set; }
+        public PositionType PositionType { get; set; }
 
         public String Location { get; set; }
 
