@@ -1,71 +1,49 @@
-﻿@model IEnumerable<Dobe_Sophia_HW5.Models.Book>
+﻿@using Microsoft.AspNetCore.Authorization
+@model IEnumerable<sp19team9finalproject.Models>
 @{
     ViewData["Title"] = "Index";
 }
-<h2>Index</h2>
+<h2>Home</h2>
 
 <form asp-action="Index" asp-controller="Home" method="get">
     <p class="form-group">
         Search: <input name="SearchString" class="form-control" /><br />
         <button type="submit" class="btn btn-secondary">Search</button>
-        <a asp-action="DetailedSearch" class="btn btn-success">Detailed Search</a>
-        <a asp-action="Index" class="btn btn-danger">Show All</a>
+
+
+
+        @*@if (User.Identity.IsAuthenticated)
+        {
+            if (User.IsInRole("Student"))
+            {*@
+                @Html.ActionLink("Positions", "Index", "Position", null, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Applications", "Index", "Application", null, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Interviews", "Index", "Interview", null, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Companies", "Index", "Company", null, new { @class = "btn btn-danger" })
+
+            @*}
+            if (User.IsInRole("Recruiter"))
+            {
+                @Html.ActionLink("Positions", "Index", "Position", null, new { @class = "btn btn-danger" })
+
+                //TODO: This is probably wrong
+                @Html.ActionLink("Students", "Index", "Account", null, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Company Profile", "Index", "Company", null, new { @class = "btn btn-danger" })
+            }
+            if (User.IsInRole("CSO"))
+            {
+                @Html.ActionLink("Users", "Index", "Position", null, new { @class = "btn btn-danger" })
+
+                //TODO: This is probably wrong
+                @Html.ActionLink("Positions", "Index", "Account", null, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Companies", "Index", "Company", null, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Users", "Index", "Account", null, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Applications", "Index", "Application", null, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Interviews", "Index", "Interview", null, new { @class = "btn btn-danger" })
+            }
+        }*@
+
+
     </p>
 </form>
 
-<p>
-    Displaying @ViewBag.SelectedBookCount of @ViewBag.AllBookCount Books
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Author)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ReleaseDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Genre.GenreName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Author)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ReleaseDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Genre.GenreName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.BookID">Details</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
