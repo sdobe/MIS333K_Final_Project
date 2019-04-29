@@ -32,7 +32,7 @@ namespace sp19team9finalproject.Controllers
 
             query = query.Where(p => p.Deadline >= thisDay);
 
-            return View(_db.Positions.Include(p => p.Company).ToList())
+            return View(_db.Positions.Include(p => p.Company).ToList());
 
         }
         public ActionResult DetailedSearch()
@@ -49,15 +49,15 @@ namespace sp19team9finalproject.Controllers
         public SelectList GetAllIndustries()
         {
             //how to get all industries from companies ??
-            List<Company> Industries = _db.Company.Industry
+            List<Company> Industries = _db.Company.Industry;
 
         }
 
         public SelectList GetAllMajors()
         {
             List<Major> Majors = _db.Majors.ToList();
-            
-            Major SelectNone = new Major() { MajorID = 0, Name = "All Majors"}
+
+            Major SelectNone = new Major() { MajorID = 0, Name = "All Majors" };
             Majors.Add(SelectNone);
 
             SelectList AllMajors = new SelectList(Majors.OrderBy(g => g.MajorID), "MajorID", "Name");
