@@ -37,8 +37,6 @@ namespace sp19team9finalproject.Controllers
         }
         public ActionResult DetailedSearch()
         {
-            //TO-DO: need to create method to get all industries 
-            ViewBag.AllIndustries = GetAllIndustries();
 
             //TOD-DO: need to create method to get all 
             ViewBag.AllMajors = GetAllMajors();
@@ -46,12 +44,6 @@ namespace sp19team9finalproject.Controllers
             return View();
         }
 
-        public SelectList GetAllIndustries()
-        {
-            //how to get all industries from companies ??
-            List<Company> Industries = _db.Company.Industry;
-
-        }
 
         public SelectList GetAllMajors()
         {
@@ -65,22 +57,22 @@ namespace sp19team9finalproject.Controllers
             return AllMajors;
         }
 
-        public ActionResult DisplaySearchResults(String Company, int SelectedIndustry, PositionType SelectedPositionType, int SelectedMajor, string Location)
+        public ActionResult DisplaySearchResults(String CompanySearchString, string IndustrySearchString, PositionType SelectedPositionType, int SelectedMajor, string Location)
         {
 
             var query = from p in _db.Positions
                 select p;
                 
-            if (Company != null && Company != "") //they picked something
+            if (CompanySearchString != null && CompanySearchString != "") //they picked something
             {
-                query = query.Where(p => p.Company.Contains(Company));
+                query = query.Where(p => p.Company.Name.Contains(CompanySearchString));
             }
 
             //TO-DO: selected industry 
             //if (SelectedIndustry)
-            if (SelectedIndustry != 0) //if not selected all majors 
+            if (IndustrySearchString != null && IndustrySearchString != "") //if not selected all majors 
             {
-                query = query.Where(p => p.Company.Industry == SelectedIndustry);
+                query = query.Where(p => p.Company.Industry.Contains(IndustrySearchString);
             }
 
             if (SelectedPositionType == PositionType.FullTime) //if choose full time

@@ -28,13 +28,22 @@
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Type)
+                @Html.DisplayNameFor(model => model.PositionType)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Location)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Company.Industry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MajorDetails)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Deadline)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Company.Name)
             </th>
             <th></th>
         </tr>
@@ -49,13 +58,22 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Type)
+                @Html.DisplayFor(modelItem => item.PositionType)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Location)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Company.Industry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MajorDetails)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Deadline)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Company.Name)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.PositionID">Edit</a> |
