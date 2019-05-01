@@ -46,6 +46,7 @@ namespace sp19team9finalproject.Controllers
         // GET: Application/Create
         public IActionResult Create()
         {
+            //can only get 
             return View();
         }
 
