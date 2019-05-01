@@ -109,8 +109,11 @@ namespace sp19team9finalproject.Controllers
                 return NotFound();
             }
 
-            var position = await _context.Positions
+            //update this statement to have an include clause to get the info on position 
+            Position position = await _db.Positions
+                .Include(r => r.Company)
                 .FirstOrDefaultAsync(m => m.PositionID == id);
+
             if (position == null)
             {
                 return NotFound();
