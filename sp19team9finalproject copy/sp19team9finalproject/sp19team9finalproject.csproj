@@ -15,16 +15,61 @@
     <Folder Include="Models\" />
     <Folder Include="Seeding\" />
     <Folder Include="Views\Home\" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Views\Home\DetailedSearch.cshtml" />
     <Content Remove="Views\Home\Index.cshtml" />
     <Content Remove="Views\Home\Details.cshtml" />
     <Content Remove="Views\Position\DetailedSearch.cshtml" />
+    <Content Remove="wwwroot\jquery\jquery-3.3.1.js" />
+    <Content Remove="wwwroot\twitter-bootstrap\css\.DS_Store" />
+    <Content Remove="wwwroot\twitter-bootstrap\css\bootstrap-grid.css" />
+    <Content Remove="wwwroot\twitter-bootstrap\css\bootstrap-grid.css.map" />
+    <Content Remove="wwwroot\twitter-bootstrap\css\bootstrap-grid.min.css" />
+    <Content Remove="wwwroot\twitter-bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Remove="wwwroot\twitter-bootstrap\css\bootstrap-reboot.css" />
+    <Content Remove="wwwroot\twitter-bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Remove="wwwroot\twitter-bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Remove="wwwroot\twitter-bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Remove="wwwroot\twitter-bootstrap\css\bootstrap.css" />
+    <Content Remove="wwwroot\twitter-bootstrap\css\bootstrap.css.map" />
+    <Content Remove="wwwroot\twitter-bootstrap\css\bootstrap.min.css" />
+    <Content Remove="wwwroot\twitter-bootstrap\css\bootstrap.min.css.map" />
+    <Content Remove="wwwroot\twitter-bootstrap\js\bootstrap.bundle.js" />
+    <Content Remove="wwwroot\twitter-bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Remove="wwwroot\twitter-bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Remove="wwwroot\twitter-bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Remove="wwwroot\twitter-bootstrap\js\bootstrap.js" />
+    <Content Remove="wwwroot\twitter-bootstrap\js\bootstrap.js.map" />
+    <Content Remove="wwwroot\twitter-bootstrap\js\bootstrap.min.js" />
+    <Content Remove="wwwroot\twitter-bootstrap\js\bootstrap.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\Home\Index.cshtml" />
     <None Include="Views\Home\Details.cshtml" />
     <None Include="Views\Position\DetailedSearch.cshtml" />
+    <None Include="wwwroot\jquery\jquery-3.3.1.js" />
+    <None Include="wwwroot\twitter-bootstrap\css\.DS_Store" />
+    <None Include="wwwroot\twitter-bootstrap\css\bootstrap-grid.css" />
+    <None Include="wwwroot\twitter-bootstrap\css\bootstrap-grid.css.map" />
+    <None Include="wwwroot\twitter-bootstrap\css\bootstrap-grid.min.css" />
+    <None Include="wwwroot\twitter-bootstrap\css\bootstrap-grid.min.css.map" />
+    <None Include="wwwroot\twitter-bootstrap\css\bootstrap-reboot.css" />
+    <None Include="wwwroot\twitter-bootstrap\css\bootstrap-reboot.css.map" />
+    <None Include="wwwroot\twitter-bootstrap\css\bootstrap-reboot.min.css" />
+    <None Include="wwwroot\twitter-bootstrap\css\bootstrap-reboot.min.css.map" />
+    <None Include="wwwroot\twitter-bootstrap\css\bootstrap.css" />
+    <None Include="wwwroot\twitter-bootstrap\css\bootstrap.css.map" />
+    <None Include="wwwroot\twitter-bootstrap\css\bootstrap.min.css" />
+    <None Include="wwwroot\twitter-bootstrap\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\twitter-bootstrap\js\bootstrap.bundle.js" />
+    <None Include="wwwroot\twitter-bootstrap\js\bootstrap.bundle.js.map" />
+    <None Include="wwwroot\twitter-bootstrap\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\twitter-bootstrap\js\bootstrap.bundle.min.js.map" />
+    <None Include="wwwroot\twitter-bootstrap\js\bootstrap.js" />
+    <None Include="wwwroot\twitter-bootstrap\js\bootstrap.js.map" />
+    <None Include="wwwroot\twitter-bootstrap\js\bootstrap.min.js" />
+    <None Include="wwwroot\twitter-bootstrap\js\bootstrap.min.js.map" />
   </ItemGroup>
 </Project>
