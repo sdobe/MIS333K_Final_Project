@@ -20,28 +20,43 @@ namespace sp19team9finalproject.Controllers
         }
 
         // GET: Company
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
-            return View(await _context.Companies.ToListAsync());
-        }
-
-        // GET: Company/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
+            //If company profile has not been created yet 
             if (id == null)
             {
-                return NotFound();
+                return View(Create);
             }
 
-            var company = await _context.Companies
-                .FirstOrDefaultAsync(m => m.CompanyID == id);
-            if (company == null)
-            {
-                return NotFound();
-            }
+            //Pulls company based on RecruiterId (AppUserId)
+            Company comp = new Company();
+            comp.AppUser = _context.AppUsers.Find(AppUserId);
+            ViewBag.Companies = GetAllCompanies();
 
-            return View(company);
+            return View(comp);
+
+            //return View(await _context.Companies.ToListAsync());
         }
+
+
+        // GET: Company/Details/5
+        //public async Task<IActionResult> Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var company = await _context.Companies
+        //        .FirstOrDefaultAsync(m => m.CompanyID == id);
+        //    if (company == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return View(company);
+        //}
+
 
         // GET: Company/Create
         public IActionResult Create()
