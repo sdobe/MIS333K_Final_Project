@@ -23,7 +23,6 @@ namespace sp19team9finalproject.Controllers
         // GET: Position
         public ActionResult Index()
         {
-            //TO-DO: should display all positions on position index page 
             //this line is querying database for all positions  
             var query = from p in _db.Positions
                         select p;
@@ -62,7 +61,11 @@ namespace sp19team9finalproject.Controllers
 
             var query = from p in _db.Positions
                 select p;
-                
+
+            DateTime thisDay = DateTime.Today;
+
+            query = query.Where(p => p.Deadline >= thisDay);
+
             if (CompanySearchString != null && CompanySearchString != "") //they picked something
             {
                 query = query.Where(p => p.Company.Name.Contains(CompanySearchString));
@@ -72,7 +75,7 @@ namespace sp19team9finalproject.Controllers
             //if (SelectedIndustry)
             if (IndustrySearchString != null && IndustrySearchString != "") //if not selected all majors 
             {
-                query = query.Where(p => p.Company.Industry.Contains(IndustrySearchString);
+                query = query.Where(p => p.Company.Industry.Contains(IndustrySearchString));
             }
 
             if (SelectedPositionType == PositionType.FullTime) //if choose full time

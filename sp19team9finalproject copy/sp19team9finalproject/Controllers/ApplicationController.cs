@@ -22,7 +22,25 @@ namespace sp19team9finalproject.Controllers
         // GET: Application
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Applications.ToListAsync());
+
+            List<Application> applications = _context.Applications.Include(r => r.Position).ToList();
+            //TO-DO: change this to change functionality for CSO (can see all applications)
+            if (User.IsInRole("Manager"))
+            {
+                return View(_context.Applications.ToList());
+            }
+            else //user is a student - only get to see their own
+            {
+                //ask identity who is logged in 
+                String UserID = User.Identity.Name;
+
+                //find applications associated with this user 
+                //TO-DO: fix this underline 
+                List<Application> Applications = _context.Applications.Where(o => o.AppUser.UserName == UserID).ToList();
+
+                //send the view only the applications that belong to this user
+                return View(Applications);
+            }
         }
 
         // GET: Application/Details/5
@@ -44,10 +62,17 @@ namespace sp19team9finalproject.Controllers
         }
 
         // GET: Application/Create
-        public IActionResult Create()
+        public IActionResult Create(Int32 positionId)
         {
-            //can only get 
-            return View();
+            //to-do: format the view for create 
+            //TO-DO:return error message if student type doesnt match position type (full time or internship). They can't apply so cant create application for them.
+            //TO-DO:return error message if student major is not included in applicable majors for this position 
+
+            Application ap = new Application();
+            ap.Position = _context.Positions.Find(positionId);
+
+            //pass newly created application
+            return View(ap);
         }
 
         // POST: Application/Create
@@ -57,12 +82,22 @@ namespace sp19team9finalproject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ApplicationID,Result")] Application application)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(application);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+            //if (ModelState.IsValid)
+            //{
+            //_context.Add(application);
+            //await _context.SaveChangesAsync();
+            //return RedirectToAction(nameof(Index));
+            //}
+
+            //ask identity who is logged in
+            string id = User.Identity.Name;
+            //get user from db 
+            AppUser user = _context.Users.FirstOrDefault(u => u.Username == id);
+
+            if (user.PositionType != Position.PositionType || user.Major != Position.MajorDetails.Major)
+
+            Application AppUser = user;
+
             return View(application);
         }
 
@@ -117,9 +152,12 @@ namespace sp19team9finalproject.Controllers
             return View(application);
         }
 
+        //TO-DO: Need to edit get and post methods so that student can withdraw(delete) an application
+        //TO-DO:Change button name to withdraw instead of delete
+        //TO-DO:Student cannot delete applciation if deadline has already past
         // GET: Application/Delete/5
         public async Task<IActionResult> Delete(int? id)
-        {
+        { 
             if (id == null)
             {
                 return NotFound();

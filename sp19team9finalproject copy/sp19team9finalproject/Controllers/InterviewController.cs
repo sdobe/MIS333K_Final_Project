@@ -20,13 +20,14 @@ namespace sp19team9finalproject.Controllers
         }
 
         // GET: Interview
+        //To-do: student should only see their own interviews query the db
         public async Task<IActionResult> Index()
         {
             return View(await _context.Interviews.ToListAsync());
         }
 
         // GET: Interview/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
             if (id == null)
             {
@@ -43,13 +44,23 @@ namespace sp19team9finalproject.Controllers
             return View(interview);
         }
 
+        //to-do: student should only be able to create an interview if student's application was accepted, reference result on application class
+        //with an if statement, else they get an error message that they were not accepted  
+        //to-do: need to use route value to get application ID 
+        //to-do: 
         // GET: Interview/Create
-        public IActionResult Create()
+        public IActionResult Create(Int32 applicationId)
         {
-            return View();
+            Interview iv = new Interview();
+            iv.Interview = _context.Applications.Find(applicationId);
+            ViewBag.AllShowings = GetAllShowings();
+
+            //make sure you pass the newly created order detail to the view
+            return View(rd);
         }
 
         // POST: Interview/Create
+        //TO-DO: should be passing selected interview time slot to create the interview 
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
