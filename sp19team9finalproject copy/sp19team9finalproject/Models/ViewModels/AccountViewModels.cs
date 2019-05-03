@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System;
 
 //TODO: Change this namespace to match your project
-namespace sp19IdentityTemplate.Models
+namespace sp19team9finalproject.Models
 {
    
     public class LoginViewModel
