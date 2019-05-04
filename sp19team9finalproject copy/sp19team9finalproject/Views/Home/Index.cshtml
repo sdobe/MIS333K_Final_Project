@@ -25,8 +25,6 @@
             if (User.IsInRole("Recruiter"))
             {
                 @Html.ActionLink("Positions", "Index", "Position", null, new { @class = "btn btn-danger" })
-
-                //TODO: This is probably wrong
                 @Html.ActionLink("Students", "Index", "Account", null, new { @class = "btn btn-danger" })
                 @Html.ActionLink("Company Profile", "Index", "Company", null, new { @class = "btn btn-danger" })
                 @Html.ActionLink("Interviews", "Index", "Interview", null, new { @class = "btn btn-danger"})

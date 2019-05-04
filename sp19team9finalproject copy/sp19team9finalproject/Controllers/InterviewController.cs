@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using sp19team9finalproject.DAL;
@@ -23,7 +24,18 @@ namespace sp19team9finalproject.Controllers
         //To-do: student should only see their own interviews query the db
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Interviews.ToListAsync());
+            List<Interview> interviews = _context.Interviews();
+
+            if (User.IsInRole("Manager"))
+            {
+                interviews = _context.Interviews.Where(i => i.AppUser.Company).ToList();
+            }
+            else
+            {
+                interviews = _context.Interviews.Where(i => i.AppUser.UserName == User.Identity.Name).Include(intv => intv.ApplicationId).ToList();
+            }
+
+            return View(interviews);
         }
 
         // GET: Interview/Details/5
