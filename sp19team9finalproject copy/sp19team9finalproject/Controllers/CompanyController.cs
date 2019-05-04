@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using sp19team9finalproject.DAL;
 using sp19team9finalproject.Models;
 
+
+
 namespace sp19team9finalproject.Controllers
 {
     public class CompanyController : Controller
@@ -20,20 +22,41 @@ namespace sp19team9finalproject.Controllers
         }
 
         // GET: Company
-        public async Task<IActionResult> Index(int? id)
+        public IActionResult Index()
         {
+            String id = User.Identity.Name;
+            AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
+
             //If company profile has not been created yet 
-            if (id == null)
+            List<Company> Companies = new List<Company>();
+            Companies = _context.Companies.ToList();
+
+            if (User.IsInRole("CSO"))
             {
-                return View(Create);
+                Companies = _context.Companies.Include(o => o.Positions).ToList();
+                return View();
             }
+            if (User.IsInRole("Recruiter"))
+            {
+                foreach (Company d in Companies)
+                {
+                    if (d.Name == user.Company.Name)
+                    {
+                        Companies = _context.Companies.Where(o => d.Name == user.Company.Name).ToList();
+                        return View();
+                    }
+                    else
+                    {
+                        return RedirectToAction(nameof(Create));
 
+                    }
+                }
+            }
+            return View("Error", new string[] { "You are not authorized to access this page!" });
             //Pulls company based on RecruiterId (AppUserId)
-            Company comp = new Company();
-            comp.AppUser = _context.AppUsers.Find(AppUserCompany);
-            ViewBag.Companies = GetAllCompanies();
-
-            return View(comp);
+            //Company comp = new Company();
+            //comp.AppUser = _context.AppUsers.Find(AppUserCompany);
+            //ViewBag.Companies = GetAllCompanies();
         }
 
 
@@ -67,7 +90,7 @@ namespace sp19team9finalproject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CompanyID,EmailAddress,Description,Industry,Name,Location")] Company company)
+        public async Task<IActionResult> Create([Bind("CompanyID,EmailAddress,Description,Industry")] Company company)
         {
             if (ModelState.IsValid)
             {

@@ -23,7 +23,16 @@ namespace sp19team9finalproject.Controllers
         // GET: Position
         public ActionResult Index()
         {
-            //this line is querying database for all positions  
+            if (User.IsInRole("Recruiter"))
+            {
+                String id = User.Identity.Name;
+                AppUser user = _db.Users.FirstOrDefault(u => u.UserName == id);
+
+                List<Position> Positions = new List<Position>();
+                Positions = _db.Positions.Where(o => o.Company.Name == user.Company.Name).ToList();
+                return View(Positions);
+            }
+                //this line is querying database for all positions  
             var query = from p in _db.Positions
                         select p;
             //TO-DO: have to only show positions who have deadlines today or beyond, so query these 

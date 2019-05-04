@@ -23,9 +23,10 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Type" class="control-label"></label>
-                <input asp-for="Type" class="form-control" />
-                <span asp-validation-for="Type" class="text-danger"></span>
+                <label>PositionType:</label>
+                <input name="PositionType" class="form-control" />
+                <label class="radio">@Html.RadioButton("SelectedPositionType", PositionType.FullTime, true) Full Time</label>
+                <label class="radio">@Html.RadioButton("SelectedPositionType", PositionType.Internship) Internship</label>
             </div>
             <div class="form-group">
                 <label asp-for="Location" class="control-label"></label>
