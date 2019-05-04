@@ -13,6 +13,8 @@ namespace sp19team9finalproject.Models
 
         public String RoomNumber { get; set; }
 
+        public Position Position { get; set; }
+
         [InverseProperty("InterviewsGiven")]
         public AppUser Interviewer { get; set; }
 

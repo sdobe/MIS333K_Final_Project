@@ -38,7 +38,7 @@ namespace sp19team9finalproject.Controllers
 
                 //find applications associated with this user 
                 //TO-DO: fix this underline 
-                List<Application> Applications = _context.Applications.Where(o => o.AppUser.UserName == UserID).ToList();
+                List<Application> Applications = _context.Applications.Where(o => o.AppUser.UserName == User.Identity.Name).Include(o => o.Position).ToList();
 
                 //send the view only the applications that belong to this user
                 return View(Applications);
@@ -86,19 +86,21 @@ namespace sp19team9finalproject.Controllers
         {
             if (ModelState.IsValid)
             {
-            _context.Add(application);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+                //ask identity who is logged in
+                string id = User.Identity.Name;
+                //get user from db 
+                AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
+
+                if (user.PositionType == application.Position.PositionType ||  application.Position.MajorDetails.Contains(user.Major.Name)) //to do have to check if student major matches position majors 
+                {
+                    _context.Add(application);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Index", "Position");
+                }
+
             }
 
-            //ask identity who is logged in
-            string id = User.Identity.Name;
-            //get user from db 
-            AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
-
-            if (user.PositionType != Position.PositionType || user.Major != Position.MajorDetails.Major)
-
-            Application AppUser = user;
+            
 
             return View(application);
         }

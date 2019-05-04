@@ -22,6 +22,8 @@ namespace sp19team9finalproject.Models
 
         public List<Application> Applications { get; set; }
 
+        public List<Interview> Interviews { get; set; }
+
         public Company Company { get; set; }
 
         public Position()
