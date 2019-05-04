@@ -24,5 +24,18 @@ namespace sp19team9finalproject.Models
 
         public Company Company { get; set; }
 
+        public Position()
+        {
+            if (MajorDetails == null)
+            {
+                MajorDetails = new List<MajorDetail>();
+            }
+
+            if (Applications == null)
+            {
+                Applications = new List<Application>();
+            }
+        }
+
     }
 }

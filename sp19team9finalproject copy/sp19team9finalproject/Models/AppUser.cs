@@ -43,5 +43,18 @@ namespace sp19team9finalproject.Models
         public List<Interview> InterviewsSuffered { get; set; }
 
         public Company Company { get; set; }
+
+        public AppUser()
+        {
+            if (InterviewsGiven == null)
+            {
+                InterviewsGiven = new List<Interview>();
+            }
+
+            if (InterviewsSuffered == null)
+            {
+                InterviewsSuffered = new List<Interview>();
+            }
+        }
     }
 }

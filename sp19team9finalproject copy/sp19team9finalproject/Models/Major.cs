@@ -13,5 +13,17 @@ namespace sp19team9finalproject.Models
 
         public List<AppUser> AppUsers { get; set; }
 
+        public Major()
+        {
+            if (MajorDetails == null)
+            {
+                MajorDetails = new List<MajorDetail>();
+            }
+
+            if (AppUsers == null)
+            {
+                AppUsers = new List<AppUser>();
+            }
+        }
     }
 }

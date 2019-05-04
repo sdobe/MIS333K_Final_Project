@@ -22,5 +22,18 @@ namespace sp19team9finalproject.Models
         public List<Position> Positions { get; set; }
 
         public List<AppUser> AppUsers { get; set;  }
+
+        public Company()
+        {
+            if (Positions == null)
+            {
+                Positions = new List<Position>();
+            }
+
+            if (AppUsers == null)
+            {
+                AppUsers = new List<AppUser>();
+            }
+        }
     }
 }
