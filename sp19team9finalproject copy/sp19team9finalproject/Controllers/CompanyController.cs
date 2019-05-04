@@ -25,7 +25,7 @@ namespace sp19team9finalproject.Controllers
             //If company profile has not been created yet 
             if (id == null)
             {
-                return View(Create);
+            //    return View(Create);
             }
 
             //Pulls company based on RecruiterId (AppUserId)

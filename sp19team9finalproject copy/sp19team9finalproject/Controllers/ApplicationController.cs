@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using sp19team9finalproject.DAL;
 using sp19team9finalproject.Models;
 
+
+
 namespace sp19team9finalproject.Controllers
 {
     public class ApplicationController : Controller
@@ -82,17 +84,17 @@ namespace sp19team9finalproject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ApplicationID,Result")] Application application)
         {
-            //if (ModelState.IsValid)
-            //{
-            //_context.Add(application);
-            //await _context.SaveChangesAsync();
-            //return RedirectToAction(nameof(Index));
-            //}
+            if (ModelState.IsValid)
+            {
+            _context.Add(application);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+            }
 
             //ask identity who is logged in
             string id = User.Identity.Name;
             //get user from db 
-            AppUser user = _context.Users.FirstOrDefault(u => u.Username == id);
+            AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
 
             if (user.PositionType != Position.PositionType || user.Major != Position.MajorDetails.Major)
 

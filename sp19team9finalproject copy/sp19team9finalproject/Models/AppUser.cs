@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Identity;
 
 namespace sp19team9finalproject.Models
 {
     public enum PositionType { FullTime , Internship }
-    public class AppUser
+    public class AppUser : IdentityUser
     {
         public Int32 AppUserID { get; set; }
 

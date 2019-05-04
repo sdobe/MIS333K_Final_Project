@@ -58,7 +58,6 @@ namespace sp19team9finalproject.Controllers
 
         public ActionResult DisplaySearchResults(String CompanySearchString, string IndustrySearchString, PositionType SelectedPositionType, int SelectedMajor, string Location)
         {
-
             var query = from p in _db.Positions
                 select p;
 

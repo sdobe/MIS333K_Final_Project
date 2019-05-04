@@ -32,7 +32,25 @@ namespace sp19team9finalproject.Models
         public String FirstName { get; set; }
 
         //Additional fields go here
-       
+        [Required(ErrorMessage = "Last name is required.")]
+        [Display(Name = "Last Name")]
+        public String LastName { get; set; }
+
+        [Required(ErrorMessage = "Graduation Date is required.")]
+        [Display(Name = "Graduation Date")]
+        public DateTime GradDate { get; set; }
+
+        [Required(ErrorMessage = "Position Type is required.")]
+        [Display(Name = "PositionType")]
+        public PositionType PositionType { get; set; }
+
+        [Required(ErrorMessage = "GPA is required.")]
+        [Display(Name = "GPA")]
+        public int GPA { get; set; }
+
+        [Required(ErrorMessage = "Major is required.")]
+        [Display(Name = "Major")]
+        public Major Major { get; set; }
 
         //NOTE: Here is the property for email
         [Required]
