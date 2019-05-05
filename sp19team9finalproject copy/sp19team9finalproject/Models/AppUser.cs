@@ -21,10 +21,18 @@ namespace sp19team9finalproject.Models
 
         [Display(Name = "Last Name")]
         public String LastName { get; set; }
-         
-        //for student
-        [Display(Name = "Graduation Date")]
-        public DateTime GradDate { get; set; }
+
+        private String strFullName;
+        public String FullName
+        {
+            get { return strFullName; }
+
+            set { strFullName = FirstName + " " + LastName; }
+        }
+
+ //for student
+       [Display(Name = "First Name")]
+       public DateTime GradDate { get; set; }
 
         //Position Type for student 
         public PositionType PositionType { get; set; }
