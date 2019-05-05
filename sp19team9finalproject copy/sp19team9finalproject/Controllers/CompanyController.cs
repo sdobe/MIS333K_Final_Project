@@ -27,10 +27,11 @@ namespace sp19team9finalproject.Controllers
             String id = User.Identity.Name;
             AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
 
-            //If company profile has not been created yet 
+            //Creates new list of companies
             List<Company> Companies = new List<Company>();
             Companies = _context.Companies.ToList();
 
+            //Routes user to the correct view/path
             if (User.IsInRole("CSO"))
             {
                 Companies = _context.Companies.Include(o => o.Positions).ToList();
@@ -53,6 +54,7 @@ namespace sp19team9finalproject.Controllers
                 }
             }
             return View("Error", new string[] { "You are not authorized to access this page!" });
+
             //Pulls company based on RecruiterId (AppUserId)
             //Company comp = new Company();
             //comp.AppUser = _context.AppUsers.Find(AppUserCompany);
