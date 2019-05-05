@@ -98,7 +98,7 @@ namespace sp19team9finalproject.Controllers
 
             if (SelectedMajor != 0) //if not selected all majors 
             {
-                query = query.Where(p => p.MajorDetails.Major == SelectedMajor);
+                query = query.Where(m => m.Major.MajorID == SelectedMajor);
             }
 
             if (Location != null && Location != "")

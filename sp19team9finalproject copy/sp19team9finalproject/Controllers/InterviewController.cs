@@ -22,7 +22,7 @@ namespace sp19team9finalproject.Controllers
 
         // GET: Interview
         //To-do: student should only see their own interviews query the db
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             List<Interview> interviews = _context.Interviews();
 
@@ -61,14 +61,20 @@ namespace sp19team9finalproject.Controllers
         //to-do: need to use route value to get application ID 
         //to-do: 
         // GET: Interview/Create
-        public IActionResult Create(Int32 applicationId)
+        public IActionResult Create()
         {
-            Interview iv = new Interview();
-            iv.Interview = _context.Applications.Find(applicationId);
-            ViewBag.AllShowings = GetAllShowings();
-
+            //ask identity who is logged in
+            string id = User.Identity.Name;
+            //get user from db 
+            AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
+            //Populate viewbags for position, times, and interviewers(recruiters associated with recruiteruser's ID)
             //make sure you pass the newly created order detail to the view
-            return View(rd);
+            //Populate viewbags with company's associated positions and interviewers
+            ViewBag.Positions = GetAllPositions();
+
+            ViewBag.Interviewers = GetAllInterviewers();
+
+            return View();
         }
 
         // POST: Interview/Create
@@ -171,6 +177,24 @@ namespace sp19team9finalproject.Controllers
         private bool InterviewExists(int id)
         {
             return _context.Interviews.Any(e => e.InterviewID == id);
+        }
+
+        public SelectList GetAllPositions()
+        {
+            List<Position> AllPositions = _context.Positions.ToList();
+
+            SelectList positions = new SelectList(AllPositions, "PositionID", "Title");
+
+            return positions;
+        }
+
+        public SelectList GetAllInterviewers()
+        {
+            List<AppUser> AllAppUsers = _context.AppUsers.ToList();
+
+            SelectList interviewers = new SelectList(AllAppUsers, "AppUserID", "FirstName");
+
+            return interviewers;
         }
     }
 }
