@@ -82,16 +82,18 @@ namespace sp19team9finalproject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ApplicationID,Result")] Application application)
+        public async Task<IActionResult> Create([Bind("ApplicationID,Result")] Application application, int UserMajor)
         {
             if (ModelState.IsValid)
             {
                 //ask identity who is logged in
                 string id = User.Identity.Name;
-                //get user from db 
                 AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
 
-                if (user.PositionType == application.Position.PositionType ||  application.Position.MajorDetails.Contains(user.Major.Name)) //to do have to check if student major matches position majors 
+                //Associates the application with the user 
+                application.AppUser = user;
+
+                if (user.PositionType == application.Position.PositionType ||  application.Position.MajorDetails.Contains(user.Major)) //to do have to check if student major matches position majors 
                 {
                     _context.Add(application);
                     await _context.SaveChangesAsync();

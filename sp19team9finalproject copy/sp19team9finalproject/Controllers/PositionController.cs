@@ -32,26 +32,27 @@ namespace sp19team9finalproject.Controllers
                 Positions = _db.Positions.Where(o => o.Company.Name == user.Company.Name).ToList();
                 return View(Positions);
             }
-                //this line is querying database for all positions  
-            var query = from p in _db.Positions
-                        select p;
-            //TO-DO: have to only show positions who have deadlines today or beyond, so query these 
-            DateTime thisDay = DateTime.Today;
+            else
+            {
+                //This line is querying database for all positions  
+                var query = from p in _db.Positions
+                            select p;
 
-            query = query.Where(p => p.Deadline >= thisDay);
+                //Shows positions who have deadlines today or beyond
+                DateTime thisDay = DateTime.Today;
 
-            return View(_db.Positions.Include(p => p.Company).ToList());
+                query = query.Where(p => p.Deadline >= thisDay);
+
+                return View(_db.Positions.Include(p => p.Company).ToList());
+            }
 
         }
         public ActionResult DetailedSearch()
         {
-
-            //TOD-DO: need to create method to get all 
+            //Populates viewbag for majors 
             ViewBag.AllMajors = GetAllMajors();
-
             return View();
         }
-
 
         public SelectList GetAllMajors()
         {
@@ -105,14 +106,14 @@ namespace sp19team9finalproject.Controllers
             {
                 query = query.Where(p => p.Location.Contains(Location));
             }
-            //execute query by calling the /.ToList() method
 
+            //execute query by calling the /.ToList() method
             List<Position> SelectedPositions = query.Include(b => b.Company).ToList();
 
             return View("Index", SelectedPositions);
         }
-            // GET: Position/Details/5
         
+        // GET: Position/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
