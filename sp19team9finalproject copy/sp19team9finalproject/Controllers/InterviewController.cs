@@ -84,9 +84,8 @@ namespace sp19team9finalproject.Controllers
             //Populate viewbags for position, times, and interviewers(recruiters associated with recruiteruser's ID)
             //make sure you pass the newly created order detail to the view
             //Populate viewbags with company's associated positions and interviewers
-            ViewBag.Positions = GetAllPositions();
-
-            ViewBag.Interviewers = GetAllInterviewers();
+            ViewBag.Positions = GetAllPositions(user);
+            ViewBag.Interviewers = GetAllInterviewers(user);
 
             return View();
         }
@@ -97,12 +96,15 @@ namespace sp19team9finalproject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("InterviewID,DateTime,RoomNumber")] Interview interview)
+        public IActionResult Create([Bind("InterviewID,Position,Date,Time,RoomNumber,Interviewer")] Interview interview, int SelectedPosition, int SelectedInterviewer)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(interview);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
+
+                //add navigational data
+                // find the position with the same 
                 return RedirectToAction(nameof(Index));
             }
             return View(interview);
@@ -193,20 +195,40 @@ namespace sp19team9finalproject.Controllers
             return _context.Interviews.Any(e => e.InterviewID == id);
         }
 
-        public SelectList GetAllPositions()
+        public SelectList GetAllPositions(AppUser user)
         {
             List<Position> AllPositions = _context.Positions.ToList();
 
-            SelectList positions = new SelectList(AllPositions, "PositionID", "Title");
+            List<Position> SelectedPositions = new List<Position>();
+
+            foreach (Position cd in AllPositions)
+            {
+                if(cd.Company == user.Company)
+                {
+                    SelectedPositions.Add(cd);
+                }
+            }
+
+            SelectList positions = new SelectList(SelectedPositions, "PositionID", "Title");
 
             return positions;
         }
 
-        public SelectList GetAllInterviewers()
+        public SelectList GetAllInterviewers(AppUser user)
         {
             List<AppUser> AllAppUsers = _context.AppUsers.ToList();
 
-            SelectList interviewers = new SelectList(AllAppUsers, "AppUserID", "FirstName");
+            List<AppUser> SelectedUsers = new List<AppUser>();
+
+            foreach (AppUser cd in AllAppUsers)
+            {
+                if (cd.Company == user.Company)
+                {
+                    SelectedUsers.Add(cd);
+                }
+            }
+
+            SelectList interviewers = new SelectList(SelectedUsers, "AppUserID", "FullName");
 
             return interviewers;
         }
