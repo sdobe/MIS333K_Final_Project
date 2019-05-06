@@ -21,6 +21,7 @@ namespace sp19team9finalproject.Controllers
             _context = context;
         }
 
+        //TO-DO: somewhere in this index need to have a way of getting all of the interviews associated with this company to display 
         // GET: Company
         public IActionResult Index()
         {
@@ -29,13 +30,12 @@ namespace sp19team9finalproject.Controllers
 
             //Creates new list of companies
             List<Company> Companies = new List<Company>();
-            Companies = _context.Companies.ToList();
+            Companies = _context.Companies.Include(o => o.Positions).ToList();
 
             //Routes user to the correct view/path
             if (User.IsInRole("CSO"))
             {
-                Companies = _context.Companies.Include(o => o.Positions).ToList();
-                return View();
+                return View(Companies);
             }
             if (User.IsInRole("Recruiter"))
             {
@@ -43,8 +43,8 @@ namespace sp19team9finalproject.Controllers
                 {
                     if (d.Name == user.Company.Name)
                     {
-                        Companies = _context.Companies.Where(o => d.Name == user.Company.Name).ToList();
-                        return View();
+                        Companies = _context.Companies.Where(o => d.Name == user.Company.Name).Include(o => o.Positions).ToList();
+                        return View(Companies);
                     }
                     else
                     {

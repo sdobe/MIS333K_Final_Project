@@ -30,9 +30,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Position.Title)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Interview.DateTime)
-            </th>
+            @*<th> TO-DO: show all interview dates for that company 
+            @Html.DisplayNameFor(model => model.Interview.Date)
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -57,13 +57,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Position.Title)
             </td>
+            @*<td> TO-DO: show all interview dates for that company
+            @Html.DisplayFor(modelItem => item.Interview.DateTime)
+            </td>*@
             <td>
-                @Html.DisplayFor(modelItem => item.Interview.DateTime)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CompanyID">Edit</a> 
-                @*<a asp-action="Create" asp-route-id="@item.CompanyID">Details</a> 
-                <a asp-action="Delete" asp-route-id="@item.CompanyID">Delete</a>*@
+                <a asp-action="Edit" asp-route-id="@item.CompanyID">Edit</a>
+                @*<a asp-action="Create" asp-route-id="@item.CompanyID">Details</a>
+            <a asp-action="Delete" asp-route-id="@item.CompanyID">Delete</a>*@
             </td>
         </tr>
 }

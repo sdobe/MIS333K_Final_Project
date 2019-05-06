@@ -24,18 +24,32 @@ namespace sp19team9finalproject.Controllers
         //To-do: student should only see their own interviews query the db
         public async Task<IActionResult> Index()
         {
-            List<Interview> interviews = _context.Interviews();
-
-            if (User.IsInRole("Manager"))
+            if (User.IsInRole("Recruiter"))
             {
-                interviews = _context.Interviews.Where(i => i.AppUser.Company).ToList();
-            }
-            else
-            {
-                interviews = _context.Interviews.Where(i => i.AppUser.UserName == User.Identity.Name).Include(intv => intv.ApplicationId).ToList();
-            }
+                String id = User.Identity.Name;
+                AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
 
-            return View(interviews);
+                List<Interview> Interviews = new List<Interview>();
+                Interviews = _context.Interviews.Where(inv => inv.Interviewer.AppUserID == user.AppUserID).ToList();
+                return View(Interviews);
+            }
+            if (User.IsInRole("Student"))
+            {
+                String id = User.Identity.Name;
+                AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
+
+                List<Interview> Interviews = new List<Interview>();
+                Interviews = _context.Interviews.Where(inv => inv.Interviewee.AppUserID == user.AppUserID).ToList();
+                return View(Interviews);
+            }
+            else //if CSO 
+            {
+                //This line is querying database for all interviews  
+                var query = from inv in _context.Interviews
+                            select inv;
+                            
+                return View(_context.Interviews.Include(p => p.Position).ToList());
+            }
         }
 
         // GET: Interview/Details/5
