@@ -97,10 +97,21 @@ namespace sp19team9finalproject.Controllers
                 query = query.Where(p => p.PositionType == PositionType.Internship);
             }
 
+
             if (SelectedMajor != 0) //if not selected all majors 
             {
-                query = query.Where(p => p.MajorDetails.Major == SelectedMajor);
+                //trying to query an instance of major detail from each position's major details to see if it matches the major user selected 
+                foreach (MajorDetail md in p.MajorDetails)
+                {
+
+                    if (md.Major.MajorID == SelectedMajor)
+                    {
+                        query = query.Where(p => p.MajorDetails.Major == SelectedMajor);
+                    }
+                }
             }
+
+
 
             if (Location != null && Location != "")
             {

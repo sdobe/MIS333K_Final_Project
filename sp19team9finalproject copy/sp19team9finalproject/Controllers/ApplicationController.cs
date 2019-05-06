@@ -82,23 +82,42 @@ namespace sp19team9finalproject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ApplicationID,Result")] Application application, int UserMajor)
+        public async Task<IActionResult> Create([Bind("ApplicationID,Result")] Application application)
         {
             if (ModelState.IsValid)
             {
                 //ask identity who is logged in
                 string id = User.Identity.Name;
-                AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
+                AppUser user = _context.Users.Include(u => u.Major).FirstOrDefault(u => u.UserName == id);
 
                 //Associates the application with the user 
-                application.AppUser = user;
+                //application.AppUser = user;
 
-                if (user.PositionType == application.Position.PositionType ||  application.Position.MajorDetails.Contains(user.Major)) //to do have to check if student major matches position majors 
+                bool ApplicableMajors = false;
+
+                foreach (MajorDetail md in application.Position.MajorDetails)
+                {
+                    if (md.Major == user.Major)
+                    {
+                        ApplicableMajors = true;
+                    }
+
+                }
+
+                if (user.PositionType == application.Position.PositionType || ApplicableMajors == true )
                 {
                     _context.Add(application);
                     await _context.SaveChangesAsync();
                     return RedirectToAction("Index", "Position");
                 }
+                else
+                {
+                    //TO-DO: return error message because user cant apply for this position 
+                    return RedirectToAction("Index");
+                }
+
+                //application.Position.MajorDetails.Major == user.Major Contains(user.Major)) //to do have to check if student major matches position majors 
+
 
             }
 
