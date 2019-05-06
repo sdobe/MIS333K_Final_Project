@@ -72,4 +72,7 @@
     <None Include="wwwroot\twitter-bootstrap\js\bootstrap.min.js" />
     <None Include="wwwroot\twitter-bootstrap\js\bootstrap.min.js.map" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Migrations\20190426191844_InitialCreate.cs" />
+  </ItemGroup>
 </Project>

@@ -7205,7 +7205,7 @@
       ]
     },
     "NETStandard.Library/2.0.3": {
-      "sha512": "548M6mnBSJWxsIlkQHfbzoYxpiYFXZZSL00p4GHYv8PkiqFBnnT68mW5mGEsA/ch9fDO9GkPgkFQpWiXZN7mAQ==",
+      "sha512": "st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "type": "package",
       "path": "netstandard.library/2.0.3",
       "files": [
@@ -12079,13 +12079,13 @@
       "projectName": "sp19team9finalproject",
       "projectPath": "/Users/sophiadobe/Documents/GitHub/sp19team9finalproject/sp19team9finalproject copy/sp19team9finalproject/sp19team9finalproject.csproj",
       "packagesPath": "/Users/sophiadobe/.nuget/packages/",
-      "outputPath": "/Users/sophiadobe/Documents/GitHub/sp19team9finalproject/sp19team9finalproject copy/sp19team9finalproject/obj",
+      "outputPath": "/Users/sophiadobe/Documents/GitHub/sp19team9finalproject/sp19team9finalproject copy/sp19team9finalproject/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/sophiadobe/.config/NuGet/NuGet.Config"
+        "/Users/sophiadobe/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
@@ -12110,7 +12110,8 @@
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2.2.0, )"
+            "version": "[2.2.0, )",
+            "autoReferenced": true
           },
           "Microsoft.AspNetCore.Razor.Design": {
             "suppressParent": "All",
