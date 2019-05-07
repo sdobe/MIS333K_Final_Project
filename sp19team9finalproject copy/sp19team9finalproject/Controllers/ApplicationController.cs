@@ -237,14 +237,30 @@ namespace sp19team9finalproject.Controllers
 
         //POST: Position/AcceptStudents 
         //the list of students that they chose to accept 
-        public IAsyncResult AcceptStudents(list AcceptedStudents)
+        //can I pass a multiselect list, that includes a number of application objects 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IAsyncResult AcceptStudents(int[] AcceptedStudents)
         {
-            foreach(Student s in AcceptedStudents)
+            //get a list of all applications where the int in the retreived multiselect list matches the int
+            var query = from app in _context.Applications
+                        select app;
+
+            foreach (int application in AcceptedStudents)
             {
-                //set s.Result = "Accepted" 
+                //query a new student list of accepted application
+                query = query.Where(app => app.ApplicationID == application);
             }
 
-            return(AccpetedStudents)
+            List<Application> AcceptedApplications = query.Include(b => b.Position).ToList();
+
+            foreach (Application a in AcceptedApplications)
+            {
+                //itterate through new list of Accepted Applications and change result into accepted and save changes tp database 
+                //this is where
+            }
+
+            return View();
 
         }
 
