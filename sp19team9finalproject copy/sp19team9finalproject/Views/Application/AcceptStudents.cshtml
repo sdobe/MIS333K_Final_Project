@@ -1,0 +1,17 @@
+﻿@using sp19team9finalproject.Controllers
+@using sp19team9finalproject.Models
+
+@{
+    ViewBag.Title = "Accept Students";
+}
+
+<h2>Search for Students</h2>
+<form asp-action="AcceptStudents" asp-controller="Application" method="get">
+    <div class="alert-danger"></div>
+
+    <div class="form-group">
+        <label>Select Major:</label>
+        @Html.DropDownList("AcceptedStudents", (SelectList)ViewBag.ListSelectedApplications, new { @class = "form-control" })
+    </div>
+
+</form>

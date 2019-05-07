@@ -246,5 +246,6 @@ namespace sp19team9finalproject.Controllers
         {
             return _db.Positions.Any(e => e.PositionID == id);
         }
+
     }
 }
