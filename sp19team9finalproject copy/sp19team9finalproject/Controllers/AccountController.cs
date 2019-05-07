@@ -1,14 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-
-
-//: Change this using statement to match your project
+using Microsoft.AspNetCore.Mvc.Rendering;
 using sp19team9finalproject.DAL;
 using sp19team9finalproject.Models;
+
+//: Change this using statement to match your project
 
 //: Change this namespace to match your project
 namespace sp19team9finalproject.Controllers
@@ -76,7 +77,20 @@ namespace sp19team9finalproject.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.AllMajors = GetAllMajors();
             return View();
+        }
+
+        public SelectList GetAllMajors()
+        {
+            List<Major> Majors = _db.Majors.ToList();
+
+            Major SelectNone = new Major() { MajorID = 0, Name = "All Majors" };
+            Majors.Add(SelectNone);
+
+            SelectList AllMajors = new SelectList(Majors.OrderBy(g => g.MajorID), "MajorID", "Name");
+
+            return AllMajors;
         }
 
         //
