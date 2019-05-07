@@ -61,7 +61,7 @@ namespace sp19team9finalproject.Controllers
                         select stu;
 
             //TO-DO: should the search for grad date show students with grad dates before or equal to the date they picked or smthing else 
-            if(GradDate != null)
+            if (GradDate != null)
             {
                 query = query.Where(s => s.GradDate == GradDate);
             }
@@ -70,7 +70,7 @@ namespace sp19team9finalproject.Controllers
             {
 
                 query = query.Where(s => s.Major.MajorID == SelectedMajor);
-             
+
             }
 
             if (SelectedPositionType == PositionType.FullTime) //if choose full time
@@ -97,12 +97,12 @@ namespace sp19team9finalproject.Controllers
                     return View("DetailedSearch");
                 }
 
+            }
 
-                List<AppUser> SelectedStudents = query.Include(b => b.Major).ToList();
+            List<AppUser> SelectedStudents = query.Include(b => b.Major).ToList();
 
-            return View("Index", SelectedStudents); 
+            return View("Index", SelectedStudents);
 
         }
-
     }
 }
