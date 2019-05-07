@@ -240,7 +240,7 @@ namespace sp19team9finalproject.Controllers
         //can I pass a multiselect list, that includes a number of application objects 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IAsyncResult AcceptStudents(int[] AcceptedStudents)
+        public async Task<IAsyncResult> AcceptStudents(int[] AcceptedStudents)
         {
             //get a list of all applications where the int in the retreived multiselect list matches the int
             var query = from app in _context.Applications
@@ -258,9 +258,14 @@ namespace sp19team9finalproject.Controllers
             {
                 //itterate through new list of Accepted Applications and change result into accepted and save changes tp database 
                 //this is where
+                a.Result = "Accepted";
+                _context.Update(a);
+                await _context.SaveChangesAsync();
             }
 
-            return View();
+
+            //should pass a list of AcceptedApplications to Applications/index so now they see applications that are accepted  
+            return View("Index", AcceptedApplications);
 
         }
 
