@@ -67,7 +67,7 @@ namespace sp19team9finalproject.Controllers
         }
 
         //i removed SelectedMajor have to add it back to parameters later
-        public ActionResult DisplaySearchResults(String CompanySearchString, string IndustrySearchString, PositionType SelectedPositionType,  string Location)
+        public ActionResult DisplaySearchResults(String CompanySearchString, string IndustrySearchString, PositionType SelectedPositionType, int SelectedMajor,  string Location)
         {
             var query = from p in _db.Positions
                 select p;
@@ -99,18 +99,12 @@ namespace sp19team9finalproject.Controllers
             }
 
 
-            //if (SelectedMajor != 0) //if not selected all majors 
-            //{
-                //trying to query an instance of major detail from each position's major details to see if it matches the major user selected 
-                //foreach (MajorDetail md in p.MajorDetails)
-                //{
+            if (SelectedMajor != 0) //if not selected all majors 
+            {
 
-                    //if (md.Major.MajorID == SelectedMajor)
-                    //{
-                        //query = query.Where(p => p.MajorDetails.Major == SelectedMajor);
-                    //}
-                //}
-            //}
+                query = query.Where(p => p.MajorDetails.Any(m => m.Major.MajorID == SelectedMajor));
+                //trying to query an instance of major detail from each position's major details to see if it matches the major user selected 
+            }
 
 
 
@@ -252,5 +246,6 @@ namespace sp19team9finalproject.Controllers
         {
             return _db.Positions.Any(e => e.PositionID == id);
         }
+
     }
 }

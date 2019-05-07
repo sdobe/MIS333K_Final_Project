@@ -213,5 +213,40 @@ namespace sp19team9finalproject.Controllers
         {
             return _context.Applications.Any(e => e.ApplicationID == id);
         }
+
+        //GET: Position/AcceptStudents
+        public async Task<IActionResult> AcceptStudents(int? id)
+        {
+            //make a list of all applications for the position clicked on from
+            var query = from ap in _context.Applications
+                        select ap;
+
+            query = query.Where(ap => ap.Position.PositionID >= id);
+
+            List<Application> SelectedApplications = query.Include(ap => ap.AppUser).ToList();
+
+            //convert list to multi select list 
+            MultiSelectList ListSelectedApplications = new MultiSelectList(SelectedApplications.OrderBy(ap => ap.ApplicationID), "ApplicationID", "AppUser.LastName");
+            ViewBag.ListSelectedApplications = ListSelectedApplications;
+
+            return View();
+
+            //this list should display student name but store app id 
+            //this list goes in viewbag that recruiters will get to select the students they want to accept 
+        }
+
+        //POST: Position/AcceptStudents 
+        //the list of students that they chose to accept 
+        public IAsyncResult AcceptStudents(list AcceptedStudents)
+        {
+            foreach(Student s in AcceptedStudents)
+            {
+                //set s.Result = "Accepted" 
+            }
+
+            return(AccpetedStudents)
+
+        }
+
     }
 }

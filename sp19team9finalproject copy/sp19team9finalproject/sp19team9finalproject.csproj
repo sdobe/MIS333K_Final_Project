@@ -29,6 +29,7 @@
     <Folder Include="wwwroot\lib\jquery\" />
     <Folder Include="wwwroot\lib\twitter-bootstrap\css\" />
     <Folder Include="wwwroot\lib\twitter-bootstrap\js\" />
+    <Folder Include="Views\Student\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Views\Home\DetailedSearch.cshtml" />
