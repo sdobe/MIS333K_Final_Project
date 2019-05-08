@@ -14,7 +14,8 @@ using Microsoft.AspNetCore.Authorization;
 //TO-DO: need to add a button for students to home index for recruiters (maybe CSO) 
 namespace sp19team9finalproject.Controllers
 {
-    [Authorize(Roles = "Recruiter")]
+    //also authorize CSO 
+    [Authorize(Roles = "Recruiter, CSO")]
     public class StudentController : Controller
     {
         private AppDbContext _db;

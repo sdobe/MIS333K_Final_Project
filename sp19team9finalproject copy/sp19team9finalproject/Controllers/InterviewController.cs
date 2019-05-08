@@ -31,7 +31,7 @@ namespace sp19team9finalproject.Controllers
 
                 List<Interview> Interviews = new List<Interview>();
                 Interviews = _context.Interviews.Where(inv => inv.Interviewer.AppUserID == user.AppUserID).ToList();
-                return View(Interviews);
+                return View(Interviews.OrderByDescending(inv => inv.Position.PositionID));
             }
             if (User.IsInRole("Student"))
             {
