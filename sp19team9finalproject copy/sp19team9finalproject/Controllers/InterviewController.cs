@@ -81,9 +81,7 @@ namespace sp19team9finalproject.Controllers
             string id = User.Identity.Name;
             //get user from db 
             AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
-            //Populate viewbags for position, times, and interviewers(recruiters associated with recruiteruser's ID)
-            //make sure you pass the newly created order detail to the view
-            //Populate viewbags with company's associated positions and interviewers
+       
             ViewBag.Positions = GetAllPositions(user);
             ViewBag.Interviewers = GetAllInterviewers(user);
 
@@ -98,6 +96,27 @@ namespace sp19team9finalproject.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("InterviewID,Position,Date,Time,RoomNumber,Interviewer")] Interview interview, int SelectedPosition, int SelectedInterviewer)
         {
+            var query = from i in _context.Interviews
+                        select i;
+
+            List <Interview> AllInterviews = query.ToList();
+
+            foreach(Interview i in AllInterviews)
+            {
+                if (i.Date == interview.Date && i.Time == interview.Time && i.RoomNumber ==interview.RoomNumber)
+                {
+                    //if this turns out to be true then return to page where they create interview 
+                    string id = User.Identity.Name;
+                    //get user from db 
+                    AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
+
+                    ViewBag.Positions = GetAllPositions(user);
+                    ViewBag.Interviewers = GetAllInterviewers(user);
+
+                    return View(interview);
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(interview);
@@ -107,6 +126,14 @@ namespace sp19team9finalproject.Controllers
                 // find the position with the same 
                 return RedirectToAction(nameof(Index));
             }
+
+            string id = User.Identity.Name;
+            //get user from db 
+            AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
+
+            ViewBag.Positions = GetAllPositions(user);
+            ViewBag.Interviewers = GetAllInterviewers(user);
+
             return View(interview);
         }
 
