@@ -3,15 +3,11 @@ using System.Linq;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
-
-//: Change these using statements to match your project
 using sp19team9finalproject.DAL;
 using sp19team9finalproject.Models;
 
-//: Change this namespace to match your project
 namespace sp19team9finalproject.Seeding
 {
-    //add identity data
     public static class SeedIdentity
     {
         public static async Task AddAdmin(IServiceProvider serviceProvider)
@@ -46,7 +42,7 @@ namespace sp19team9finalproject.Seeding
             AppUser manager = _db.Users.FirstOrDefault(u => u.Email == "admin@example.com");
 
             //if manager hasn't been created, then add them
-           
+            
             if (manager == null)
             {
                 manager = new AppUser();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using sp19team9finalproject.DAL;
 using sp19team9finalproject.Models;
 
@@ -10,9 +11,12 @@ namespace sp19team9finalproject.Seeding
 {
     public class SeedCSO
     {
-        public static void SeedAllCSO(AppDbContext db)
+        public static void SeedAllCSO(AppDbContext db, IServiceProvider serviceProvider)
         {
-            
+            AppDbContext _db = serviceProvider.GetRequiredService<AppDbContext>();
+            UserManager<AppUser> _userManager = serviceProvider.GetRequiredService<UserManager<AppUser>>();
+            RoleManager<IdentityRole> _roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
             Int32 intCSOAdded = 0;
             List<AppUser> CSOs = new List<AppUser>();
 
@@ -25,7 +29,7 @@ namespace sp19team9finalproject.Seeding
                     FirstName = "Allen",
                     LastName = "Rogers"
                 };
-                UserManager.AddToRole(ap1.Id, "CSO");
+                _userManager.AddToRoleAsync(ap1, "CSO");
                 CSOs.Add(ap1);
 
                 AppUser ap2 = new AppUser()
@@ -35,7 +39,7 @@ namespace sp19team9finalproject.Seeding
                     FirstName = "Reagan",
                     LastName = "Wood"
                 };
-                UserManager.AddToRole(ap2.Id, "CSO");
+                _userManager.AddToRoleAsync(ap2, "CSO");
                 CSOs.Add(ap2);
 
                 AppUser ap3 = new AppUser()
@@ -45,7 +49,7 @@ namespace sp19team9finalproject.Seeding
                     FirstName = "Jake",
                     LastName = "West"
                 };
-                UserManager.AddToRole(ap3.Id, "CSO");
+                _userManager.AddToRoleAsync(ap3, "CSO");
                 CSOs.Add(ap3);
 
                 AppUser ap4 = new AppUser()
@@ -55,7 +59,7 @@ namespace sp19team9finalproject.Seeding
                     FirstName = "Elizabeth",
                     LastName = "Markham"
                 };
-                UserManager.AddToRole(ap4.Id, "CSO");
+                _userManager.AddToRoleAsync(ap4, "CSO");
                 CSOs.Add(ap4);
 
                 AppUser ap5 = new AppUser()
@@ -65,7 +69,7 @@ namespace sp19team9finalproject.Seeding
                     FirstName = "Charles",
                     LastName = "Haley"
                 };
-                UserManager.AddToRole(ap5.Id, "CSO");
+                _userManager.AddToRoleAsync(ap5, "CSO");
                 CSOs.Add(ap5);
             }
 
