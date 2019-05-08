@@ -4,14 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using sp19team9finalproject.DAL;
 using sp19team9finalproject.Models;
-
 namespace sp19team9finalproject.Seeding
 {
-    public static class SeedCompanies
+    public class SeedStudents
     {
-        public static void SeedAllCompanies(AppDbContext db)
+        public static void SeedAllStudents(AppDbContext db)
         {
-            if (db.Companies.Count() == 13)
+            if (db.AppUsers.Count() == 13)
             {
                 NotSupportedException ex = new NotSupportedException("Already 13 Companies");
 
@@ -20,7 +19,6 @@ namespace sp19team9finalproject.Seeding
 
             Int32 intCompaniesAdded = 0;
             List<Company> Companies = new List<Company>();
-
 
             try
             {
@@ -33,7 +31,6 @@ namespace sp19team9finalproject.Seeding
                 //};
                 //Companies.Add(c1);
             }
-
             catch (Exception e)
             {
                 throw new InvalidOperationException(e.Message);

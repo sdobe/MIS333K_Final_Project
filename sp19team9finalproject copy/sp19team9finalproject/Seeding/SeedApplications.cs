@@ -7,23 +7,23 @@ using sp19team9finalproject.Models;
 
 namespace sp19team9finalproject.Seeding
 {
-    public static class SeedCompanies
+    public class SeedApplications
     {
-        public static void SeedAllCompanies(AppDbContext db)
+        public static void SeedAllApplications(AppDbContext db)
         {
-            if (db.Companies.Count() == 13)
+            if (db.Applications.Count() == 14)
             {
-                NotSupportedException ex = new NotSupportedException("Already 13 Companies");
+                NotSupportedException ex = new NotSupportedException("Already 14 Applications");
 
                 throw ex;
             }
 
-            Int32 intCompaniesAdded = 0;
-            List<Company> Companies = new List<Company>();
-
+            Int32 intApplicationsAdded = 0;
+            List<Application> Applications = new List<Application>();
 
             try
             {
+
                 //Company c1 = new Company()
                 //{
                 //    EmailAddress = "accenture@example.com",

@@ -7,11 +7,11 @@ using sp19team9finalproject.Models;
 
 namespace sp19team9finalproject.Seeding
 {
-    public static class SeedCompanies
+    public class SeedCSO
     {
-        public static void SeedAllCompanies(AppDbContext db)
+        public static void SeedAllCSO(AppDbContext db)
         {
-            if (db.Companies.Count() == 13)
+            if (db.AppUsers.Students.Count() == 13)
             {
                 NotSupportedException ex = new NotSupportedException("Already 13 Companies");
 
@@ -24,6 +24,7 @@ namespace sp19team9finalproject.Seeding
 
             try
             {
+
                 //Company c1 = new Company()
                 //{
                 //    EmailAddress = "accenture@example.com",
