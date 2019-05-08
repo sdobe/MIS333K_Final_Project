@@ -205,7 +205,7 @@ namespace sp19team9finalproject.Controllers
 
             if (SearchLocation != null && SearchLocation != "")
             {
-                query = query.Where(com => com.Location.Contains(SearchLocation));
+                query = query.Where(s => s.Positions.Any(com => com.Location.Contains(SearchLocation));
             }
 
            
