@@ -22,7 +22,7 @@ namespace sp19team9finalproject.Controllers
         }
 
         // GET: Application
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
 
             List<Application> applications = _context.Applications.Include(r => r.Position).ToList();
@@ -215,7 +215,7 @@ namespace sp19team9finalproject.Controllers
         }
 
         //GET: Application/AcceptStudents
-        public async Task<IActionResult> AcceptStudents(int? id)
+        public IActionResult AcceptStudents(int? id)
         {
             //make a list of all applications for the position clicked on from
             var query = from ap in _context.Applications

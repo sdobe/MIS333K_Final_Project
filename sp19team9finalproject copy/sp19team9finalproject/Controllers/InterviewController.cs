@@ -22,7 +22,7 @@ namespace sp19team9finalproject.Controllers
 
         // GET: Interview
         //To-do: student should only see their own interviews query the db
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             if (User.IsInRole("Recruiter"))
             {
@@ -106,12 +106,12 @@ namespace sp19team9finalproject.Controllers
                 if (i.Date == interview.Date && i.Time == interview.Time && i.RoomNumber ==interview.RoomNumber)
                 {
                     //if this turns out to be true then return to page where they create interview 
-                    string id = User.Identity.Name;
+                    string u = User.Identity.Name;
                     //get user from db 
-                    AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
+                    AppUser usr = _context.Users.FirstOrDefault(o => o.UserName == u);
 
-                    ViewBag.Positions = GetAllPositions(user);
-                    ViewBag.Interviewers = GetAllInterviewers(user);
+                    ViewBag.Positions = GetAllPositions(usr);
+                    ViewBag.Interviewers = GetAllInterviewers(usr);
 
                     return View(interview);
                 }
