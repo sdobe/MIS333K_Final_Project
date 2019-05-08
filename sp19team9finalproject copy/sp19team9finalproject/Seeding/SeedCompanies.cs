@@ -38,7 +38,7 @@ namespace sp19team9finalproject.Seeding
                 {
                     EmailAddress = "shell@example.com",
                     Description = "Shell Oil Company, including its consolidated companies and its share in equity companies, is one of America's leading oil and natural gas producers, natural gas marketers, gasoline marketers and petrochemical manufacturers.",
-                    Name = "Shell",
+                    Name = "Shell", 
                     Industry = "Energy, Chemicals"
                 };
                 Companies.Add(c2);
