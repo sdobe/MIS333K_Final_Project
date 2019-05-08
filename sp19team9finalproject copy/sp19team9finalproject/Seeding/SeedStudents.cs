@@ -704,6 +704,42 @@ namespace sp19team9finalproject.Seeding
                 _userManager.AddToRoleAsync(a48, "Student");
                 Students.Add(a48);
 
+                try
+                {
+                    foreach (AppUser studentToAdd in Students)
+                    {
+                        string strMajorName = studentToAdd.FirstName;
+                        AppUser dbStudent = db.AppUsers.FirstOrDefault(m => m.Email == studentToAdd.Email);
+
+                        if (dbStudent == null)
+                        {
+                            db.AppUsers.Add(studentToAdd);
+                            db.SaveChanges();
+                            intStudentsAdded += 1;
+                        }
+                        else
+                        {
+                            dbStudent.FirstName = studentToAdd.FirstName;
+                            dbStudent.LastName = studentToAdd.LastName;
+                            dbStudent.GradDate = studentToAdd.GradDate;
+                            dbStudent.GPA = studentToAdd.GPA;
+                            dbStudent.Major = studentToAdd.Major;
+                            dbStudent.PositionType = studentToAdd.PositionType;
+                            dbStudent.PasswordHash = studentToAdd.PasswordHash;
+                            db.Update(dbStudent);
+                            db.SaveChanges();
+                            intStudentsAdded += 1;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    String msg = " Repositories added:" + intStudentsAdded + "; ";
+
+                    throw new InvalidOperationException(ex.Message + msg);
+
+                }
+
             }
 
             catch (Exception e)

@@ -94,6 +94,9 @@ namespace sp19team9finalproject.Seeding
                         else
                         {
                             dbMajor.Name = majorToAdd.Name;
+                            db.Update(dbMajor);
+                            db.SaveChanges();
+                            intMajorsAdded += 1;
                         }
                     }
                 }

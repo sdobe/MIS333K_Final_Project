@@ -249,6 +249,41 @@ namespace sp19team9finalproject.Seeding
                 _userManager.AddToRoleAsync(ap20, "Recruiter");
                 Recruiters.Add(ap20);
 
+                try
+                {
+                    foreach (AppUser recruiterToAdd in Recruiters)
+                    {
+                        string strMajorName = recruiterToAdd.FirstName;
+                        AppUser dbRecruiter = db.AppUsers.FirstOrDefault(m => m.Email == recruiterToAdd.Email);
+
+                        if (dbRecruiter == null)
+                        {
+                            db.AppUsers.Add(recruiterToAdd);
+                            db.SaveChanges();
+                            intRecruitersAdded += 1;
+                        }
+                        else
+                        {
+                            dbRecruiter.FirstName = recruiterToAdd.FirstName;
+                            dbRecruiter.LastName = recruiterToAdd.LastName;
+                            dbRecruiter.PasswordHash = recruiterToAdd.PasswordHash;
+                            dbRecruiter.Email = recruiterToAdd.Email;
+                            dbRecruiter.Company = recruiterToAdd.Company;
+                            db.Update(dbRecruiter);
+                            db.SaveChanges();
+                            intRecruitersAdded += 1;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    String msg = " Repositories added:" + intRecruitersAdded + "; ";
+
+                    throw new InvalidOperationException(ex.Message + msg);
+
+                }
+
+
             }
             catch (Exception e)
             {

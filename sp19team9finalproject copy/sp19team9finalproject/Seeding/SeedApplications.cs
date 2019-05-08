@@ -92,6 +92,38 @@ namespace sp19team9finalproject.Seeding
                 ap14.Position = db.Positions.FirstOrDefault(p => p.Title == "Consultant ");
                 ap14.AppUser = db.AppUsers.FirstOrDefault(a => a.FullName == "John Hearn");
                 Applications.Add(ap14);
+
+                try
+                {
+                    foreach (Application applicationToAdd in Applications)
+                    {
+
+                        Application dbApplication = db.Applications.FirstOrDefault(m => m.Position == applicationToAdd.Position && m.AppUser == applicationToAdd.AppUser);
+
+                        if (dbApplication == null)
+                        {
+                            db.Applications.Add(applicationToAdd);
+                            db.SaveChanges();
+                            intApplicationsAdded += 1;
+                        }
+                        else
+                        {
+                            dbApplication.Position = applicationToAdd.Position;
+                            dbApplication.AppUser = applicationToAdd.AppUser;
+                            db.Update(dbApplication);
+                            db.SaveChanges();
+                            intApplicationsAdded += 1;
+
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    String msg = " Repositories added:" + intInterviewsAdded + "; ";
+
+                    throw new InvalidOperationException(ex.Message + msg);
+
+                }
             }
 
             catch (Exception e)

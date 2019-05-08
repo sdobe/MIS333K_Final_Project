@@ -71,6 +71,39 @@ namespace sp19team9finalproject.Seeding
                 };
                 _userManager.AddToRoleAsync(ap5, "CSO");
                 CSOs.Add(ap5);
+
+                try
+                {
+                    foreach (AppUser CSOToAdd in CSOs)
+                    {
+                        string strMajorName = CSOToAdd.FirstName;
+                        AppUser dbCSO = db.AppUsers.FirstOrDefault(m => m.Email == CSOToAdd.Email);
+
+                        if (dbCSO == null)
+                        {
+                            db.AppUsers.Add(CSOToAdd);
+                            db.SaveChanges();
+                            intCSOAdded += 1;
+                        }
+                        else
+                        {
+                            dbCSO.FirstName = CSOToAdd.FirstName;
+                            dbCSO.LastName = CSOToAdd.LastName;
+                            dbCSO.PasswordHash = CSOToAdd.PasswordHash;
+                            dbCSO.Email = CSOToAdd.Email;
+                            db.Update(dbCSO);
+                            db.SaveChanges();
+                            intCSOAdded += 1;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    String msg = " Repositories added:" + intCSOAdded + "; ";
+
+                    throw new InvalidOperationException(ex.Message + msg);
+
+                }
             }
 
             catch (Exception e)

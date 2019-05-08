@@ -723,6 +723,41 @@ namespace sp19team9finalproject.Seeding
                     Major = db.Majors.FirstOrDefault(m => m.Name == " Finance")
                 };
                 Positions.Add(p28);
+                try
+                {
+                    foreach (Position positionToAdd in Positions)
+                    {
+
+                        Position dbPosition = db.Positions.FirstOrDefault(m => m.Title == positionToAdd.Title);
+
+                        if (dbPosition == null)
+                        {
+                            db.Positions.Add(positionToAdd);
+                            db.SaveChanges();
+                            intPositionsAdded += 1;
+                        }
+                        else
+                        {
+                            dbPosition.Title = positionToAdd.Title;
+                            dbPosition.Description = positionToAdd.Description;
+                            dbPosition.PositionType = positionToAdd.PositionType;
+                            dbPosition.Location = positionToAdd.Location;
+                            dbPosition.Company = positionToAdd.Company;
+                            dbPosition.Deadline = positionToAdd.Deadline;
+                            dbPosition.MajorDetails = positionToAdd.MajorDetails;
+                            db.Update(dbPosition);
+                            db.SaveChanges();
+                            intPositionsAdded += 1;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    String msg = " Repositories added:" + intPositionsAdded + "; ";
+
+                    throw new InvalidOperationException(ex.Message + msg);
+
+                }
             }
 
             catch (Exception e)

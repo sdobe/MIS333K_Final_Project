@@ -142,6 +142,38 @@ namespace sp19team9finalproject.Seeding
                 };
                 Companies.Add(c13);
 
+                try
+                {
+                    foreach (Company companyToAdd in Companies)
+                    {
+
+                        Company dbCompany = db.Companies.FirstOrDefault(m => m.Name == companyToAdd.Name);
+
+                        if (dbCompany == null)
+                        {
+                            db.Companies.Add(companyToAdd);
+                            db.SaveChanges();
+                            intCompaniesAdded += 1;
+                        }
+                        else
+                        {
+                            dbCompany.Name = companyToAdd.Name;
+                            dbCompany.EmailAddress = companyToAdd.EmailAddress;
+                            dbCompany.Description = companyToAdd.Description;
+                            dbCompany.Industry = companyToAdd.Industry;
+                            db.Update(dbCompany);
+                            db.SaveChanges();
+                            intCompaniesAdded += 1;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    String msg = " Repositories added:" + intCompaniesAdded + "; ";
+
+                    throw new InvalidOperationException(ex.Message + msg);
+
+                }
             }
 
             catch (Exception e)

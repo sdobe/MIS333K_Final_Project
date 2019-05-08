@@ -176,6 +176,42 @@ namespace sp19team9finalproject.Seeding
                 i14.Interviewee = db.AppUsers.FirstOrDefault(q => q.FullName == "John Hearn");
                 i14.Interviewer = db.AppUsers.FirstOrDefault(p => p.FullName == "Todd Jacobs");
                 Interviews.Add(i14);
+
+                try
+                {
+                    foreach (Interview interviewToAdd in Interviews)
+                    {
+                       
+                        Interview dbInterview = db.Interviews.FirstOrDefault(m => m.Interviewee == interviewToAdd.Interviewee && m.Interviewer == interviewToAdd.Interviewer);
+
+                        if (dbInterview == null)
+                        {
+                            db.Interviews.Add(interviewToAdd);
+                            db.SaveChanges();
+                            intInterviewsAdded += 1;
+                        }
+                        else
+                        {
+                            dbInterview.Date = interviewToAdd.Date;
+                            dbInterview.Time = interviewToAdd.Time;
+                            dbInterview.RoomNumber = interviewToAdd.RoomNumber;
+                            dbInterview.Position = interviewToAdd.Position;
+                            dbInterview.Interviewer = interviewToAdd.Interviewer;
+                            dbInterview.Interviewee = interviewToAdd.Interviewee;
+                            db.Update(dbInterview);
+                            db.SaveChanges();
+                            intInterviewsAdded += 1;
+
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    String msg = " Repositories added:" + intInterviewsAdded + "; ";
+
+                    throw new InvalidOperationException(ex.Message + msg);
+
+                }
             }
             catch (Exception e)
             {
