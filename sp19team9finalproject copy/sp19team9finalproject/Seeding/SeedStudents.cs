@@ -82,7 +82,7 @@ namespace sp19team9finalproject.Seeding
 
             //    AppUser a5 = new AppUser()
             //    {
-            //        EmailAddress = "limchou@gogle.com",
+            //        Email = "limchou@gogle.com",
             //        Password = "allyrally",
             //        FirstName = "Lim",
             //        LastName = "Chou",
@@ -697,10 +697,10 @@ namespace sp19team9finalproject.Seeding
             //    Students.Add(a48);
             //}
 
-            //catch (Exception e)
-            //{
-            //    throw new InvalidOperationException(e.Message);
-            //}
+            catch (Exception e)
+            {
+                throw new InvalidOperationException(e.Message);
+            }
         }
     }
 }

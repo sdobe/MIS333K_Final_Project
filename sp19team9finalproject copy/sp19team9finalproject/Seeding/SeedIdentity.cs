@@ -22,6 +22,11 @@ namespace sp19team9finalproject.Seeding
 
             //: Add the needed roles
             //if role doesn't exist, add it
+            if (await _roleManager.RoleExistsAsync("Manager") == false)
+            {
+                await _roleManager.CreateAsync(new IdentityRole("Manager"));
+            }
+
             if (await _roleManager.RoleExistsAsync("CSO") == false)
             {
                 await _roleManager.CreateAsync(new IdentityRole("CSO"));
