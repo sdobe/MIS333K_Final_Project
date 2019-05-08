@@ -9,5 +9,33 @@ namespace sp19team9finalproject.Seeding
 {
     public class SeedRecruiters
     {
+        public static void SeedAllRecruiters(AppDbContext db)
+        {
+            if (db.AppUsers.Count() == 13)
+            {
+                NotSupportedException ex = new NotSupportedException("Already 13 Companies");
+
+                throw ex;
+            }
+
+            Int32 intCompaniesAdded = 0;
+            List<Company> Companies = new List<Company>();
+
+            try
+            {
+                //Company c1 = new Company()
+                //{
+                //    EmailAddress = "accenture@example.com",
+                //    Description = "Whatever",
+                //    Name = "Accenture",
+                //    Industry = "Consulting, Technology"
+                //};
+                //Companies.Add(c1);
+            }
+            catch (Exception e)
+            {
+                throw new InvalidOperationException(e.Message);
+            }
+        }
     }
 }

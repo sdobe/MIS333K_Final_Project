@@ -19,10 +19,10 @@ namespace sp19team9finalproject.Seeding
             }
 
             Int32 intApplicationsAdded = 0;
+            List<Application> Applications = new List<Application>();
 
             try
             {
-                List<Application> Applications = new List<Application>();
 
                 //Company c1 = new Company()
                 //{
@@ -32,6 +32,12 @@ namespace sp19team9finalproject.Seeding
                 //    Industry = "Consulting, Technology"
                 //};
                 //Companies.Add(c1);
-            };
+            }
+
+            catch (Exception e)
+            {
+                throw new InvalidOperationException(e.Message);
+            }
         }
+    }
 }

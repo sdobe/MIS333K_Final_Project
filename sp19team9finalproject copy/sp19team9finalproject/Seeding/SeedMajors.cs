@@ -19,11 +19,11 @@ namespace sp19team9finalproject.Seeding
             }
 
             Int32 intMajorsAdded = 0;
+            List<Major> Majors = new List<Major>();
+
 
             try
             {
-                List<Major> Majors = new List<Major>();
-
                 //Company c1 = new Company()
                 //{
                 //    EmailAddress = "accenture@example.com",
@@ -32,7 +32,12 @@ namespace sp19team9finalproject.Seeding
                 //    Industry = "Consulting, Technology"
                 //};
                 //Companies.Add(c1);
-            };
+            }
+
+            catch (Exception e)
+            {
+                throw new InvalidOperationException(e.Message);
+            }
         }
     }
 }
