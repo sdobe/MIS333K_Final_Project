@@ -119,7 +119,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 catch (Exception ex)
                 {
-                    String msg = " Repositories added:" + intInterviewsAdded + "; ";
+                    String msg = " Repositories added:" + intApplicationsAdded + "; ";
 
                     throw new InvalidOperationException(ex.Message + msg);
 
