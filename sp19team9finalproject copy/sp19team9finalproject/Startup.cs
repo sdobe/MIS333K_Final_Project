@@ -31,8 +31,8 @@ namespace sp19team9finalproject
                 opts.Password.RequireUppercase = false;
                 opts.Password.RequireDigit = false;
             })
-                .AddEntityFrameworkStores<AppDbContext>()
-                .AddDefaultTokenProviders();
+            .AddEntityFrameworkStores<AppDbContext>()
+            .AddDefaultTokenProviders();
 
             services.AddMvc();
         }
@@ -53,7 +53,7 @@ namespace sp19team9finalproject
             //TODO: This line of code seeds your Identity tables with the correct roles and an admin user
             //Uncomment this line after the first time this code runs successfully - you don't need 
             //to seed repeatedly
-            //Seeding.SeedIdentity.AddAdmin(service).Wait();
+            Seeding.SeedIdentity.AddAdmin(service).Wait();
         }
 
     }

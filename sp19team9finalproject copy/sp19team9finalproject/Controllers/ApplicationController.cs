@@ -22,7 +22,7 @@ namespace sp19team9finalproject.Controllers
         }
 
         // GET: Application
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
 
             List<Application> applications = _context.Applications.Include(r => r.Position).ToList();
@@ -214,14 +214,18 @@ namespace sp19team9finalproject.Controllers
             return _context.Applications.Any(e => e.ApplicationID == id);
         }
 
-        //GET: Position/AcceptStudents
-        public async Task<IActionResult> AcceptStudents(int? id)
+        //GET: Application/AcceptStudents
+        public IActionResult AcceptStudents(int? id)
         {
             //make a list of all applications for the position clicked on from
             var query = from ap in _context.Applications
                         select ap;
+            //Shows positions who have deadlines today or beyond
+            DateTime thisDay = DateTime.Today;
 
             query = query.Where(ap => ap.Position.PositionID >= id);
+
+            query = query.Where(ap => ap.Position.Deadline >= thisDay);
 
             List<Application> SelectedApplications = query.Include(ap => ap.AppUser).ToList();
 
@@ -235,12 +239,12 @@ namespace sp19team9finalproject.Controllers
             //this list goes in viewbag that recruiters will get to select the students they want to accept 
         }
 
-        //POST: Position/AcceptStudents 
+        //POST: Application/AcceptStudents 
         //the list of students that they chose to accept 
         //can I pass a multiselect list, that includes a number of application objects 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IAsyncResult> AcceptStudents(int[] AcceptedStudents)
+        public async Task<ActionResult> AcceptStudentsAsync(int[] AcceptedStudents)
         {
             //get a list of all applications where the int in the retreived multiselect list matches the int
             var query = from app in _context.Applications

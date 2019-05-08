@@ -22,7 +22,7 @@ namespace sp19team9finalproject.Controllers
 
         // GET: Interview
         //To-do: student should only see their own interviews query the db
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             if (User.IsInRole("Recruiter"))
             {
@@ -31,7 +31,7 @@ namespace sp19team9finalproject.Controllers
 
                 List<Interview> Interviews = new List<Interview>();
                 Interviews = _context.Interviews.Where(inv => inv.Interviewer.AppUserID == user.AppUserID).ToList();
-                return View(Interviews);
+                return View(Interviews.OrderByDescending(inv => inv.Position.PositionID));
             }
             if (User.IsInRole("Student"))
             {
@@ -81,9 +81,7 @@ namespace sp19team9finalproject.Controllers
             string id = User.Identity.Name;
             //get user from db 
             AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
-            //Populate viewbags for position, times, and interviewers(recruiters associated with recruiteruser's ID)
-            //make sure you pass the newly created order detail to the view
-            //Populate viewbags with company's associated positions and interviewers
+       
             ViewBag.Positions = GetAllPositions(user);
             ViewBag.Interviewers = GetAllInterviewers(user);
 
@@ -98,6 +96,27 @@ namespace sp19team9finalproject.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("InterviewID,Position,Date,Time,RoomNumber,Interviewer")] Interview interview, int SelectedPosition, int SelectedInterviewer)
         {
+            var query = from i in _context.Interviews
+                        select i;
+
+            List <Interview> AllInterviews = query.ToList();
+
+            foreach(Interview i in AllInterviews)
+            {
+                if (i.Date == interview.Date && i.Time == interview.Time && i.RoomNumber ==interview.RoomNumber)
+                {
+                    //if this turns out to be true then return to page where they create interview 
+                    string u = User.Identity.Name;
+                    //get user from db 
+                    AppUser usr = _context.Users.FirstOrDefault(o => o.UserName == u);
+
+                    ViewBag.Positions = GetAllPositions(usr);
+                    ViewBag.Interviewers = GetAllInterviewers(usr);
+
+                    return View(interview);
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(interview);
@@ -107,6 +126,14 @@ namespace sp19team9finalproject.Controllers
                 // find the position with the same 
                 return RedirectToAction(nameof(Index));
             }
+
+            string id = User.Identity.Name;
+            //get user from db 
+            AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
+
+            ViewBag.Positions = GetAllPositions(user);
+            ViewBag.Interviewers = GetAllInterviewers(user);
+
             return View(interview);
         }
 

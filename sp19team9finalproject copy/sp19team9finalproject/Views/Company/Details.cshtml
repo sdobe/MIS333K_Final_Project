@@ -46,13 +46,13 @@
 <table class="table table-primary">
     <tr>
         <th>Position Title</th>
-        <th>Interview Dates</th>
+        <th>Deadline</th>
     </tr>
     @foreach (Position rd in Model.Positions)
     {
     <tr>
         <td>@Html.DisplayFor(ModelItem => rd.Title)</td>
-        @*TO-DO: add interview dates for position <td>@Html.DisplayFor(ModelItem => rd.Interviews)</td>*@
+        <td>@Html.DisplayFor(ModelItem => rd.Deadline)</td>
     </tr>
     }
 </table>

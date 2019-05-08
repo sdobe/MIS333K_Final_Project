@@ -1,5 +1,71 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<sp19team9finalproject.Models.AppUser>
+
 @{
+    ViewData["Title"] = "Index";
 }
+
+<h1>Index</h1>
+
+<form asp-action="Index" asp-controller="Student" method="get">
+    <p class="form-group">
+        @*Search: <input name="SearchString" class="form-control" /><br />
+            <button type="submit" class="btn btn-secondary">Search</button>*@
+        <a asp-action="StudentSearch" class="btn btn-success">Search For Students</a>
+        <a asp-action="Index" class="btn btn-danger">Show All</a>
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GradDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Major)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PositionType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GPA)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GradDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Major)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PositionType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GPA)
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.AppUserID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.AppUserID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.AppUserID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

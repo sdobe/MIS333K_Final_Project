@@ -25,6 +25,7 @@ namespace sp19team9finalproject.Controllers
         // GET: Company
         public IActionResult Index()
         {
+        
             String id = User.Identity.Name;
             AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
 
@@ -55,30 +56,27 @@ namespace sp19team9finalproject.Controllers
             }
             return View("Error", new string[] { "You are not authorized to access this page!" });
 
-            //Pulls company based on RecruiterId (AppUserId)
-            //Company comp = new Company();
-            //comp.AppUser = _context.AppUsers.Find(AppUserCompany);
-            //ViewBag.Companies = GetAllCompanies();
+ 
         }
 
 
-        // GET: Company/Details/5
-        //public async Task<IActionResult> Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
+        //GET: Company/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //    var company = await _context.Companies
-        //        .FirstOrDefaultAsync(m => m.CompanyID == id);
-        //    if (company == null)
-        //    {
-        //        return NotFound();
-        //    }
+            var company = await _context.Companies
+                .FirstOrDefaultAsync(m => m.CompanyID == id);
+            if (company == null)
+            {
+                return NotFound();
+            }
 
-        //    return View(company);
-        //}
+            return View(company);
+        }
 
 
         // GET: Company/Create
@@ -186,6 +184,49 @@ namespace sp19team9finalproject.Controllers
         private bool CompanyExists(int id)
         {
             return _context.Companies.Any(e => e.CompanyID == id);
+        }
+
+        public ActionResult CompanySearch()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DisplayCompSearchResults(string SearchName, string SearchLocation, PositionType SelectedPositionType, string SearchIndustry)
+        {
+            var query = from com in _context.Companies
+                        select com; 
+
+            if (SearchName != null && SearchName != "")
+            {
+                query = query.Where(com => com.Name.Contains(SearchName));
+            }
+
+            if (SearchLocation != null && SearchLocation != "")
+            {
+                query = query.Where(com => com.Location.Contains(SearchLocation));
+            }
+
+           
+            if (SelectedPositionType == PositionType.FullTime) //if choose full time
+            {
+                query = query.Where(s => s.Positions.Any(com => com.PositionType == SelectedPositionType));
+            }
+
+            if (SelectedPositionType == PositionType.Internship)
+            {
+                query = query.Where(s => s.Positions.Any(com => com.PositionType == SelectedPositionType));
+            }
+
+            if (SearchIndustry != null && SearchIndustry != "")
+            {
+                query = query.Where(com => com.Industry.Contains(SearchName));
+            }
+
+            List<Company> SelectedCompanies = query.ToList();
+
+            return View("Index", SelectedCompanies);
         }
     }
 }
