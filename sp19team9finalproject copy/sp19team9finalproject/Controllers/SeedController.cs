@@ -40,5 +40,124 @@ namespace sp19team9finalproject.Controllers
             }
             return View("Confirm");
         }
+
+        public IActionResult SeedCompanies()
+        {
+            try
+            {
+                Seeding.SeedCompanies.SeedAllCompanies(_db);
+            }
+            catch (NotSupportedException ex)
+            {
+                return View("Error", new String[] { "Already Seeded", ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return View("Error", new String[] { "Error", ex.Message });
+            }
+            return View("Confirm");
+        }
+
+        public IActionResult SeedStudents()
+        {
+            try
+            {
+                Seeding.SeedStudents.SeedAllStudents(_db, serviceprovider);
+            }
+            catch (NotSupportedException ex)
+            {
+                return View("Error", new String[] { "Already Seeded", ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return View("Error", new String[] { "Error", ex.Message });
+            }
+            return View("Confirm");
+        }
+
+        public IActionResult SeedRecruiters()
+        {
+            try
+            {
+                Seeding.SeedRecruiters.SeedAllRecruiters(_db);
+            }
+            catch (NotSupportedException ex)
+            {
+                return View("Error", new String[] { "Already Seeded", ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return View("Error", new String[] { "Error", ex.Message });
+            }
+            return View("Confirm");
+        }
+
+        public IActionResult SeedCSO()
+        {
+            try
+            {
+                Seeding.SeedCSO.SeedAllCSO(_db);
+            }
+            catch (NotSupportedException ex)
+            {
+                return View("Error", new String[] { "Already Seeded", ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return View("Error", new String[] { "Error", ex.Message });
+            }
+            return View("Confirm");
+        }
+
+        public IActionResult SeedPositions()
+        {
+            try
+            {
+                Seeding.SeedPositions.SeedAllPositions(_db);
+            }
+            catch (NotSupportedException ex)
+            {
+                return View("Error", new String[] { "Already Seeded", ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return View("Error", new String[] { "Error", ex.Message });
+            }
+            return View("Confirm");
+        }
+
+        public IActionResult SeedApplications()
+        {
+            try
+            {
+                Seeding.SeedApplications.SeedAllApplications(_db);
+            }
+            catch (NotSupportedException ex)
+            {
+                return View("Error", new String[] { "Already Seeded", ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return View("Error", new String[] { "Error", ex.Message });
+            }
+            return View("Confirm");
+        }
+
+        public IActionResult SeedInterviews()
+        {
+            try
+            {
+                Seeding.SeedInterviews.SeedAllInterviews(_db);
+            }
+            catch (NotSupportedException ex)
+            {
+                return View("Error", new String[] { "Already Seeded", ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return View("Error", new String[] { "Error", ex.Message });
+            }
+            return View("Confirm");
+        }
     }
 }
