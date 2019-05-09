@@ -70,7 +70,10 @@
                 @Html.DisplayFor(modelItem => item.Company.Industry)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MajorDetails)
+                @foreach (MajorDetail md in item.MajorDetails)
+                {
+                    @Html.DisplayFor(modelItem => md.Major.Name)
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Deadline)
