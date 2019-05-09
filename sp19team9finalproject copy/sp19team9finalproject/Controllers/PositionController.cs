@@ -37,14 +37,16 @@ namespace sp19team9finalproject.Controllers
                 //This line is querying database for all positions  
                 var query = from b in ___db.Positions
                             select b;
-                
+
+                DateTime thisDay = DateTime.Today;
+
+                query = query.Where(b => b.Deadline > thisDay);
+
                 List<Position> SelectedPositions = query.Include(b => b.Company).ToList();
 
  
                 //Shows positions who have deadlines today or beyond
-                DateTime thisDay = DateTime.Today;
 
-                query = query.Where(b => b.Deadline >= thisDay);
 
                 ViewBag.SelectedPositionsCount = SelectedPositions.Count();
                 ViewBag.AllPositionsCount = ___db.Positions.Count();
