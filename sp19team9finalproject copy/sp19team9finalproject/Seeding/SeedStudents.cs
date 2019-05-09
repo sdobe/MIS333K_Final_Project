@@ -44,8 +44,6 @@ namespace sp19team9finalproject.Seeding
                     a1.PositionType = PositionType.FullTime;
                     a1.GPA = 3.91m;
 
-                    a1.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a1, "bookworm");
                     if (result.Succeeded == false)
                     {
@@ -57,7 +55,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a1, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a1, "Student");
+                    await _userManager.AddToRoleAsync(a1, "Student");
                 }
 
                 AppUser a2 = _db.Users.FirstOrDefault(c => c.Email == "banker@longhorn.net");
@@ -72,8 +70,6 @@ namespace sp19team9finalproject.Seeding
                     a2.PositionType = PositionType.Internship;
                     a2.GPA = 3.52m;
 
-                    a2.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a2, "aclfest2017");
                     if (result.Succeeded == false)
                     {
@@ -85,7 +81,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a2, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a2, "Student");
+                    await _userManager.AddToRoleAsync(a2, "Student");
                 }
 
                 AppUser a3 = _db.Users.FirstOrDefault(c => c.Email == "franco@example.com");
@@ -100,8 +96,6 @@ namespace sp19team9finalproject.Seeding
                     a3.PositionType = PositionType.FullTime;
                     a3.GPA = 3.2m;
 
-                    a3.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a3, "aggies");
                     if (result.Succeeded == false)
                     {
@@ -113,7 +107,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a3, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a3, "Student");
+                    await _userManager.AddToRoleAsync(a3, "Student");
                 }
 
                 AppUser a4 = _db.Users.FirstOrDefault(c => c.Email == "wchang@example.com");
@@ -128,8 +122,6 @@ namespace sp19team9finalproject.Seeding
                     a4.PositionType = PositionType.Internship;
                     a4.GPA = 3.56m;
 
-                    a4.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a4, "alaskaboy");
                     if (result.Succeeded == false)
                     {
@@ -141,7 +133,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a4, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a4, "Student");
+                    await _userManager.AddToRoleAsync(a4, "Student");
                 }
 
                 AppUser a5 = _db.Users.FirstOrDefault(c => c.Email == "limchou@gogle.com");
@@ -156,8 +148,6 @@ namespace sp19team9finalproject.Seeding
                     a5.PositionType = PositionType.Internship;
                     a5.GPA = 2.63m;
 
-                    a5.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a5, "allyrally");
                     if (result.Succeeded == false)
                     {
@@ -169,7 +159,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a5, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a5, "Student");
+                    await _userManager.AddToRoleAsync(a5, "Student");
                 }
 
                 AppUser a6 = _db.Users.FirstOrDefault(c => c.Email == "shdixon@aoll.com");
@@ -184,8 +174,6 @@ namespace sp19team9finalproject.Seeding
                     a6.PositionType = PositionType.Internship;
                     a6.GPA = 3.62m;
 
-                    a6.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a6, "Anchorage");
                     if (result.Succeeded == false)
                     {
@@ -197,7 +185,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a6, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a6, "Student");
+                    await _userManager.AddToRoleAsync(a6, "Student");
                 }
 
                 AppUser a7 = _db.Users.FirstOrDefault(c => c.Email == "j.b.evans@aheca.org");
@@ -212,8 +200,6 @@ namespace sp19team9finalproject.Seeding
                     a7.PositionType = PositionType.FullTime;
                     a7.GPA = 2.64m;
 
-                    a7.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a7, "billyboy");
                     if (result.Succeeded == false)
                     {
@@ -225,7 +211,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a7, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a7, "Student");
+                    await _userManager.AddToRoleAsync(a7, "Student");
                 }
 
                 AppUser a8 = _db.Users.FirstOrDefault(c => c.Email == "feeley@penguin.org");
@@ -240,8 +226,6 @@ namespace sp19team9finalproject.Seeding
                     a8.PositionType = PositionType.Internship;
                     a8.GPA = 3.66m;
 
-                    a8.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a8, "bunnyhop");
                     if (result.Succeeded == false)
                     {
@@ -253,7 +237,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a8, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a8, "Student");
+                    await _userManager.AddToRoleAsync(a8, "Student");
                 }
 
                 AppUser a9 = _db.Users.FirstOrDefault(c => c.Email == "tfreeley@minnetonka.ci.us");
@@ -268,8 +252,6 @@ namespace sp19team9finalproject.Seeding
                     a9.PositionType = PositionType.FullTime;
                     a9.GPA = 3.98m;
 
-                    a9.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a9, "dustydusty");
                     if (result.Succeeded == false)
                     {
@@ -281,7 +263,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a9, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a9, "Student");
+                    await _userManager.AddToRoleAsync(a9, "Student");
                 }
 
                 AppUser a10 = _db.Users.FirstOrDefault(c => c.Email == "mgarcia@gogle.com");
@@ -296,8 +278,6 @@ namespace sp19team9finalproject.Seeding
                     a10.PositionType = PositionType.FullTime;
                     a10.GPA = 3.22m;
 
-                    a10.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a10, "gowest");
                     if (result.Succeeded == false)
                     {
@@ -309,7 +289,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a10, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a10, "Student");
+                    await _userManager.AddToRoleAsync(a10, "Student");
                 }
 
                 AppUser a11 = _db.Users.FirstOrDefault(c => c.Email == "jeffh@sonic.com");
@@ -324,8 +304,6 @@ namespace sp19team9finalproject.Seeding
                     a11.PositionType = PositionType.Internship;
                     a11.GPA = 3.66m;
 
-                    a11.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a11, "hickhickup");
                     if (result.Succeeded == false)
                     {
@@ -337,7 +315,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a11, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a11, "Student");
+                    await _userManager.AddToRoleAsync(a11, "Student");
                 }
 
                 AppUser a12 = _db.Users.FirstOrDefault(c => c.Email == "wjhearniii@umich.org");
@@ -352,8 +330,6 @@ namespace sp19team9finalproject.Seeding
                     a12.PositionType = PositionType.FullTime;
                     a12.GPA = 3.46m;
 
-                    a12.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a12, "ingram2015");
                     if (result.Succeeded == false)
                     {
@@ -365,7 +341,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a12, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a12, "Student");
+                    await _userManager.AddToRoleAsync(a12, "Student");
                 }
 
                 AppUser a13 = _db.Users.FirstOrDefault(c => c.Email == "ahick@yaho.com");
@@ -380,8 +356,6 @@ namespace sp19team9finalproject.Seeding
                     a13.PositionType = PositionType.Internship;
                     a13.GPA = 3.12m;
 
-                    a13.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a13, "jhearn22");
                     if (result.Succeeded == false)
                     {
@@ -393,7 +367,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a13, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a13, "Student");
+                    await _userManager.AddToRoleAsync(a13, "Student");
                 }
 
                 AppUser a14 = _db.Users.FirstOrDefault(c => c.Email == "ingram@jack.com");
@@ -408,8 +382,6 @@ namespace sp19team9finalproject.Seeding
                     a14.PositionType = PositionType.Internship;
                     a14.GPA = 3.72m;
 
-                    a14.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a14, "joejoejoe");
                     if (result.Succeeded == false)
                     {
@@ -421,7 +393,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a14, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a14, "Student");
+                    await _userManager.AddToRoleAsync(a14, "Student");
                 }
 
                 AppUser a15 = _db.Users.FirstOrDefault(c => c.Email == "toddj@yourmom.com");
@@ -436,8 +408,6 @@ namespace sp19team9finalproject.Seeding
                     a15.PositionType = PositionType.FullTime;
                     a15.GPA = 2.64m;
 
-                    a15.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a15, "jrod2017");
                     if (result.Succeeded == false)
                     {
@@ -449,7 +419,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a15, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a15, "Student");
+                    await _userManager.AddToRoleAsync(a15, "Student");
                 }
 
                 AppUser a16 = _db.Users.FirstOrDefault(c => c.Email == "thequeen@aska.net");
@@ -464,8 +434,6 @@ namespace sp19team9finalproject.Seeding
                     a16.PositionType = PositionType.Internship;
                     a16.GPA = 3.72m;
 
-                    a16.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a16, "longhorns");
                     if (result.Succeeded == false)
                     {
@@ -477,7 +445,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a16, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a16, "Student");
+                    await _userManager.AddToRoleAsync(a16, "Student");
                 }
 
                 AppUser a17 = _db.Users.FirstOrDefault(c => c.Email == "linebacker@gogle.com");
@@ -492,8 +460,6 @@ namespace sp19team9finalproject.Seeding
                     a17.PositionType = PositionType.Internship;
                     a17.GPA = 3.15m;
 
-                    a17.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a17, "louielouie");
                     if (result.Succeeded == false)
                     {
@@ -505,7 +471,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a17, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a17, "Student");
+                    await _userManager.AddToRoleAsync(a17, "Student");
                 }
 
                 AppUser a18 = _db.Users.FirstOrDefault(c => c.Email == "elowe@netscare.net");
@@ -520,8 +486,6 @@ namespace sp19team9finalproject.Seeding
                     a18.PositionType = PositionType.FullTime;
                     a18.GPA = 3.07m;
 
-                    a18.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a18, "martin1234");
                     if (result.Succeeded == false)
                     {
@@ -533,7 +497,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a18, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a18, "Student");
+                    await _userManager.AddToRoleAsync(a18, "Student");
                 }
 
                 AppUser a19 = _db.Users.FirstOrDefault(c => c.Email == "cluce@gogle.com");
@@ -548,8 +512,6 @@ namespace sp19team9finalproject.Seeding
                     a19.PositionType = PositionType.Internship;
                     a19.GPA = 3.87m;
 
-                    a19.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a19, "meganr34");
                     if (result.Succeeded == false)
                     {
@@ -561,7 +523,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a19, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a19, "Student");
+                    await _userManager.AddToRoleAsync(a19, "Student");
                 }
 
                 AppUser a20 = _db.Users.FirstOrDefault(c => c.Email == "mackcloud@george.com");
@@ -576,8 +538,6 @@ namespace sp19team9finalproject.Seeding
                     a20.PositionType = PositionType.FullTime;
                     a20.GPA = 4m;
 
-                    a20.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a20, "meow88");
                     if (result.Succeeded == false)
                     {
@@ -589,7 +549,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a20, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a20, "Student");
+                    await _userManager.AddToRoleAsync(a20, "Student");
                 }
 
                 AppUser a21 = _db.Users.FirstOrDefault(c => c.Email == "cmartin@beets.com");
@@ -604,8 +564,6 @@ namespace sp19team9finalproject.Seeding
                     a21.PositionType = PositionType.FullTime;
                     a21.GPA = 3.53m;
 
-                    a21.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a21, "mustangs");
                     if (result.Succeeded == false)
                     {
@@ -617,7 +575,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a21, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a21, "Student");
+                    await _userManager.AddToRoleAsync(a21, "Student");
                 }
 
                 AppUser a22 = _db.Users.FirstOrDefault(c => c.Email == "clarence@yoho.com");
@@ -632,8 +590,6 @@ namespace sp19team9finalproject.Seeding
                     a22.PositionType = PositionType.Internship;
                     a22.GPA = 3.11m;
 
-                    a22.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a22, "mydogspot");
                     if (result.Succeeded == false)
                     {
@@ -645,7 +601,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a22, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a22, "Student");
+                    await _userManager.AddToRoleAsync(a22, "Student");
                 }
 
                 AppUser a23 = _db.Users.FirstOrDefault(c => c.Email == "gregmartinez@drdre.com");
@@ -660,8 +616,6 @@ namespace sp19team9finalproject.Seeding
                     a23.PositionType = PositionType.Internship;
                     a23.GPA = 3.43m;
 
-                    a23.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a23, "nothinggood");
                     if (result.Succeeded == false)
                     {
@@ -673,7 +627,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a23, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a23, "Student");
+                    await _userManager.AddToRoleAsync(a23, "Student");
                 }
 
                 AppUser a24 = _db.Users.FirstOrDefault(c => c.Email == "cmiller@bob.com");
@@ -688,8 +642,6 @@ namespace sp19team9finalproject.Seeding
                     a24.PositionType = PositionType.Internship;
                     a24.GPA = 3.14m;
 
-                    a24.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a24, "onetime");
                     if (result.Succeeded == false)
                     {
@@ -701,7 +653,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a24, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a24, "Student");
+                    await _userManager.AddToRoleAsync(a24, "Student");
                 }
 
                 AppUser a25 = _db.Users.FirstOrDefault(c => c.Email == "knelson@aoll.com");
@@ -716,8 +668,6 @@ namespace sp19team9finalproject.Seeding
                     a25.PositionType = PositionType.FullTime;
                     a25.GPA = 3.03m;
 
-                    a25.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a25, "painting");
                     if (result.Succeeded == false)
                     {
@@ -729,7 +679,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a25, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a25, "Student");
+                    await _userManager.AddToRoleAsync(a25, "Student");
                 }
 
                 AppUser a26 = _db.Users.FirstOrDefault(c => c.Email == "joewin@xfactor.com");
@@ -744,8 +694,6 @@ namespace sp19team9finalproject.Seeding
                     a26.PositionType = PositionType.FullTime;
                     a26.GPA = 3.65m;
 
-                    a26.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a26, "Password1");
                     if (result.Succeeded == false)
                     {
@@ -757,7 +705,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a26, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a26, "Student");
+                    await _userManager.AddToRoleAsync(a26, "Student");
                 }
 
                 AppUser a27 = _db.Users.FirstOrDefault(c => c.Email == "orielly@foxnews.cnn");
@@ -772,8 +720,6 @@ namespace sp19team9finalproject.Seeding
                     a27.PositionType = PositionType.Internship;
                     a27.GPA = 3.46m;
 
-                    a27.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a27, "penguin12");
                     if (result.Succeeded == false)
                     {
@@ -785,7 +731,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a27, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a27, "Student");
+                    await _userManager.AddToRoleAsync(a27, "Student");
                 }
 
                 AppUser a28 = _db.Users.FirstOrDefault(c => c.Email == "ankaisrad@gogle.com");
@@ -800,8 +746,6 @@ namespace sp19team9finalproject.Seeding
                     a28.PositionType = PositionType.FullTime;
                     a28.GPA = 3.67m;
 
-                    a28.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a28, "pepperoni");
                     if (result.Succeeded == false)
                     {
@@ -813,7 +757,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a28, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a28, "Student");
+                    await _userManager.AddToRoleAsync(a28, "Student");
                 }
 
                 AppUser a29 = _db.Users.FirstOrDefault(c => c.Email == "megrhodes@freserve.co.uk");
@@ -828,8 +772,6 @@ namespace sp19team9finalproject.Seeding
                     a29.PositionType = PositionType.Internship;
                     a29.GPA = 3.14m;
 
-                    a29.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a29, "potato");
                     if (result.Succeeded == false)
                     {
@@ -841,7 +783,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a29, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a29, "Student");
+                    await _userManager.AddToRoleAsync(a29, "Student");
                 }
 
                 AppUser a30 = _db.Users.FirstOrDefault(c => c.Email == "erynrice@aoll.com");
@@ -856,8 +798,6 @@ namespace sp19team9finalproject.Seeding
                     a30.PositionType = PositionType.Internship;
                     a30.GPA = 3.92m;
 
-                    a30.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a30, "radgirl");
                     if (result.Succeeded == false)
                     {
@@ -869,7 +809,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a30, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a30, "Student");
+                    await _userManager.AddToRoleAsync(a30, "Student");
                 }
 
                 AppUser a31 = _db.Users.FirstOrDefault(c => c.Email == "jorge@noclue.com");
@@ -884,8 +824,6 @@ namespace sp19team9finalproject.Seeding
                     a31.PositionType = PositionType.Internship;
                     a31.GPA = 3.64m;
 
-                    a31.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a31, "raiders");
                     if (result.Succeeded == false)
                     {
@@ -897,7 +835,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a31, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a31, "Student");
+                    await _userManager.AddToRoleAsync(a31, "Student");
                 }
 
                 AppUser a32 = _db.Users.FirstOrDefault(c => c.Email == "mrrogers@lovelyday.com");
@@ -912,8 +850,6 @@ namespace sp19team9finalproject.Seeding
                     a32.PositionType = PositionType.Internship;
                     a32.GPA = 3.01m;
 
-                    a32.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a32, "ricearoni");
                     if (result.Succeeded == false)
                     {
@@ -925,7 +861,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a32, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a32, "Student");
+                    await _userManager.AddToRoleAsync(a32, "Student");
                 }
 
                 AppUser a33 = _db.Users.FirstOrDefault(c => c.Email == "stjean@athome.com");
@@ -940,8 +876,6 @@ namespace sp19team9finalproject.Seeding
                     a33.PositionType = PositionType.FullTime;
                     a33.GPA = 3.24m;
 
-                    a33.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a33, "rogerthat");
                     if (result.Succeeded == false)
                     {
@@ -953,7 +887,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a33, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a33, "Student");
+                    await _userManager.AddToRoleAsync(a33, "Student");
                 }
 
                 AppUser a34 = _db.Users.FirstOrDefault(c => c.Email == "saunders@pen.com");
@@ -968,8 +902,6 @@ namespace sp19team9finalproject.Seeding
                     a34.PositionType = PositionType.Internship;
                     a34.GPA = 3.16m;
 
-                    a34.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a34, "slowwind");
                     if (result.Succeeded == false)
                     {
@@ -981,7 +913,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a34, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a34, "Student");
+                    await _userManager.AddToRoleAsync(a34, "Student");
                 }
 
                 AppUser a35 = _db.Users.FirstOrDefault(c => c.Email == "willsheff@email.com");
@@ -996,8 +928,6 @@ namespace sp19team9finalproject.Seeding
                     a35.PositionType = PositionType.FullTime;
                     a35.GPA = 3.07m;
 
-                    a35.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a35, "smitty444");
                     if (result.Succeeded == false)
                     {
@@ -1009,7 +939,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a35, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a35, "Student");
+                    await _userManager.AddToRoleAsync(a35, "Student");
                 }
 
                 AppUser a36 = _db.Users.FirstOrDefault(c => c.Email == "sheffiled@gogle.com");
@@ -1024,8 +954,6 @@ namespace sp19team9finalproject.Seeding
                     a36.PositionType = PositionType.Internship;
                     a36.GPA = 3.36m;
 
-                    a36.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a36, "snowsnow");
                     if (result.Succeeded == false)
                     {
@@ -1037,7 +965,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a36, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a36, "Student");
+                    await _userManager.AddToRoleAsync(a36, "Student");
                 }
 
                 AppUser a37 = _db.Users.FirstOrDefault(c => c.Email == "johnsmith187@aoll.com");
@@ -1052,8 +980,6 @@ namespace sp19team9finalproject.Seeding
                     a37.PositionType = PositionType.FullTime;
                     a37.GPA = 3.57m;
 
-                    a37.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a37, "something");
                     if (result.Succeeded == false)
                     {
@@ -1065,7 +991,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a37, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a37, "Student");
+                    await _userManager.AddToRoleAsync(a37, "Student");
                 }
 
                 AppUser a38 = _db.Users.FirstOrDefault(c => c.Email == "dustroud@mail.com");
@@ -1080,8 +1006,6 @@ namespace sp19team9finalproject.Seeding
                     a38.PositionType = PositionType.Internship;
                     a38.GPA = 3.49m;
 
-                    a38.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a38, "spotmydog");
                     if (result.Succeeded == false)
                     {
@@ -1093,7 +1017,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a38, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a38, "Student");
+                    await _userManager.AddToRoleAsync(a38, "Student");
                 }
 
                 AppUser a39 = _db.Users.FirstOrDefault(c => c.Email == "estuart@anchor.net");
@@ -1108,8 +1032,6 @@ namespace sp19team9finalproject.Seeding
                     a39.PositionType = PositionType.FullTime;
                     a39.GPA = 3.58m;
 
-                    a39.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a39, "stewball");
                     if (result.Succeeded == false)
                     {
@@ -1121,7 +1043,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a39, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a39, "Student");
+                    await _userManager.AddToRoleAsync(a39, "Student");
                 }
 
                 AppUser a40 = _db.Users.FirstOrDefault(c => c.Email == "peterstump@noclue.com");
@@ -1136,8 +1058,6 @@ namespace sp19team9finalproject.Seeding
                     a40.PositionType = PositionType.Internship;
                     a40.GPA = 2.55m;
 
-                    a40.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a40, "tanner5454");
                     if (result.Succeeded == false)
                     {
@@ -1149,7 +1069,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a40, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a40, "Student");
+                    await _userManager.AddToRoleAsync(a40, "Student");
                 }
 
                 AppUser a41 = _db.Users.FirstOrDefault(c => c.Email == "jtanner@mustang.net");
@@ -1164,8 +1084,6 @@ namespace sp19team9finalproject.Seeding
                     a41.PositionType = PositionType.Internship;
                     a41.GPA = 3.16m;
 
-                    a41.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a41, "taylorbaylor");
                     if (result.Succeeded == false)
                     {
@@ -1177,7 +1095,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a41, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a41, "Student");
+                    await _userManager.AddToRoleAsync(a41, "Student");
                 }
 
                 AppUser a42 = _db.Users.FirstOrDefault(c => c.Email == "taylordjay@aoll.com");
@@ -1192,8 +1110,6 @@ namespace sp19team9finalproject.Seeding
                     a42.PositionType = PositionType.FullTime;
                     a42.GPA = 3.07m;
 
-                    a42.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a42, "teeoff22");
                     if (result.Succeeded == false)
                     {
@@ -1205,7 +1121,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a42, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a42, "Student");
+                    await _userManager.AddToRoleAsync(a42, "Student");
                 }
 
                 AppUser a43 = _db.Users.FirstOrDefault(c => c.Email == "rtaylor@gogle.com");
@@ -1220,8 +1136,6 @@ namespace sp19team9finalproject.Seeding
                     a43.PositionType = PositionType.Internship;
                     a43.GPA = 2.88m;
 
-                    a43.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a43, "texas1");
                     if (result.Succeeded == false)
                     {
@@ -1233,7 +1147,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a43, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a43, "Student");
+                    await _userManager.AddToRoleAsync(a43, "Student");
                 }
 
                 AppUser a44 = _db.Users.FirstOrDefault(c => c.Email == "teefrank@noclue.com");
@@ -1248,8 +1162,6 @@ namespace sp19team9finalproject.Seeding
                     a44.PositionType = PositionType.FullTime;
                     a44.GPA = 3.5m;
 
-                    a44.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a44, "toddy25");
                     if (result.Succeeded == false)
                     {
@@ -1261,7 +1173,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a44, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a44, "Student");
+                    await _userManager.AddToRoleAsync(a44, "Student");
                 }
 
                 AppUser a45 = _db.Users.FirstOrDefault(c => c.Email == "ctucker@alphabet.co.uk");
@@ -1276,8 +1188,6 @@ namespace sp19team9finalproject.Seeding
                     a45.PositionType = PositionType.Internship;
                     a45.GPA = 3.04m;
 
-                    a45.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a45, "tucksack1");
                     if (result.Succeeded == false)
                     {
@@ -1289,7 +1199,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a45, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a45, "Student");
+                    await _userManager.AddToRoleAsync(a45, "Student");
                 }
 
                 AppUser a46 = _db.Users.FirstOrDefault(c => c.Email == "avelasco@yoho.com");
@@ -1304,8 +1214,6 @@ namespace sp19team9finalproject.Seeding
                     a46.PositionType = PositionType.FullTime;
                     a46.GPA = 3.55m;
 
-                    a46.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a46, "vinovino");
                     if (result.Succeeded == false)
                     {
@@ -1317,7 +1225,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a46, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a46, "Student");
+                    await _userManager.AddToRoleAsync(a46, "Student");
                 }
 
                 AppUser a47 = _db.Users.FirstOrDefault(c => c.Email == "vinovino@grapes.com");
@@ -1332,8 +1240,6 @@ namespace sp19team9finalproject.Seeding
                     a47.PositionType = PositionType.Internship;
                     a47.GPA = 3.28m;
 
-                    a47.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a47, "whatever");
                     if (result.Succeeded == false)
                     {
@@ -1345,7 +1251,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a47, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a47, "Student");
+                    await _userManager.AddToRoleAsync(a47, "Student");
                 }
 
                 AppUser a48 = _db.Users.FirstOrDefault(c => c.Email == "winner@hootmail.com");
@@ -1360,8 +1266,6 @@ namespace sp19team9finalproject.Seeding
                     a48.PositionType = PositionType.FullTime;
                     a48.GPA = 2.57m;
 
-                    a48.AccountActive = true;
-
                     var result = await _userManager.CreateAsync(a48, "woodyman1");
                     if (result.Succeeded == false)
                     {
@@ -1373,44 +1277,7 @@ namespace sp19team9finalproject.Seeding
                 }
                 if (await _userManager.IsInRoleAsync(a48, "Student") == false)
                 {
-                    await _userManager.AddToRolerAsync(a48, "Student");
-                }
-
-
-                try
-                {
-                    foreach (AppUser studentToAdd in Students)
-                    {
-                        string strMajorName = studentToAdd.FirstName;
-                        AppUser _dbStudent = _db.AppUsers.FirstOrDefault(m => m.Email == studentToAdd.Email);
-
-                        if (_dbStudent == null)
-                        {
-                            _db.AppUsers.Add(studentToAdd);
-                            _db.SaveChanges();
-                            intStudentsAdded += 1;
-                        }
-                        else
-                        {
-                            _dbStudent.FirstName = studentToAdd.FirstName;
-                            _dbStudent.LastName = studentToAdd.LastName;
-                            _dbStudent.GradDate = studentToAdd.GradDate;
-                            _dbStudent.GPA = studentToAdd.GPA;
-                            _dbStudent.Major = studentToAdd.Major;
-                            _dbStudent.PositionType = studentToAdd.PositionType;
-                            _dbStudent.PasswordHash = studentToAdd.PasswordHash;
-                            _db.Update(_dbStudent);
-                            _db.SaveChanges();
-                            intStudentsAdded += 1;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    String msg = " Repositories added:" + intStudentsAdded + "; ";
-
-                    throw new InvalidOperationException(ex.Message + msg);
-
+                    await _userManager.AddToRoleAsync(a48, "Student");
                 }
 
             }

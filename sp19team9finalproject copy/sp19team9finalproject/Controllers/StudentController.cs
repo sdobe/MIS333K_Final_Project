@@ -18,9 +18,9 @@ namespace sp19team9finalproject.Controllers
     [Authorize(Roles = "Recruiter, CSO")]
     public class StudentController : Controller
     {
-        private App_dbContext ___db;
+        private AppDbContext ___db;
 
-        public StudentController(App_dbContext context)
+        public StudentController(AppDbContext context)
         {
             ___db = context;
         }

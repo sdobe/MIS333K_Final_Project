@@ -12,9 +12,9 @@ namespace sp19team9finalproject.Controllers
 {
     public class MajorController : Controller
     {
-        private readonly App_dbContext _context;
+        private readonly AppDbContext _context;
 
-        public MajorController(App_dbContext context)
+        public MajorController(AppDbContext context)
         {
             _context = context;
         }
@@ -100,7 +100,7 @@ namespace sp19team9finalproject.Controllers
                     _context.Update(major);
                     await _context.SaveChangesAsync();
                 }
-                catch (_dbUpdateConcurrencyException)
+                catch (DbUpdateConcurrencyException)
                 {
                     if (!MajorExists(major.MajorID))
                     {

@@ -16,11 +16,11 @@ namespace sp19team9finalproject.Controllers
     //[Authorize(Roles = "Manager")]
     public class RoleAdminController : Controller
     {
-        private App_dbContext ___db;
+        private AppDbContext ___db;
         private UserManager<AppUser> _userManager;
         private RoleManager<IdentityRole> _roleManager;
 
-        public RoleAdminController(App_dbContext context, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
+        public RoleAdminController(AppDbContext context, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             ___db = context;
             _userManager = userManager;
@@ -79,7 +79,7 @@ namespace sp19team9finalproject.Controllers
 
         public async Task<ActionResult> Edit(string id)
         {
-            IdentityRole role = await _roleManager.Fin_dbyIdAsync(id);
+            IdentityRole role = await _roleManager.FindByIdAsync(id);
             List<AppUser> members = new List<AppUser>();
             List<AppUser> nonMembers = new List<AppUser>();
             foreach (AppUser user in _userManager.Users)
@@ -98,7 +98,7 @@ namespace sp19team9finalproject.Controllers
             {
                 foreach (string userId in model.IdsToAdd ?? new string[] { })
                 {
-                    AppUser user = await _userManager.Fin_dbyIdAsync(userId);
+                    AppUser user = await _userManager.FindByIdAsync(userId);
                     result = await _userManager.AddToRoleAsync(user, model.RoleName);
                     if (!result.Succeeded)
                     {
@@ -108,7 +108,7 @@ namespace sp19team9finalproject.Controllers
 
                 foreach (string userId in model.IdsToDelete ?? new string[] { })
                 {
-                    AppUser user = await _userManager.Fin_dbyIdAsync(userId);
+                    AppUser user = await _userManager.FindByIdAsync(userId);
                     result = await _userManager.RemoveFromRoleAsync(user, model.RoleName);
                     if (!result.Succeeded)
                     {

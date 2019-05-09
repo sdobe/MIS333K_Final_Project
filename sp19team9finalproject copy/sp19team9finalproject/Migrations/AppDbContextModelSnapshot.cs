@@ -8,8 +8,8 @@ using sp19team9finalproject.DAL;
 
 namespace sp19team9finalproject.Migrations
 {
-    [_dbContext(typeof(App_dbContext))]
-    partial class App_dbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(AppDbContext))]
+    partial class AppDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

@@ -13,9 +13,9 @@ namespace sp19team9finalproject.Controllers
 {
     public class PositionController : Controller
     {
-        private App_dbContext ___db;
+        private AppDbContext ___db;
 
-        public PositionController(App_dbContext context)
+        public PositionController(AppDbContext context)
         {
             ___db = context;
         }
@@ -197,7 +197,7 @@ namespace sp19team9finalproject.Controllers
                     ___db.Update(position);
                     await ___db.SaveChangesAsync();
                 }
-                catch (_dbUpdateConcurrencyException)
+                catch (DbUpdateConcurrencyException)
                 {
                     if (!PositionExists(position.PositionID))
                     {

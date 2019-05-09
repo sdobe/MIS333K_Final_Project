@@ -14,9 +14,9 @@ namespace sp19team9finalproject.Controllers
 {
     public class CompanyController : Controller
     {
-        private readonly App_dbContext _context;
+        private readonly AppDbContext _context;
 
-        public CompanyController(App_dbContext context)
+        public CompanyController(AppDbContext context)
         {
             _context = context;
         }
@@ -136,7 +136,7 @@ namespace sp19team9finalproject.Controllers
                     _context.Update(company);
                     await _context.SaveChangesAsync();
                 }
-                catch (_dbUpdateConcurrencyException)
+                catch (DbUpdateConcurrencyException)
                 {
                     if (!CompanyExists(company.CompanyID))
                     {
