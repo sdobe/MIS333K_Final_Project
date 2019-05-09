@@ -13,11 +13,11 @@ namespace sp19team9finalproject.Controllers
 {
     public class PositionController : Controller
     {
-        private AppDbContext ___db;
+        private AppDbContext _context;
 
         public PositionController(AppDbContext context)
         {
-            ___db = context;
+            _context = context;
         }
 
         // GET: Position
@@ -26,30 +26,26 @@ namespace sp19team9finalproject.Controllers
             if (User.IsInRole("Recruiter"))
             {
                 String id = User.Identity.Name;
-                AppUser user = ___db.Users.FirstOrDefault(u => u.UserName == id);
+                AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
 
                 List<Position> Positions = new List<Position>();
-                Positions = ___db.Positions.Where(o => o.Company.Name == user.Company.Name).ToList();
-                return View(Positions);
+                Positions = _context.Positions.Where(o => o.Company.Name == user.Company.Name).Include(b => b.Title).ToList();
+                return View(Positions.OrderByDescending(a => a.Company.CompanyID));
+
             }
             else
             {
                 //This line is querying database for all positions  
-                var query = from b in ___db.Positions
+                var query = from b in _context.Positions
                             select b;
 
+                //Shows positions who have deadlines today or beyond
                 DateTime thisDay = DateTime.Today;
-
-                query = query.Where(b => b.Deadline > thisDay);
-
+                query = query.Where(b => b.Deadline > thisDay).Include(b => b.MajorDetails);
                 List<Position> SelectedPositions = query.Include(b => b.Company).ToList();
 
- 
-                //Shows positions who have deadlines today or beyond
-
-
                 ViewBag.SelectedPositionsCount = SelectedPositions.Count();
-                ViewBag.AllPositionsCount = ___db.Positions.Count();
+                ViewBag.AllPositionsCount = _context.Positions.Count();
 
                 return View("Index", SelectedPositions);
             }
@@ -64,7 +60,7 @@ namespace sp19team9finalproject.Controllers
 
         public SelectList GetAllMajors()
         {
-            List<Major> Majors = ___db.Majors.ToList();
+            List<Major> Majors = _context.Majors.ToList();
 
             Major SelectNone = new Major() { MajorID = 0, Name = "All Majors" };
             Majors.Add(SelectNone);
@@ -77,7 +73,7 @@ namespace sp19team9finalproject.Controllers
         //i removed SelectedMajor have to add it back to parameters later
         public ActionResult DisplaySearchResults(String CompanySearchString, string IndustrySearchString, PositionType SelectedPositionType, int SelectedMajor,  string Location)
         {
-            var query = from p in ___db.Positions
+            var query = from p in _context.Positions
                 select p;
 
             DateTime thisDay = DateTime.Today;
@@ -136,7 +132,7 @@ namespace sp19team9finalproject.Controllers
             }
 
             //update this statement to have an include clause to get the info on position 
-            Position position = await ___db.Positions
+            Position position = await _context.Positions
                 .Include(r => r.Company)
                 .FirstOrDefaultAsync(m => m.PositionID == id);
 
@@ -163,8 +159,8 @@ namespace sp19team9finalproject.Controllers
         {
             if (ModelState.IsValid)
             {
-                ___db.Add(position);
-                await ___db.SaveChangesAsync();
+                _context.Add(position);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(position);
@@ -178,7 +174,7 @@ namespace sp19team9finalproject.Controllers
                 return NotFound();
             }
 
-            var position = await ___db.Positions.FindAsync(id);
+            var position = await _context.Positions.FindAsync(id);
             if (position == null)
             {
                 return NotFound();
@@ -202,8 +198,8 @@ namespace sp19team9finalproject.Controllers
             {
                 try
                 {
-                    ___db.Update(position);
-                    await ___db.SaveChangesAsync();
+                    _context.Update(position);
+                    await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -229,7 +225,7 @@ namespace sp19team9finalproject.Controllers
                 return NotFound();
             }
 
-            var position = await ___db.Positions
+            var position = await _context.Positions
                 .FirstOrDefaultAsync(m => m.PositionID == id);
             if (position == null)
             {
@@ -244,15 +240,15 @@ namespace sp19team9finalproject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var position = await ___db.Positions.FindAsync(id);
-            ___db.Positions.Remove(position);
-            await ___db.SaveChangesAsync();
+            var position = await _context.Positions.FindAsync(id);
+            _context.Positions.Remove(position);
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool PositionExists(int id)
         {
-            return ___db.Positions.Any(e => e.PositionID == id);
+            return _context.Positions.Any(e => e.PositionID == id);
         }
 
     }
