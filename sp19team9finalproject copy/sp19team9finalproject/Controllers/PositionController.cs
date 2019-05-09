@@ -29,8 +29,8 @@ namespace sp19team9finalproject.Controllers
                 AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
 
                 List<Position> Positions = new List<Position>();
-                Positions = _context.Positions.Where(o => o.Company.Name == user.Company.Name).Include(b => b.Title).ToList();
-                return View(Positions.OrderByDescending(a => a.Company.CompanyID));
+                Positions = _context.Positions.Where(b => b.Company.Name == user.Company.Name).Include(b => b.Title).ToList();
+                return View(Positions.OrderByDescending(b => b.PositionID));
 
             }
             else
@@ -41,7 +41,7 @@ namespace sp19team9finalproject.Controllers
 
                 //Shows positions who have deadlines today or beyond
                 DateTime thisDay = DateTime.Today;
-                query = query.Where(b => b.Deadline > thisDay).Include(b => b.MajorDetails);
+                query = query.Where(b => b.Deadline > thisDay).Include(b => b.MajorDetails).ThenInclude(b => b.Major);
                 List<Position> SelectedPositions = query.Include(b => b.Company).ToList();
 
                 ViewBag.SelectedPositionsCount = SelectedPositions.Count();
