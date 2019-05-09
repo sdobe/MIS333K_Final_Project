@@ -18,24 +18,24 @@ namespace sp19team9finalproject.Controllers
     [Authorize(Roles = "Recruiter, CSO")]
     public class StudentController : Controller
     {
-        private AppDbContext _db;
+        private App_dbContext ___db;
 
-        public StudentController(AppDbContext context)
+        public StudentController(App_dbContext context)
         {
-            _db = context;
+            ___db = context;
         }
 
         // GET: Student 
         public ActionResult Index()
         {
-            var query = from s in _db.AppUsers
+            var query = from s in ___db.AppUsers
                         select s;
 
             //query app users where app user is in role "student", if user is a student, they would have to have a gpa 
             query = query.Where(s => s.GPA != 0);
 
             //.ToList and return to view 
-            return View(_db.AppUsers.Include(s => s.Major).ToList());
+            return View(___db.AppUsers.Include(s => s.Major).ToList());
         }
 
         public ActionResult StudentSearch()
@@ -47,7 +47,7 @@ namespace sp19team9finalproject.Controllers
 
         public SelectList GetAllMajors()
         {
-            List<Major> Majors = _db.Majors.ToList();
+            List<Major> Majors = ___db.Majors.ToList();
 
             Major SelectNone = new Major() { MajorID = 0, Name = "All Majors" };
             Majors.Add(SelectNone);
@@ -61,7 +61,7 @@ namespace sp19team9finalproject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DisplaySearchResults(DateTime? GradDate, int SelectedMajor, PositionType SelectedPositionType, string EnteredGPA)
         {
-            var query = from stu in _db.AppUsers
+            var query = from stu in ___db.AppUsers
                         select stu;
 
             //TO-DO: should the search for grad date show students with grad dates before or equal to the date they picked or smthing else 

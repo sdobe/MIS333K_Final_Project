@@ -14,9 +14,9 @@ namespace sp19team9finalproject.Controllers
 {
     public class CompanyController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly App_dbContext _context;
 
-        public CompanyController(AppDbContext context)
+        public CompanyController(App_dbContext context)
         {
             _context = context;
         }
@@ -136,7 +136,7 @@ namespace sp19team9finalproject.Controllers
                     _context.Update(company);
                     await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (_dbUpdateConcurrencyException)
                 {
                     if (!CompanyExists(company.CompanyID))
                     {
@@ -205,7 +205,7 @@ namespace sp19team9finalproject.Controllers
 
             if (SearchLocation != null && SearchLocation != "")
             {
-                query = query.Where(com => com.Location.Contains(SearchLocation));
+                query = query.Where(s => s.Positions.Any(com => com.Location.Contains(SearchLocation)));
             }
 
            

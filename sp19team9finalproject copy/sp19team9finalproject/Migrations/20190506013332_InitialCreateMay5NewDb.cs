@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace sp19team9finalproject.Migrations
 {
-    public partial class InitialCreateMay5NewDb : Migration
+    public partial class InitialCreateMay5New_db : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

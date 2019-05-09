@@ -11,9 +11,9 @@ namespace sp19team9finalproject.Seeding
 {
     public class SeedRecruiters
     {
-        public static void SeedAllRecruiters(AppDbContext db, IServiceProvider serviceProvider)
+        public static async Task SeedAllRecruiters(IServiceProvider serviceProvider)
         {
-            AppDbContext _db = serviceProvider.GetRequiredService<AppDbContext>();
+            AppDbContext db = serviceProvider.GetRequiredService<AppDbContext>();
             UserManager<AppUser> _userManager = serviceProvider.GetRequiredService<UserManager<AppUser>>();
             RoleManager<IdentityRole> _roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 

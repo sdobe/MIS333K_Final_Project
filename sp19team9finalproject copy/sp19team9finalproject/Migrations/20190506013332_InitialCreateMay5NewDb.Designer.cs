@@ -9,9 +9,9 @@ using sp19team9finalproject.DAL;
 
 namespace sp19team9finalproject.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
-    [Migration("20190506013332_InitialCreateMay5NewDb")]
-    partial class InitialCreateMay5NewDb
+    [_dbContext(typeof(App_dbContext))]
+    [Migration("20190506013332_InitialCreateMay5New_db")]
+    partial class InitialCreateMay5New_db
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

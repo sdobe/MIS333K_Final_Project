@@ -9,7 +9,7 @@ using sp19team9finalproject.DAL;
 
 namespace sp19team9finalproject.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
+    [_dbContext(typeof(App_dbContext))]
     [Migration("20190508051447_InitialCreate_05_08_2019")]
     partial class InitialCreate_05_08_2019
     {
