@@ -43,6 +43,7 @@ namespace sp19team9finalproject.Seeding
                     a1.GradDate = new DateTime(2019);
                     a1.PositionType = PositionType.FullTime;
                     a1.GPA = 3.91m;
+                    a1.Major = _db.Majors.FirstOrDefault(o => o.Name == "MIS");
 
                     var result = await _userManager.CreateAsync(a1, "bookworm");
                     if (result.Succeeded == false)
@@ -69,6 +70,7 @@ namespace sp19team9finalproject.Seeding
                     a2.GradDate = new DateTime(2020);
                     a2.PositionType = PositionType.Internship;
                     a2.GPA = 3.52m;
+                    a2.Major = _db.Majors.FirstOrDefault(o => o.Name == "International Business");
 
                     var result = await _userManager.CreateAsync(a2, "aclfest2017");
                     if (result.Succeeded == false)
@@ -95,6 +97,7 @@ namespace sp19team9finalproject.Seeding
                     a3.GradDate = new DateTime(2019);
                     a3.PositionType = PositionType.FullTime;
                     a3.GPA = 3.2m;
+                    a3.Major = _db.Majors.FirstOrDefault(o => o.Name == "MIS");
 
                     var result = await _userManager.CreateAsync(a3, "aggies");
                     if (result.Succeeded == false)
@@ -121,6 +124,7 @@ namespace sp19team9finalproject.Seeding
                     a4.GradDate = new DateTime(2021);
                     a4.PositionType = PositionType.Internship;
                     a4.GPA = 3.56m;
+                    a4.Major = _db.Majors.FirstOrDefault(o => o.Name == "Finance");
 
                     var result = await _userManager.CreateAsync(a4, "alaskaboy");
                     if (result.Succeeded == false)
@@ -147,6 +151,7 @@ namespace sp19team9finalproject.Seeding
                     a5.GradDate = new DateTime(2020);
                     a5.PositionType = PositionType.Internship;
                     a5.GPA = 2.63m;
+                    a5.Major = _db.Majors.FirstOrDefault(o => o.Name == "Finance");
 
                     var result = await _userManager.CreateAsync(a5, "allyrally");
                     if (result.Succeeded == false)
@@ -173,6 +178,7 @@ namespace sp19team9finalproject.Seeding
                     a6.GradDate = new DateTime(2022);
                     a6.PositionType = PositionType.Internship;
                     a6.GPA = 3.62m;
+                    a6.Major = _db.Majors.FirstOrDefault(o => o.Name == "International Business");
 
                     var result = await _userManager.CreateAsync(a6, "Anchorage");
                     if (result.Succeeded == false)
@@ -199,6 +205,7 @@ namespace sp19team9finalproject.Seeding
                     a7.GradDate = new DateTime(2019);
                     a7.PositionType = PositionType.FullTime;
                     a7.GPA = 2.64m;
+                    a7.Major = _db.Majors.FirstOrDefault(o => o.Name == "Accounting");
 
                     var result = await _userManager.CreateAsync(a7, "billyboy");
                     if (result.Succeeded == false)
@@ -225,6 +232,7 @@ namespace sp19team9finalproject.Seeding
                     a8.GradDate = new DateTime(2020);
                     a8.PositionType = PositionType.Internship;
                     a8.GPA = 3.66m;
+                    a8.Major = _db.Majors.FirstOrDefault(o => o.Name == "Marketing");
 
                     var result = await _userManager.CreateAsync(a8, "bunnyhop");
                     if (result.Succeeded == false)
@@ -251,6 +259,7 @@ namespace sp19team9finalproject.Seeding
                     a9.GradDate = new DateTime(2019);
                     a9.PositionType = PositionType.FullTime;
                     a9.GPA = 3.98m;
+                    a9.Major = _db.Majors.FirstOrDefault(o => o.Name == "Accounting");
 
                     var result = await _userManager.CreateAsync(a9, "dustydusty");
                     if (result.Succeeded == false)
@@ -277,6 +286,7 @@ namespace sp19team9finalproject.Seeding
                     a10.GradDate = new DateTime(2019);
                     a10.PositionType = PositionType.FullTime;
                     a10.GPA = 3.22m;
+                    a10.Major = _db.Majors.FirstOrDefault(o => o.Name == "MIS");
 
                     var result = await _userManager.CreateAsync(a10, "gowest");
                     if (result.Succeeded == false)
@@ -303,6 +313,7 @@ namespace sp19team9finalproject.Seeding
                     a11.GradDate = new DateTime(2020);
                     a11.PositionType = PositionType.Internship;
                     a11.GPA = 3.66m;
+                    a11.Major = _db.Majors.FirstOrDefault(o => o.Name == "Science and Technology Management");
 
                     var result = await _userManager.CreateAsync(a11, "hickhickup");
                     if (result.Succeeded == false)
@@ -329,6 +340,7 @@ namespace sp19team9finalproject.Seeding
                     a12.GradDate = new DateTime(2019);
                     a12.PositionType = PositionType.FullTime;
                     a12.GPA = 3.46m;
+                    a12.Major = _db.Majors.FirstOrDefault(o => o.Name == "Business Honors");
 
                     var result = await _userManager.CreateAsync(a12, "ingram2015");
                     if (result.Succeeded == false)
@@ -355,6 +367,7 @@ namespace sp19team9finalproject.Seeding
                     a13.GradDate = new DateTime(2020);
                     a13.PositionType = PositionType.Internship;
                     a13.GPA = 3.12m;
+                    a13.Major = _db.Majors.FirstOrDefault(o => o.Name == "Supply Chain Management");
 
                     var result = await _userManager.CreateAsync(a13, "jhearn22");
                     if (result.Succeeded == false)
@@ -381,6 +394,7 @@ namespace sp19team9finalproject.Seeding
                     a14.GradDate = new DateTime(2020);
                     a14.PositionType = PositionType.Internship;
                     a14.GPA = 3.72m;
+                    a14.Major = _db.Majors.FirstOrDefault(o => o.Name == "Supply Chain Management");
 
                     var result = await _userManager.CreateAsync(a14, "joejoejoe");
                     if (result.Succeeded == false)
@@ -407,6 +421,7 @@ namespace sp19team9finalproject.Seeding
                     a15.GradDate = new DateTime(2019);
                     a15.PositionType = PositionType.FullTime;
                     a15.GPA = 2.64m;
+                    a15.Major = _db.Majors.FirstOrDefault(o => o.Name == "MIS");
 
                     var result = await _userManager.CreateAsync(a15, "jrod2017");
                     if (result.Succeeded == false)
@@ -433,6 +448,7 @@ namespace sp19team9finalproject.Seeding
                     a16.GradDate = new DateTime(2021);
                     a16.PositionType = PositionType.Internship;
                     a16.GPA = 3.72m;
+                    a16.Major = _db.Majors.FirstOrDefault(o => o.Name == "MIS");
 
                     var result = await _userManager.CreateAsync(a16, "longhorns");
                     if (result.Succeeded == false)
@@ -459,6 +475,7 @@ namespace sp19team9finalproject.Seeding
                     a17.GradDate = new DateTime(2022);
                     a17.PositionType = PositionType.Internship;
                     a17.GPA = 3.15m;
+                    a17.Major = _db.Majors.FirstOrDefault(o => o.Name == "Accounting");
 
                     var result = await _userManager.CreateAsync(a17, "louielouie");
                     if (result.Succeeded == false)
@@ -485,6 +502,7 @@ namespace sp19team9finalproject.Seeding
                     a18.GradDate = new DateTime(2019);
                     a18.PositionType = PositionType.FullTime;
                     a18.GPA = 3.07m;
+                    a18.Major = _db.Majors.FirstOrDefault(o => o.Name == "Finance");
 
                     var result = await _userManager.CreateAsync(a18, "martin1234");
                     if (result.Succeeded == false)
@@ -511,6 +529,7 @@ namespace sp19team9finalproject.Seeding
                     a19.GradDate = new DateTime(2020);
                     a19.PositionType = PositionType.Internship;
                     a19.GPA = 3.87m;
+                    a19.Major = _db.Majors.FirstOrDefault(o => o.Name == "Accounting");
 
                     var result = await _userManager.CreateAsync(a19, "meganr34");
                     if (result.Succeeded == false)
@@ -537,6 +556,7 @@ namespace sp19team9finalproject.Seeding
                     a20.GradDate = new DateTime(2019);
                     a20.PositionType = PositionType.FullTime;
                     a20.GPA = 4m;
+                    a20.Major = _db.Majors.FirstOrDefault(o => o.Name == "MIS");
 
                     var result = await _userManager.CreateAsync(a20, "meow88");
                     if (result.Succeeded == false)
@@ -563,6 +583,7 @@ namespace sp19team9finalproject.Seeding
                     a21.GradDate = new DateTime(2019);
                     a21.PositionType = PositionType.FullTime;
                     a21.GPA = 3.53m;
+                    a21.Major = _db.Majors.FirstOrDefault(o => o.Name == "Business Honors");
 
                     var result = await _userManager.CreateAsync(a21, "mustangs");
                     if (result.Succeeded == false)
@@ -589,6 +610,7 @@ namespace sp19team9finalproject.Seeding
                     a22.GradDate = new DateTime(2020);
                     a22.PositionType = PositionType.Internship;
                     a22.GPA = 3.11m;
+                    a22.Major = _db.Majors.FirstOrDefault(o => o.Name == "Supply Chain Management");
 
                     var result = await _userManager.CreateAsync(a22, "mydogspot");
                     if (result.Succeeded == false)
@@ -615,6 +637,7 @@ namespace sp19team9finalproject.Seeding
                     a23.GradDate = new DateTime(2021);
                     a23.PositionType = PositionType.Internship;
                     a23.GPA = 3.43m;
+                    a23.Major = _db.Majors.FirstOrDefault(o => o.Name == "Business Honors");
 
                     var result = await _userManager.CreateAsync(a23, "nothinggood");
                     if (result.Succeeded == false)
@@ -641,6 +664,7 @@ namespace sp19team9finalproject.Seeding
                     a24.GradDate = new DateTime(2020);
                     a24.PositionType = PositionType.Internship;
                     a24.GPA = 3.14m;
+                    a24.Major = _db.Majors.FirstOrDefault(o => o.Name == "Management");
 
                     var result = await _userManager.CreateAsync(a24, "onetime");
                     if (result.Succeeded == false)
@@ -667,6 +691,7 @@ namespace sp19team9finalproject.Seeding
                     a25.GradDate = new DateTime(2019);
                     a25.PositionType = PositionType.FullTime;
                     a25.GPA = 3.03m;
+                    a25.Major = _db.Majors.FirstOrDefault(o => o.Name == "Finance");
 
                     var result = await _userManager.CreateAsync(a25, "painting");
                     if (result.Succeeded == false)
@@ -693,6 +718,7 @@ namespace sp19team9finalproject.Seeding
                     a26.GradDate = new DateTime(2019);
                     a26.PositionType = PositionType.FullTime;
                     a26.GPA = 3.65m;
+                    a26.Major = _db.Majors.FirstOrDefault(o => o.Name == "Management");
 
                     var result = await _userManager.CreateAsync(a26, "Password1");
                     if (result.Succeeded == false)
@@ -719,6 +745,7 @@ namespace sp19team9finalproject.Seeding
                     a27.GradDate = new DateTime(2020);
                     a27.PositionType = PositionType.Internship;
                     a27.GPA = 3.46m;
+                    a27.Major = _db.Majors.FirstOrDefault(o => o.Name == "Finance");
 
                     var result = await _userManager.CreateAsync(a27, "penguin12");
                     if (result.Succeeded == false)
@@ -745,6 +772,7 @@ namespace sp19team9finalproject.Seeding
                     a28.GradDate = new DateTime(2019);
                     a28.PositionType = PositionType.FullTime;
                     a28.GPA = 3.67m;
+                    a28.Major = _db.Majors.FirstOrDefault(o => o.Name == "Business Honors");
 
                     var result = await _userManager.CreateAsync(a28, "pepperoni");
                     if (result.Succeeded == false)
@@ -771,6 +799,7 @@ namespace sp19team9finalproject.Seeding
                     a29.GradDate = new DateTime(2020);
                     a29.PositionType = PositionType.Internship;
                     a29.GPA = 3.14m;
+                    a29.Major = _db.Majors.FirstOrDefault(o => o.Name == "Management");
 
                     var result = await _userManager.CreateAsync(a29, "potato");
                     if (result.Succeeded == false)
@@ -797,6 +826,7 @@ namespace sp19team9finalproject.Seeding
                     a30.GradDate = new DateTime(2022);
                     a30.PositionType = PositionType.Internship;
                     a30.GPA = 3.92m;
+                    a30.Major = _db.Majors.FirstOrDefault(o => o.Name == "Marketing");
 
                     var result = await _userManager.CreateAsync(a30, "radgirl");
                     if (result.Succeeded == false)
@@ -823,6 +853,7 @@ namespace sp19team9finalproject.Seeding
                     a31.GradDate = new DateTime(2021);
                     a31.PositionType = PositionType.Internship;
                     a31.GPA = 3.64m;
+                    a31.Major = _db.Majors.FirstOrDefault(o => o.Name == "MIS");
 
                     var result = await _userManager.CreateAsync(a31, "raiders");
                     if (result.Succeeded == false)
@@ -849,6 +880,7 @@ namespace sp19team9finalproject.Seeding
                     a32.GradDate = new DateTime(2020);
                     a32.PositionType = PositionType.Internship;
                     a32.GPA = 3.01m;
+                    a32.Major = _db.Majors.FirstOrDefault(o => o.Name == "Marketing");
 
                     var result = await _userManager.CreateAsync(a32, "ricearoni");
                     if (result.Succeeded == false)
@@ -875,6 +907,7 @@ namespace sp19team9finalproject.Seeding
                     a33.GradDate = new DateTime(2019);
                     a33.PositionType = PositionType.FullTime;
                     a33.GPA = 3.24m;
+                    a33.Major = _db.Majors.FirstOrDefault(o => o.Name == "Science and Technology Management");
 
                     var result = await _userManager.CreateAsync(a33, "rogerthat");
                     if (result.Succeeded == false)
@@ -901,6 +934,7 @@ namespace sp19team9finalproject.Seeding
                     a34.GradDate = new DateTime(2020);
                     a34.PositionType = PositionType.Internship;
                     a34.GPA = 3.16m;
+                    a34.Major = _db.Majors.FirstOrDefault(o => o.Name == "Supply Chain Management");
 
                     var result = await _userManager.CreateAsync(a34, "slowwind");
                     if (result.Succeeded == false)
@@ -927,6 +961,7 @@ namespace sp19team9finalproject.Seeding
                     a35.GradDate = new DateTime(2019);
                     a35.PositionType = PositionType.FullTime;
                     a35.GPA = 3.07m;
+                    a35.Major = _db.Majors.FirstOrDefault(o => o.Name == "MIS");
 
                     var result = await _userManager.CreateAsync(a35, "smitty444");
                     if (result.Succeeded == false)
@@ -953,6 +988,7 @@ namespace sp19team9finalproject.Seeding
                     a36.GradDate = new DateTime(2020);
                     a36.PositionType = PositionType.Internship;
                     a36.GPA = 3.36m;
+                    a36.Major = _db.Majors.FirstOrDefault(o => o.Name == "MIS");
 
                     var result = await _userManager.CreateAsync(a36, "snowsnow");
                     if (result.Succeeded == false)
@@ -979,6 +1015,7 @@ namespace sp19team9finalproject.Seeding
                     a37.GradDate = new DateTime(2019);
                     a37.PositionType = PositionType.FullTime;
                     a37.GPA = 3.57m;
+                    a37.Major = _db.Majors.FirstOrDefault(o => o.Name == "Finance");
 
                     var result = await _userManager.CreateAsync(a37, "something");
                     if (result.Succeeded == false)
@@ -1005,6 +1042,7 @@ namespace sp19team9finalproject.Seeding
                     a38.GradDate = new DateTime(2020);
                     a38.PositionType = PositionType.Internship;
                     a38.GPA = 3.49m;
+                    a38.Major = _db.Majors.FirstOrDefault(o => o.Name == "Marketing");
 
                     var result = await _userManager.CreateAsync(a38, "spotmydog");
                     if (result.Succeeded == false)
@@ -1031,6 +1069,7 @@ namespace sp19team9finalproject.Seeding
                     a39.GradDate = new DateTime(2019);
                     a39.PositionType = PositionType.FullTime;
                     a39.GPA = 3.58m;
+                    a39.Major = _db.Majors.FirstOrDefault(o => o.Name == "Business Honors");
 
                     var result = await _userManager.CreateAsync(a39, "stewball");
                     if (result.Succeeded == false)
@@ -1057,6 +1096,7 @@ namespace sp19team9finalproject.Seeding
                     a40.GradDate = new DateTime(2021);
                     a40.PositionType = PositionType.Internship;
                     a40.GPA = 2.55m;
+                    a40.Major = _db.Majors.FirstOrDefault(o => o.Name == "Supply Chain Management");
 
                     var result = await _userManager.CreateAsync(a40, "tanner5454");
                     if (result.Succeeded == false)
@@ -1083,6 +1123,7 @@ namespace sp19team9finalproject.Seeding
                     a41.GradDate = new DateTime(2020);
                     a41.PositionType = PositionType.Internship;
                     a41.GPA = 3.16m;
+                    a41.Major = _db.Majors.FirstOrDefault(o => o.Name == "Management");
 
                     var result = await _userManager.CreateAsync(a41, "taylorbaylor");
                     if (result.Succeeded == false)
@@ -1109,6 +1150,7 @@ namespace sp19team9finalproject.Seeding
                     a42.GradDate = new DateTime(2019);
                     a42.PositionType = PositionType.FullTime;
                     a42.GPA = 3.07m;
+                    a42.Major = _db.Majors.FirstOrDefault(o => o.Name == "Marketing");
 
                     var result = await _userManager.CreateAsync(a42, "teeoff22");
                     if (result.Succeeded == false)
@@ -1135,6 +1177,7 @@ namespace sp19team9finalproject.Seeding
                     a43.GradDate = new DateTime(2020);
                     a43.PositionType = PositionType.Internship;
                     a43.GPA = 2.88m;
+                    a43.Major = _db.Majors.FirstOrDefault(o => o.Name == "Finance");
 
                     var result = await _userManager.CreateAsync(a43, "texas1");
                     if (result.Succeeded == false)
@@ -1161,6 +1204,7 @@ namespace sp19team9finalproject.Seeding
                     a44.GradDate = new DateTime(2019);
                     a44.PositionType = PositionType.FullTime;
                     a44.GPA = 3.5m;
+                    a44.Major = _db.Majors.FirstOrDefault(o => o.Name == "Finance");
 
                     var result = await _userManager.CreateAsync(a44, "toddy25");
                     if (result.Succeeded == false)
@@ -1187,6 +1231,7 @@ namespace sp19team9finalproject.Seeding
                     a45.GradDate = new DateTime(2020);
                     a45.PositionType = PositionType.Internship;
                     a45.GPA = 3.04m;
+                    a45.Major = _db.Majors.FirstOrDefault(o => o.Name == "MIS");
 
                     var result = await _userManager.CreateAsync(a45, "tucksack1");
                     if (result.Succeeded == false)
@@ -1213,6 +1258,7 @@ namespace sp19team9finalproject.Seeding
                     a46.GradDate = new DateTime(2019);
                     a46.PositionType = PositionType.FullTime;
                     a46.GPA = 3.55m;
+                    a46.Major = _db.Majors.FirstOrDefault(o => o.Name == "MIS");
 
                     var result = await _userManager.CreateAsync(a46, "vinovino");
                     if (result.Succeeded == false)
@@ -1239,6 +1285,7 @@ namespace sp19team9finalproject.Seeding
                     a47.GradDate = new DateTime(2021);
                     a47.PositionType = PositionType.Internship;
                     a47.GPA = 3.28m;
+                    a47.Major = _db.Majors.FirstOrDefault(o => o.Name == "Business Honors");
 
                     var result = await _userManager.CreateAsync(a47, "whatever");
                     if (result.Succeeded == false)
@@ -1265,6 +1312,7 @@ namespace sp19team9finalproject.Seeding
                     a48.GradDate = new DateTime(2019);
                     a48.PositionType = PositionType.FullTime;
                     a48.GPA = 2.57m;
+                    a48.Major = _db.Majors.FirstOrDefault(o => o.Name == "Finance");
 
                     var result = await _userManager.CreateAsync(a48, "woodyman1");
                     if (result.Succeeded == false)
@@ -1279,6 +1327,7 @@ namespace sp19team9finalproject.Seeding
                 {
                     await _userManager.AddToRoleAsync(a48, "Student");
                 }
+
 
             }
 

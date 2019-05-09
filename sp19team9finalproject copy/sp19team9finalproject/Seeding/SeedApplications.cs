@@ -23,75 +23,77 @@ namespace sp19team9finalproject.Seeding
 
             try
             {
-                Application ap1 = new Application() { };
+
+                Application ap1 = new Application() { Result = "Accepted" };
                 ap1.Position = db.Positions.FirstOrDefault(p => p.Title == "Marketing Intern");
-                ap1.AppUser = db.AppUsers.FirstOrDefault(a => a.FullName == "Lou Ann Feeley");
+                ap1.AppUser = db.AppUsers.FirstOrDefault(a => a.FirstName == "Lou Ann " && a.LastName == "Feeley");
                 Applications.Add(ap1);
 
-                Application ap2 = new Application() { };
+                Application ap2 = new Application() { Result = "Accepted" };
                 ap2.Position = db.Positions.FirstOrDefault(p => p.Title == "Marketing Intern");
-                ap2.AppUser = db.AppUsers.FirstOrDefault(a => a.FullName == "Eryn Rice");
+                ap2.AppUser = db.AppUsers.FirstOrDefault(a => a.FirstName == "Eryn " && a.LastName == "Rice");
                 Applications.Add(ap2);
 
-                Application ap3 = new Application() { };
+                Application ap3 = new Application() { Result = "Accepted" };
                 ap3.Position = db.Positions.FirstOrDefault(p => p.Title == "Corporate Recruiting Intern");
-                ap3.AppUser = db.AppUsers.FirstOrDefault(a => a.FullName == "Charles Miller");
+                ap3.AppUser = db.AppUsers.FirstOrDefault(a => a.FirstName == "Charles " && a.LastName == "Miller");
                 Applications.Add(ap3);
 
-                Application ap4 = new Application() { };
+                Application ap4 = new Application() { Result = "Accepted" };
                 ap4.Position = db.Positions.FirstOrDefault(p => p.Title == "Account Manager");
-                ap4.AppUser = db.AppUsers.FirstOrDefault(a => a.FullName == "Eric Stuart");
+                ap4.AppUser = db.AppUsers.FirstOrDefault(a => a.FirstName == "Eric " && a.LastName == "Stuart");
                 Applications.Add(ap4);
 
-                Application ap5 = new Application() { };
+                Application ap5 = new Application() { Result = "Accepted" };
                 ap5.Position = db.Positions.FirstOrDefault(p => p.Title == "Web Development");
-                ap5.AppUser = db.AppUsers.FirstOrDefault(a => a.FullName == "Christopher Baker");
+                ap5.AppUser = db.AppUsers.FirstOrDefault(a => a.FirstName == "Christopher " && a.LastName == "Baker");
                 Applications.Add(ap5);
 
-                Application ap6 = new Application() { };
+                Application ap6 = new Application() { Result = "Accepted" };
                 ap6.Position = db.Positions.FirstOrDefault(p => p.Title == "Amenities Analytics Intern");
-                ap6.AppUser = db.AppUsers.FirstOrDefault(a => a.FullName == "Eryn Rice");
+                ap6.AppUser = db.AppUsers.FirstOrDefault(a => a.FirstName == "Eryn " && a.LastName == "Rice");
                 Applications.Add(ap6);
 
-                Application ap7 = new Application() { };
+                Application ap7 = new Application() { Result = "Accepted" };
                 ap7.Position = db.Positions.FirstOrDefault(p => p.Title == "Amenities Analytics Intern");
-                ap7.AppUser = db.AppUsers.FirstOrDefault(a => a.FullName == "Tesa Feeley");
+                ap7.AppUser = db.AppUsers.FirstOrDefault(a => a.FirstName == "Tesa " && a.LastName == "Freeley");
                 Applications.Add(ap7);
 
-                Application ap8 = new Application() { };
+                Application ap8 = new Application() { Result = "Accepted" };
                 ap8.Position = db.Positions.FirstOrDefault(p => p.Title == "Amenities Analytics Intern");
-                ap8.AppUser = db.AppUsers.FirstOrDefault(a => a.FullName == "Lim Chou");
+                ap8.AppUser = db.AppUsers.FirstOrDefault(a => a.FirstName == "Lim " && a.LastName == "Chou");
                 Applications.Add(ap8);
 
-                Application ap9 = new Application() { };
+                Application ap9 = new Application() { Result = "Accepted" };
                 ap9.Position = db.Positions.FirstOrDefault(p => p.Title == "Supply Chain Internship");
-                ap9.AppUser = db.AppUsers.FirstOrDefault(a => a.FullName == "Brad Ingram");
+                ap9.AppUser = db.AppUsers.FirstOrDefault(a => a.FirstName == "Brad " && a.LastName == "Ingram");
                 Applications.Add(ap9);
 
-                Application ap10 = new Application() { };
+                Application ap10 = new Application() { Result = "Accepted" };
                 ap10.Position = db.Positions.FirstOrDefault(p => p.Title == "Supply Chain Internship");
-                ap10.AppUser = db.AppUsers.FirstOrDefault(a => a.FullName == "Sarah Saunders");
+                ap10.AppUser = db.AppUsers.FirstOrDefault(a => a.FirstName == "Sarah " && a.LastName == "Saunders");
                 Applications.Add(ap10);
 
-                Application ap11 = new Application() { };
+                Application ap11 = new Application() { Result = "Accepted" };
                 ap11.Position = db.Positions.FirstOrDefault(p => p.Title == "Financial Analyst");
-                ap11.AppUser = db.AppUsers.FirstOrDefault(a => a.FullName == "John Smith");
+                ap11.AppUser = db.AppUsers.FirstOrDefault(a => a.FirstName == "John " && a.LastName == "Smith");
                 Applications.Add(ap11);
 
-                Application ap12 = new Application() { };
+                Application ap12 = new Application() { Result = "Accepted" };
                 ap12.Position = db.Positions.FirstOrDefault(p => p.Title == "Accounting Intern");
-                ap12.AppUser = db.AppUsers.FirstOrDefault(a => a.FullName == "Chuck Luce");
+                ap12.AppUser = db.AppUsers.FirstOrDefault(a => a.FirstName == "Chuck " && a.LastName == "Luce");
                 Applications.Add(ap12);
 
-                Application ap13 = new Application() { };
+                Application ap13 = new Application() { Result = "Accepted" };
                 ap13.Position = db.Positions.FirstOrDefault(p => p.Title == "Consultant ");
-                ap13.AppUser = db.AppUsers.FirstOrDefault(a => a.FullName == "Eric Stuart");
+                ap13.AppUser = db.AppUsers.FirstOrDefault(a => a.FirstName == "Eric " && a.LastName == "Stuart");
                 Applications.Add(ap13);
 
-                Application ap14 = new Application() { };
+                Application ap14 = new Application() { Result = "Accepted" };
                 ap14.Position = db.Positions.FirstOrDefault(p => p.Title == "Consultant ");
-                ap14.AppUser = db.AppUsers.FirstOrDefault(a => a.FullName == "John Hearn");
+                ap14.AppUser = db.AppUsers.FirstOrDefault(a => a.FirstName == "John " && a.LastName == "Hearn");
                 Applications.Add(ap14);
+
 
                 try
                 {

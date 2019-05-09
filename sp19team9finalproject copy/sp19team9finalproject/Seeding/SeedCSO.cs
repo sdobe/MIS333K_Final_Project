@@ -22,88 +22,122 @@ namespace sp19team9finalproject.Seeding
 
             try
             {
-                AppUser ap1 = new AppUser()
-                {
-                    Email = "ra@aoo.com",
-                    PasswordHash = "3wCynC",
-                    FirstName = "Allen",
-                    LastName = "Rogers"
-                };
-                await _userManager.AddToRoleAsync(ap1, "CSO");
-                CSOs.Add(ap1);
 
-                AppUser ap2 = new AppUser()
+                AppUser ap1 = _db.Users.FirstOrDefault(c => c.Email == "ra@aoo.com");
+                if (ap1 == null)
                 {
-                    Email = "rwood@voyager.net",
-                    PasswordHash = "Pbon0r",
-                    FirstName = "Reagan",
-                    LastName = "Wood"
-                };
-                await _userManager.AddToRoleAsync(ap2, "CSO");
-                CSOs.Add(ap2);
+                    ap1 = new AppUser();
+                    ap1.UserName = "ra@aoo.com";
+                    ap1.Email = "ra@aoo.com";
+                    ap1.FirstName = "Allen";
+                    ap1.LastName = "Rogers";
 
-                AppUser ap3 = new AppUser()
-                {
-                    Email = "westj@pioneer.net",
-                    PasswordHash = "jW5fPP",
-                    FirstName = "Jake",
-                    LastName = "West"
-                };
-                await _userManager.AddToRoleAsync(ap3, "CSO");
-                CSOs.Add(ap3);
-
-                AppUser ap4 = new AppUser()
-                {
-                    Email = "liz@ggmail.com",
-                    PasswordHash = "0QyilL",
-                    FirstName = "Elizabeth",
-                    LastName = "Markham"
-                };
-                await _userManager.AddToRoleAsync(ap4, "CSO");
-                CSOs.Add(ap4);
-
-                AppUser ap5 = new AppUser()
-                {
-                    Email = "chaley@thug.com",
-                    PasswordHash = "atLm6W",
-                    FirstName = "Charles",
-                    LastName = "Haley"
-                };
-               await _userManager.AddToRoleAsync(ap5, "CSO");
-                CSOs.Add(ap5);
-
-                try
-                {
-                    foreach (AppUser CSOToAdd in CSOs)
+                    var result = await _userManager.CreateAsync(ap1, "3wCynC");
+                    if (result.Succeeded == false)
                     {
-                        string strMajorName = CSOToAdd.FirstName;
-                        AppUser _dbCSO =  _db.AppUsers.FirstOrDefault(m => m.Email == CSOToAdd.Email);
-
-                        if (_dbCSO == null)
-                        {
-                            _db.AppUsers.Add(CSOToAdd);
-                            _db.SaveChanges();
-                            intCSOAdded += 1;
-                        }
-                        else
-                        {
-                            _dbCSO.FirstName = CSOToAdd.FirstName;
-                            _dbCSO.LastName = CSOToAdd.LastName;
-                            _dbCSO.PasswordHash = CSOToAdd.PasswordHash;
-                            _dbCSO.Email = CSOToAdd.Email;
-                            _db.Update(_dbCSO);
-                            _db.SaveChanges();
-                            intCSOAdded += 1;
-                        }
+                        throw new Exception("This user can't be added - " + result.ToString());
                     }
+
+                    _db.SaveChanges();
+                    ap1 = _db.Users.FirstOrDefault(c => c.UserName == "ra@aoo.com");
                 }
-                catch (Exception ex)
+                if (await _userManager.IsInRoleAsync(ap1, "CSO") == false)
                 {
-                    String msg = " Repositories added:" + intCSOAdded + "; ";
-
-                    throw new InvalidOperationException(ex.Message + msg);
-
+                    await _userManager.AddToRoleAsync(ap1, "CSO");
                 }
+
+                AppUser ap2 = _db.Users.FirstOrDefault(c => c.Email == "rwood@voyager.net");
+                if (ap2 == null)
+                {
+                    ap2 = new AppUser();
+                    ap2.UserName = "rwood@voyager.net";
+                    ap2.Email = "rwood@voyager.net";
+                    ap2.FirstName = "Reagan";
+                    ap2.LastName = "Wood";
+
+                    var result = await _userManager.CreateAsync(ap2, "Pbon0r");
+                    if (result.Succeeded == false)
+                    {
+                        throw new Exception("This user can't be added - " + result.ToString());
+                    }
+
+                    _db.SaveChanges();
+                    ap2 = _db.Users.FirstOrDefault(c => c.UserName == "rwood@voyager.net");
+                }
+                if (await _userManager.IsInRoleAsync(ap2, "CSO") == false)
+                {
+                    await _userManager.AddToRoleAsync(ap2, "CSO");
+                }
+
+                AppUser ap3 = _db.Users.FirstOrDefault(c => c.Email == "westj@pioneer.net");
+                if (ap3 == null)
+                {
+                    ap3 = new AppUser();
+                    ap3.UserName = "westj@pioneer.net";
+                    ap3.Email = "westj@pioneer.net";
+                    ap3.FirstName = "Jake";
+                    ap3.LastName = "West";
+
+                    var result = await _userManager.CreateAsync(ap3, "jW5fPP");
+                    if (result.Succeeded == false)
+                    {
+                        throw new Exception("This user can't be added - " + result.ToString());
+                    }
+
+                    _db.SaveChanges();
+                    ap3 = _db.Users.FirstOrDefault(c => c.UserName == "westj@pioneer.net");
+                }
+                if (await _userManager.IsInRoleAsync(ap3, "CSO") == false)
+                {
+                    await _userManager.AddToRoleAsync(ap3, "CSO");
+                }
+
+                AppUser ap4 = _db.Users.FirstOrDefault(c => c.Email == "liz@ggmail.com");
+                if (ap4 == null)
+                {
+                    ap4 = new AppUser();
+                    ap4.UserName = "liz@ggmail.com";
+                    ap4.Email = "liz@ggmail.com";
+                    ap4.FirstName = "Elizabeth";
+                    ap4.LastName = "Markham";
+
+                    var result = await _userManager.CreateAsync(ap4, "0QyilL");
+                    if (result.Succeeded == false)
+                    {
+                        throw new Exception("This user can't be added - " + result.ToString());
+                    }
+
+                    _db.SaveChanges();
+                    ap4 = _db.Users.FirstOrDefault(c => c.UserName == "liz@ggmail.com");
+                }
+                if (await _userManager.IsInRoleAsync(ap4, "CSO") == false)
+                {
+                    await _userManager.AddToRoleAsync(ap4, "CSO");
+                }
+
+                AppUser ap5 = _db.Users.FirstOrDefault(c => c.Email == "chaley@thug.com");
+                if (ap5 == null)
+                {
+                    ap5 = new AppUser();
+                    ap5.UserName = "chaley@thug.com";
+                    ap5.Email = "chaley@thug.com";
+                    ap5.FirstName = "Charles";
+                    ap5.LastName = "Haley";
+
+                    var result = await _userManager.CreateAsync(ap5, "atLm6W");
+                    if (result.Succeeded == false)
+                    {
+                        throw new Exception("This user can't be added - " + result.ToString());
+                    }
+
+                    _db.SaveChanges();
+                    ap5 = _db.Users.FirstOrDefault(c => c.UserName == "chaley@thug.com");
+                }
+                if (await _userManager.IsInRoleAsync(ap5, "CSO") == false)
+                {
+                    await _userManager.AddToRoleAsync(ap5, "CSO");
+                }
+
             }
 
             catch (Exception e)

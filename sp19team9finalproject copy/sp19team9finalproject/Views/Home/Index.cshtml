@@ -9,6 +9,7 @@
     <p class="form-group">
         Search: <input name="SearchString" class="form-control" /><br />
         <button type="submit" class="btn btn-secondary">Search</button>
+        @Html.ActionLink("Interviews", "SeedInterviews", "Seed", null, new { @class = "btn btn-danger" })
 
 
         @if (User.Identity.IsAuthenticated)

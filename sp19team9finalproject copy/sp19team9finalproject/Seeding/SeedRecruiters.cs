@@ -38,7 +38,7 @@ namespace sp19team9finalproject.Seeding
                     ap1.Email = "michelle@example.com";
                     ap1.FirstName = "Michelle";
                     ap1.LastName = "Banks";
-
+                    ap1.Company = _db.Companies.FirstOrDefault(o => o.Name == "Accenture");
                     var result = await _userManager.CreateAsync(ap1, "jVb0Z6");
                     if (result.Succeeded == false)
                     {
@@ -61,7 +61,7 @@ namespace sp19team9finalproject.Seeding
                     ap2.Email = "toddy@aool.com";
                     ap2.FirstName = "Todd";
                     ap2.LastName = "Jacobs";
-
+                    ap2.Company = _db.Companies.FirstOrDefault(o => o.Name == "Accenture");
                     var result = await _userManager.CreateAsync(ap2, "1PnrBV");
                     if (result.Succeeded == false)
                     {
@@ -84,7 +84,7 @@ namespace sp19team9finalproject.Seeding
                     ap3.Email = "elowe@netscrape.net";
                     ap3.FirstName = "Ernest";
                     ap3.LastName = "Lowe";
-
+                    ap3.Company = _db.Companies.FirstOrDefault(o => o.Name == "Shell");
                     var result = await _userManager.CreateAsync(ap3, "v3n5AV");
                     if (result.Succeeded == false)
                     {
@@ -107,7 +107,7 @@ namespace sp19team9finalproject.Seeding
                     ap4.Email = "mclarence@aool.com";
                     ap4.FirstName = "Clarence";
                     ap4.LastName = "Martin";
-
+                    ap4.Company = _db.Companies.FirstOrDefault(o => o.Name == "Deloitte");
                     var result = await _userManager.CreateAsync(ap4, "zBLq3S");
                     if (result.Succeeded == false)
                     {
@@ -130,7 +130,7 @@ namespace sp19team9finalproject.Seeding
                     ap5.Email = "nelson.Kelly@aool.com";
                     ap5.FirstName = "Kelly";
                     ap5.LastName = "Nelson";
-
+                    ap5.Company = _db.Companies.FirstOrDefault(o => o.Name == "Deloitte");
                     var result = await _userManager.CreateAsync(ap5, "FSb8rA");
                     if (result.Succeeded == false)
                     {
@@ -153,7 +153,7 @@ namespace sp19team9finalproject.Seeding
                     ap6.Email = "megrhodes@freezing.co.uk";
                     ap6.FirstName = "Megan";
                     ap6.LastName = "Rhodes";
-
+                    ap6.Company = _db.Companies.FirstOrDefault(o => o.Name == "Deloitte");
                     var result = await _userManager.CreateAsync(ap6, "1xVfHp");
                     if (result.Succeeded == false)
                     {
@@ -176,7 +176,7 @@ namespace sp19team9finalproject.Seeding
                     ap7.Email = "sheff44@ggmail.com";
                     ap7.FirstName = "Martin";
                     ap7.LastName = "Sheffield";
-
+                    ap7.Company = _db.Companies.FirstOrDefault(o => o.Name == "Texas Instruments");
                     var result = await _userManager.CreateAsync(ap7, "4XKLsd");
                     if (result.Succeeded == false)
                     {
@@ -199,7 +199,7 @@ namespace sp19team9finalproject.Seeding
                     ap8.Email = "peterstump@hootmail.com";
                     ap8.FirstName = "Peter";
                     ap8.LastName = "Stump";
-
+                    ap8.Company = _db.Companies.FirstOrDefault(o => o.Name == "Texas Instruments");
                     var result = await _userManager.CreateAsync(ap8, "1XdmSV");
                     if (result.Succeeded == false)
                     {
@@ -222,7 +222,7 @@ namespace sp19team9finalproject.Seeding
                     ap9.Email = "yhuik9.Taylor@aool.com";
                     ap9.FirstName = "Rachel";
                     ap9.LastName = "Taylor";
-
+                    ap9.Company = _db.Companies.FirstOrDefault(o => o.Name == "Hilton Worldwide");
                     var result = await _userManager.CreateAsync(ap9, "9yhFS3");
                     if (result.Succeeded == false)
                     {
@@ -245,7 +245,7 @@ namespace sp19team9finalproject.Seeding
                     ap10.Email = "tuck33@ggmail.com";
                     ap10.FirstName = "Clent";
                     ap10.LastName = "Tucker";
-
+                    ap10.Company = _db.Companies.FirstOrDefault(o => o.Name == "Aon");
                     var result = await _userManager.CreateAsync(ap10, "I6BgsS");
                     if (result.Succeeded == false)
                     {
@@ -268,7 +268,7 @@ namespace sp19team9finalproject.Seeding
                     ap11.Email = "taylordjay@aool.com";
                     ap11.FirstName = "Allison";
                     ap11.LastName = "Taylor";
-
+                    ap11.Company = _db.Companies.FirstOrDefault(o => o.Name == "Adlucent");
                     var result = await _userManager.CreateAsync(ap11, "Vjb1wI");
                     if (result.Succeeded == false)
                     {
@@ -291,7 +291,7 @@ namespace sp19team9finalproject.Seeding
                     ap12.Email = "jojoe@ggmail.com";
                     ap12.FirstName = "Joe";
                     ap12.LastName = "Nguyen";
-
+                    ap12.Company = _db.Companies.FirstOrDefault(o => o.Name == "Stream Realty Partners");
                     var result = await _userManager.CreateAsync(ap12, "xI8Brg");
                     if (result.Succeeded == false)
                     {
@@ -314,7 +314,7 @@ namespace sp19team9finalproject.Seeding
                     ap13.Email = "hicks43@ggmail.com";
                     ap13.FirstName = "Anthony";
                     ap13.LastName = "Hicks";
-
+                    ap13.Company = _db.Companies.FirstOrDefault(o => o.Name == "Microsoft");
                     var result = await _userManager.CreateAsync(ap13, "s33WOz");
                     if (result.Succeeded == false)
                     {
@@ -337,7 +337,7 @@ namespace sp19team9finalproject.Seeding
                     ap14.Email = "orielly@foxnets.com";
                     ap14.FirstName = "Bill";
                     ap14.LastName = "O'Reilly";
-
+                    ap14.Company = _db.Companies.FirstOrDefault(o => o.Name == "Microsoft");
                     var result = await _userManager.CreateAsync(ap14, "pS2OJh");
                     if (result.Succeeded == false)
                     {
@@ -360,7 +360,7 @@ namespace sp19team9finalproject.Seeding
                     ap15.Email = "louielouie@aool.com";
                     ap15.FirstName = "Louis";
                     ap15.LastName = "Winthorpe";
-
+                    ap15.Company = _db.Companies.FirstOrDefault(o => o.Name == "Microsoft");
                     var result = await _userManager.CreateAsync(ap15, "fq7yDw");
                     if (result.Succeeded == false)
                     {
@@ -383,7 +383,7 @@ namespace sp19team9finalproject.Seeding
                     ap16.Email = "smartinmartin.Martin@aool.com";
                     ap16.FirstName = "Gregory";
                     ap16.LastName = "Martinez";
-
+                    ap16.Company = _db.Companies.FirstOrDefault(o => o.Name == "Capital One");
                     var result = await _userManager.CreateAsync(ap16, "1rKkMW");
                     if (result.Succeeded == false)
                     {
@@ -406,7 +406,7 @@ namespace sp19team9finalproject.Seeding
                     ap17.Email = "or@aool.com";
                     ap17.FirstName = "Anka";
                     ap17.LastName = "Radkovich";
-
+                    ap17.Company = _db.Companies.FirstOrDefault(o => o.Name == "Capital One");
                     var result = await _userManager.CreateAsync(ap17, "8K0cAh");
                     if (result.Succeeded == false)
                     {
@@ -429,7 +429,7 @@ namespace sp19team9finalproject.Seeding
                     ap18.Email = "tanner@ggmail.com";
                     ap18.FirstName = "Jeremy";
                     ap18.LastName = "Tanner";
-
+                    ap18.Company = _db.Companies.FirstOrDefault(o => o.Name == "United Airlines");
                     var result = await _userManager.CreateAsync(ap18, "w9wPff");
                     if (result.Succeeded == false)
                     {
@@ -452,7 +452,7 @@ namespace sp19team9finalproject.Seeding
                     ap19.Email = "tee_frank@hootmail.com";
                     ap19.FirstName = "Frank";
                     ap19.LastName = "Tee";
-
+                    ap19.Company = _db.Companies.FirstOrDefault(o => o.Name == "Academy Sports & Outdoors");
                     var result = await _userManager.CreateAsync(ap19, "1EIwbx");
                     if (result.Succeeded == false)
                     {
@@ -475,7 +475,7 @@ namespace sp19team9finalproject.Seeding
                     ap20.Email = "target_spot@example.com";
                     ap20.FirstName = "Spot";
                     ap20.LastName = "Dog";
-
+                    ap20.Company = _db.Companies.FirstOrDefault(o => o.Name == "Target");
                     var result = await _userManager.CreateAsync(ap20, "spotthedog");
                     if (result.Succeeded == false)
                     {
