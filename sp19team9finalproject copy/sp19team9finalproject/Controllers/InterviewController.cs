@@ -30,7 +30,7 @@ namespace sp19team9finalproject.Controllers
                 AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
 
                 List<Interview> Interviews = new List<Interview>();
-                Interviews = _context.Interviews.Where(inv => inv.Interviewer.AppUserID == user.AppUserID).ToList();
+                Interviews = _context.Interviews.Where(inv => inv.Interviewer.Id == user.Id).ToList();
                 return View(Interviews.OrderByDescending(inv => inv.Position.PositionID));
             }
             if (User.IsInRole("Student"))
@@ -39,7 +39,7 @@ namespace sp19team9finalproject.Controllers
                 AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
 
                 List<Interview> Interviews = new List<Interview>();
-                Interviews = _context.Interviews.Where(inv => inv.Interviewee.AppUserID == user.AppUserID).ToList();
+                Interviews = _context.Interviews.Where(inv => inv.Interviewee.Id == user.Id).ToList();
                 return View(Interviews);
             }
             else //if CSO 
@@ -255,7 +255,7 @@ namespace sp19team9finalproject.Controllers
                 }
             }
 
-            SelectList interviewers = new SelectList(SelectedUsers, "AppUserID", "FullName");
+            SelectList interviewers = new SelectList(SelectedUsers, "Id", "FullName");
 
             return interviewers;
         }

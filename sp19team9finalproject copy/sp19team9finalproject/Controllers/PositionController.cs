@@ -35,15 +35,21 @@ namespace sp19team9finalproject.Controllers
             else
             {
                 //This line is querying database for all positions  
-                var query = from p in ___db.Positions
-                            select p;
+                var query = from b in ___db.Positions
+                            select b;
+                
+                List<Position> SelectedPositions = query.Include(b => b.Company).ToList();
 
+ 
                 //Shows positions who have deadlines today or beyond
                 DateTime thisDay = DateTime.Today;
 
-                query = query.Where(p => p.Deadline >= thisDay);
+                query = query.Where(b => b.Deadline >= thisDay);
 
-                return View(___db.Positions.Include(p => p.Company).ToList());
+                ViewBag.SelectedPositionsCount = SelectedPositions.Count();
+                ViewBag.AllPositionsCount = ___db.Positions.Count();
+
+                return View("Index", SelectedPositions);
             }
 
         }
