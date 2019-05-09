@@ -19,7 +19,7 @@ namespace sp19team9finalproject
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = "Server=tcp:sp19team9finalproject.database.windows.net,1433;Initial Catalog=sp19team9finalproject;Persist Security Info=False;User ID=MISAdmin;Password=Password123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            var connectionString = "Server=tcp:sp19team9finalproject.database.windows.net,1433;Initial Catalog=sp19team9finalproject;Persist Security Info=False;User ID=MISAdmin;Password=Password123;MultipleActiveResultSets=True;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
           
 

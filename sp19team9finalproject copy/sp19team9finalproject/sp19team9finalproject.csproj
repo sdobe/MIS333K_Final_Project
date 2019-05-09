@@ -14,6 +14,7 @@
     <EmbeddedResource Remove="wwwroot\twitter-bootstrap\**" />
     <None Remove="wwwroot\jquery\**" />
     <None Remove="wwwroot\twitter-bootstrap\**" />
+    <Compile Remove="Migrations\20190506013332_InitialCreateMay5NewDb.cs" />
   </ItemGroup>
 
   <ItemGroup>

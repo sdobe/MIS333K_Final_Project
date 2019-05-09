@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace sp19team9finalproject.Migrations
 {
-    public partial class InitialCreateMay5New_db : Migration
+    public partial class InitialCreateNewDB5_9 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -116,9 +116,6 @@ namespace sp19team9finalproject.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    AppUserID = table.Column<int>(nullable: false),
-                    EmailAddress = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     FullName = table.Column<string>(nullable: true),

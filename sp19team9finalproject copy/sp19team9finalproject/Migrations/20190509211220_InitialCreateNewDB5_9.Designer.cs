@@ -10,8 +10,8 @@ using sp19team9finalproject.DAL;
 namespace sp19team9finalproject.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190508051447_InitialCreate_05_08_2019")]
-    partial class InitialCreate_05_08_2019
+    [Migration("20190509211220_InitialCreateNewDB5_9")]
+    partial class InitialCreateNewDB5_9
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -137,8 +137,6 @@ namespace sp19team9finalproject.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("AccessFailedCount");
-
-                    b.Property<int>("AppUserID");
 
                     b.Property<int?>("CompanyID");
 

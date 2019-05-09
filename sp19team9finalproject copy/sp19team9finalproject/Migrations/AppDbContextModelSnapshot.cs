@@ -136,8 +136,6 @@ namespace sp19team9finalproject.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
-                    b.Property<int>("AppUserID");
-
                     b.Property<int?>("CompanyID");
 
                     b.Property<string>("ConcurrencyStamp")
