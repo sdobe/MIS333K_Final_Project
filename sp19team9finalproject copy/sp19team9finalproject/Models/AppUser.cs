@@ -9,8 +9,6 @@ namespace sp19team9finalproject.Models
     public enum PositionType { FullTime , Internship }
     public class AppUser : IdentityUser
     {
-        public Int32 AppUserID { get; set; }
-
         [Display(Name = "First Name")]
         public String FirstName { get; set; }
 

@@ -15,6 +15,7 @@ namespace sp19team9finalproject.Models
 
         public String Industry { get; set; }
 
+        [Display(Name = "Company Name")]
         public String Name { get; set; }
 
         public String Location{get; set;}
