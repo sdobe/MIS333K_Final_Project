@@ -36,6 +36,8 @@ namespace sp19team9finalproject.Controllers
             //Routes user to the correct view/path
             if (User.IsInRole("CSO"))
             {
+                ViewBag.AllCompanies = _context.Companies.Count();
+                ViewBag.SelectedCompanies = _context.Companies.Count();
                 return View(Companies);
             }
             if (User.IsInRole("Recruiter"))
@@ -45,6 +47,8 @@ namespace sp19team9finalproject.Controllers
                     if (d.Name == user.Company.Name)
                     {
                         Companies = _context.Companies.Where(o => d.Name == user.Company.Name).Include(o => o.Positions).ToList();
+                        ViewBag.AllCompanies = _context.Companies.Count();
+                        ViewBag.SelectedCompanies = Companies.Count();
                         return View(Companies);
                     }
                     else
@@ -58,6 +62,8 @@ namespace sp19team9finalproject.Controllers
             if (User.IsInRole("Student"))
             {
                 List<Company> _Companies = _context.Companies.ToList();
+                ViewBag.AllCompanies = _context.Companies.Count();
+                ViewBag.SelectedCompanies = _context.Companies.Count();
                 return View(_Companies);
             }
 
@@ -228,7 +234,8 @@ namespace sp19team9finalproject.Controllers
             }
 
             List<Company> SelectedCompanies = query.Include(com => com.Positions).ToList();
-
+            ViewBag.AllCompanies = _context.Companies.Count();
+            ViewBag.SelectedCompanies = SelectedCompanies.Count();
             return View("Index", SelectedCompanies);
         }
     }
