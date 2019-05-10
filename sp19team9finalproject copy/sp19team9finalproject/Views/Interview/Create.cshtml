@@ -15,7 +15,7 @@
             @*Add code for dropdown list for positions and interviewers*@
             <div class="form-group">
                 <label class="control-label">Position:</label>
-                @Html.ListBox("SelectedPosition", (SelectList)ViewBag.Positions, new { @class = "form-control" })
+                @Html.DropDownList("SelectedPosition", (SelectList)ViewBag.Positions, new { @class = "form-control" })
             </div>
             <div class="form-group">
                 <label asp-for="Date" class="control-label"></label>
@@ -33,8 +33,8 @@
                 <span asp-validation-for="RoomNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label class="control-label">Position:</label>
-                @Html.ListBox("SelectedInterviewer", (SelectList)ViewBag.Positions, new { @class = "form-control" })
+                <label class="control-label">Interviewer:</label>
+                @Html.DropDownList("SelectedInterviewer", (SelectList)ViewBag.Interviewers, new { @class = "form-control" })
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
