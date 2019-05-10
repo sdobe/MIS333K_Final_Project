@@ -215,12 +215,12 @@ namespace sp19team9finalproject.Controllers
            
             if (SelectedPositionType == PositionType.FullTime) //if choose full time
             {
-                query = query.Where(s => s.Positions.Any(com => com.PositionType == SelectedPositionType));
+                query = query.Where(s => s.Positions.Any(com => com.PositionType == PositionType.FullTime));
             }
 
             if (SelectedPositionType == PositionType.Internship)
             {
-                query = query.Where(s => s.Positions.Any(com => com.PositionType == SelectedPositionType));
+                query = query.Where(s => s.Positions.Any(com => com.PositionType == PositionType.Internship));
             }
 
             if (SearchIndustry != null && SearchIndustry != "")

@@ -41,7 +41,7 @@ namespace sp19team9finalproject.Controllers
 
                 //Shows positions who have deadlines today or beyond
                 DateTime thisDay = DateTime.Today;
-                query = query.Where(b => b.Deadline > thisDay).Include(b => b.MajorDetails).ThenInclude(b => b.Major);
+                query = query.Where(b => b.Deadline >= thisDay).Include(b => b.MajorDetails).ThenInclude(b => b.Major);
                 List<Position> SelectedPositions = query.Include(b => b.Company).ToList();
 
                 ViewBag.SelectedPositionsCount = SelectedPositions.Count();
@@ -118,7 +118,7 @@ namespace sp19team9finalproject.Controllers
             }
 
             //execute query by calling the /.ToList() method
-            List<Position> SelectedPositions = query.Include(b => b.Company).ToList();
+            List<Position> SelectedPositions = query.Include(b => b.Company).Include(b => b.MajorDetails).ThenInclude(b => b.Major).ToList();
 
             return View("Index", SelectedPositions);
         }
@@ -133,7 +133,7 @@ namespace sp19team9finalproject.Controllers
 
             //update this statement to have an include clause to get the info on position 
             Position position = await _context.Positions
-                .Include(r => r.Company)
+                .Include(r => r.Company).Include(r => r.MajorDetails).ThenInclude(r => r.Major)
                 .FirstOrDefaultAsync(m => m.PositionID == id);
 
             if (position == null)

@@ -10,35 +10,37 @@
 
 
         @if (User.Identity.IsAuthenticated)
+    {
+        if (User.IsInRole("Student"))
         {
-            if (User.IsInRole("Student"))
-            {
-                @Html.ActionLink("Positions", "Index", "Position", null, new { @class = "btn btn-danger" })
-                @Html.ActionLink("Applications", "Index", "Application", null, new { @class = "btn btn-danger" })
-                @Html.ActionLink("Interviews", "Index", "Interview", null, new { @class = "btn btn-danger" })
-                @Html.ActionLink("Companies", "Index", "Company", null, new { @class = "btn btn-danger" })
-            }
+            @Html.ActionLink("Positions", "Index", "Position", null, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Applications", "Index", "Application", null, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Interviews", "Index", "Interview", null, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Companies", "Index", "Company", null, new { @class = "btn btn-danger" })
+    }
 
-            if (User.IsInRole("Recruiter"))
-            {
-                @Html.ActionLink("Positions", "Index", "Position", null, new { @class = "btn btn-danger" })
-                @Html.ActionLink("Students", "Index", "Account", null, new { @class = "btn btn-danger" })
-                @Html.ActionLink("Company Profile", "Index", "Company", null, new { @class = "btn btn-danger" })
-                @Html.ActionLink("Interviews", "Index", "Interview", null, new { @class = "btn btn-danger" })
-                @Html.ActionLink("Students", "Index", "Student", null, new { @class = "btn btn-danger" })
-            }
-            if (User.IsInRole("CSO"))
-            {
-                @Html.ActionLink("Users", "Index", "Position", null, new { @class = "btn btn-danger" })
+    if (User.IsInRole("Recruiter"))
+    {
+        @Html.ActionLink("Positions", "Index", "Position", null, new { @class = "btn btn-danger" })
+        @Html.ActionLink("Students", "Index", "Account", null, new { @class = "btn btn-danger" })
+        @Html.ActionLink("Company Profile", "Index", "Company", null, new { @class = "btn btn-danger" })
+        @Html.ActionLink("Interviews", "Index", "Interview", null, new { @class = "btn btn-danger" })
+        @Html.ActionLink("Students", "Index", "Student", null, new { @class = "btn btn-danger" })
+}
+if (User.IsInRole("CSO"))
+{
+    @Html.ActionLink("Users", "Index", "Position", null, new { @class = "btn btn-danger" })
 
-                //TODO: This is probably wrong
-                @Html.ActionLink("Positions", "Index", "Account", null, new { @class = "btn btn-danger" })
-                @Html.ActionLink("Companies", "Index", "Company", null, new { @class = "btn btn-danger" })
-                @Html.ActionLink("Users", "Index", "Account", null, new { @class = "btn btn-danger" })
-                @Html.ActionLink("Applications", "Index", "Application", null, new { @class = "btn btn-danger" })
-                @Html.ActionLink("Interviews", "Index", "Interview", null, new { @class = "btn btn-danger" })
-            }
-        }
+//TODO: This is probably wrong
+    @Html.ActionLink("Positions", "Index", "Account", null, new { @class = "btn btn-danger" })
+    @Html.ActionLink("Companies", "Index", "Company", null, new { @class = "btn btn-danger" })
+    @Html.ActionLink("Users", "Index", "Account", null, new { @class = "btn btn-danger" })
+    @Html.ActionLink("Applications", "Index", "Application", null, new { @class = "btn btn-danger" })
+    @Html.ActionLink("Interviews", "Index", "Interview", null, new { @class = "btn btn-danger" })
+    @Html.ActionLink("Register new CSO", "CSORegisterCSO", "Account", null, new { @class = "btn btn-danger" })
+    @Html.ActionLink("Register new recruiter", "CSORegisterRecruiter", "Account", null, new { @class = "btn btn-danger" })
+}
+}
 
 
     </p>
