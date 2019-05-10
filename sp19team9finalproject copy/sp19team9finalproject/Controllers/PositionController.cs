@@ -27,9 +27,17 @@ namespace sp19team9finalproject.Controllers
             {
                 String id = User.Identity.Name;
                 AppUser user = _context.Users.Include(m => m.Company).FirstOrDefault(u => u.UserName == id);
-                List<Position> Positions = new List<Position>();
-                Positions = _context.Positions.Where(o => o.Company.Name == user.Company.Name).ToList();
-                return View(Positions.OrderByDescending(b => b.PositionID));
+                var query = from b in _context.Positions
+                            select b;
+
+                //Shows positions who have deadlines today or beyond
+                
+                query = query.Include(b => b.MajorDetails).ThenInclude(b => b.Major);
+                List<Position> SelectedPositions = query.Include(b => b.Company).ToList();
+
+                return View("Index", SelectedPositions);
+
+
             }
             else
             {
