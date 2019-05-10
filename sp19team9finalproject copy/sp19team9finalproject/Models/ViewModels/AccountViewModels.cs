@@ -76,6 +76,79 @@ namespace sp19team9finalproject.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
+
+    public class CSORegisterRecruiterViewModel
+    {
+
+        //TODO:  Add any fields that you need for creating a new user
+        //First name is provided as an example
+        [Required(ErrorMessage = "First name is required.")]
+        [Display(Name = "First Name")]
+        public String FirstName { get; set; }
+
+        //Additional fields go here
+        [Required(ErrorMessage = "Last name is required.")]
+        [Display(Name = "Last Name")]
+        public String LastName { get; set; }
+
+        [Required(ErrorMessage = "Company is required.")]
+        [Display(Name = "Company")]
+        public Company Company { get; set; }
+
+        //NOTE: Here is the property for email
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+
+        //NOTE: Here is the logic for putting in a password
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
+    }
+
+    public class CSORegisterCSOViewModel
+    {
+
+        //TODO:  Add any fields that you need for creating a new user
+        //First name is provided as an example
+        [Required(ErrorMessage = "First name is required.")]
+        [Display(Name = "First Name")]
+        public String FirstName { get; set; }
+
+        //Additional fields go here
+        [Required(ErrorMessage = "Last name is required.")]
+        [Display(Name = "Last Name")]
+        public String LastName { get; set; }
+
+
+        //NOTE: Here is the property for email
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+
+        //NOTE: Here is the logic for putting in a password
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
+    }
     public class ChangePasswordViewModel
     {
         [Required]

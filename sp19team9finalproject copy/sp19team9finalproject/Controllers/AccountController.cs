@@ -71,7 +71,8 @@ namespace sp19team9finalproject.Controllers
             }
         }
 
-       
+      
+
         //
         // GET: /Account/Register
         [AllowAnonymous]
@@ -123,6 +124,115 @@ namespace sp19team9finalproject.Controllers
                     await _userManager.AddToRoleAsync(user, "Student");
 
                     Microsoft.AspNetCore.Identity.SignInResult result2 = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, lockoutOnFailure: false);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    foreach (IdentityError error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
+            }
+            return View(model);
+        }
+
+        // GET: /Account/CSORegisterRecruiter 
+        [AllowAnonymous] //TO-DO: only allow CSO 
+        public ActionResult CSORegisterRecruiter()
+        {
+            ViewBag.AllCompanies = GetAllCompanies();
+            return View();
+        }
+
+        public SelectList GetAllCompanies()
+        {
+            List<Company> Companies = _db.Companies.ToList();
+
+            Company SelectNone = new Company() { CompanyID = 0, Name = "No Company" };
+            Companies.Add(SelectNone);
+
+            SelectList AllCompanies = new SelectList(Companies.OrderBy(g => g.CompanyID), "CompanyID", "Name");
+
+            return AllCompanies;
+        }
+
+        // POST: /Account/CSORegisterRecruiter
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CSORegisterRecruiter(CSORegisterRecruiterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                AppUser user = new AppUser
+                {
+                    //TODO: Add the rest of the user fields here
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Company = model.Company,
+
+
+                };
+                IdentityResult result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    //TODO: Add user to desired role. This example adds the user to the customer role
+                    await _userManager.AddToRoleAsync(user, "Recruiter");
+
+                    //took this out because CSO should still be in their own profile after creating user 
+                    //Microsoft.AspNetCore.Identity.SignInResult result2 = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, lockoutOnFailure: false);
+                    //to do might want to bring CSO to student page once they create students 
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    foreach (IdentityError error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
+            }
+            return View(model);
+        }
+
+        // GET: /Account/CSORegisterCSO
+        [AllowAnonymous] //TO-DO: only allow CSO 
+        public ActionResult CSORegisterCSO()
+        {
+            return View();
+        }
+
+        // POST: /Account/CSORegisterRecruiter
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CSORegisterCSO(CSORegisterCSOViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                AppUser user = new AppUser
+                {
+                    //TODO: Add the rest of the user fields here
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+
+
+
+                };
+                IdentityResult result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    //TODO: Add user to desired role. This example adds the user to the customer role
+                    await _userManager.AddToRoleAsync(user, "CSO");
+
+                    //took this out because CSO should still be in their own profile after creating user 
+                    //Microsoft.AspNetCore.Identity.SignInResult result2 = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, lockoutOnFailure: false);
+                    //to do might want to bring CSO to student page once they create students 
                     return RedirectToAction("Index", "Home");
                 }
                 else
