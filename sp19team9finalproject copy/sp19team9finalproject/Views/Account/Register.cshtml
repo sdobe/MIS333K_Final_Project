@@ -31,10 +31,7 @@
             @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
         </div>
     </div>
-    <div class="form-group">
-        <label>Major</label>
-        @Html.DropDownList("SelectedMajor", (SelectList)ViewBag.AllMajors, new { @class = "form-control" })
-    </div>
+
     <div class="form-group">
         @Html.LabelFor(m => m.GradDate, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
