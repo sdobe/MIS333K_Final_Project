@@ -167,12 +167,15 @@ namespace sp19team9finalproject.Controllers
             {
                 AppUser user = new AppUser
                 {
+               
                     //TODO: Add the rest of the user fields here
                     UserName = model.Email,
                     Email = model.Email,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
-                    Company = model.Company,
+                    Company = model.Company
+                    //TODO: 
+
 
 
                 };
