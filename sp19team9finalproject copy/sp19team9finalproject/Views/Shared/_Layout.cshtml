@@ -42,6 +42,7 @@
 
     <div class="container body-content">
         @RenderBody()
+        @RenderSection("Scripts", required: false)
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - BevoSoft Consultants</p>

@@ -53,15 +53,9 @@ namespace sp19team9finalproject.Controllers
                         ViewBag.AllCompanies = _context.Companies.Count();
                         ViewBag.SelectedCompanies = comp.Count();
                         return View(comp);
-
-                    }
-                    else
-                    {
-
-                        return RedirectToAction(nameof(Create));
-                        
                     }
                 }
+                return RedirectToAction(nameof(Create));
             }
             if (User.IsInRole("Student"))
             {
@@ -84,6 +78,7 @@ namespace sp19team9finalproject.Controllers
             }
 
             var company = await _context.Companies
+                .Include(r => r.Positions).ThenInclude(r => r.Interviews)
                 .FirstOrDefaultAsync(m => m.CompanyID == id);
             if (company == null)
             {

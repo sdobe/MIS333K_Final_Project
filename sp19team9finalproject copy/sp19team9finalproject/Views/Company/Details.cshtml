@@ -46,14 +46,19 @@
 <table class="table table-primary">
     <tr>
         <th>Position Title</th>
-        <th>Deadline</th>
+        <th>Interview Dates</th>
     </tr>
     @foreach (Position rd in Model.Positions)
     {
-    <tr>
-        <td>@Html.DisplayFor(ModelItem => rd.Title)</td>
-        <td>@Html.DisplayFor(ModelItem => rd.Deadline)</td>
-    </tr>
+       <tr>
+            <td>@Html.DisplayFor(ModelItem => rd.Title)</td>
+            @foreach (Interview fd in rd.Interviews)
+            {
+               <td>@Html.DisplayFor(ModelItem => fd.Date)</td>
+
+            }
+       </tr>
+
     }
 </table>
 
