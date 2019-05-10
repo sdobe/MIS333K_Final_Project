@@ -25,8 +25,7 @@ namespace sp19team9finalproject.Models
 
  //for student
        [Display(Name = "Graduation Date")]
-       [DataType(DataType.Date)]
-       public DateTime GradDate { get; set; }
+       public String GradDate { get; set; }
 
         //Position Type for student 
         public PositionType PositionType { get; set; }
