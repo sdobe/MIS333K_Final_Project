@@ -7157,7 +7157,6 @@
       "path": "microsoft.netcore.targets/2.0.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/_._",
@@ -7209,12 +7208,11 @@
       ]
     },
     "NETStandard.Library/2.0.3": {
-      "sha512": "548M6mnBSJWxsIlkQHfbzoYxpiYFXZZSL00p4GHYv8PkiqFBnnT68mW5mGEsA/ch9fDO9GkPgkFQpWiXZN7mAQ==",
+      "sha512": "st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "type": "package",
       "path": "netstandard.library/2.0.3",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "build/netstandard2.0/NETStandard.Library.targets",
@@ -7510,7 +7508,7 @@
       ]
     },
     "runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "wWqB5kJ+vYC+IH7orP8EezottaOczECwYBFcecbkgG3IG6s8WghUdmM6pbUqSLhPibItxCWNg73rvG5cbL9tmw==",
+      "sha512": "NS1U+700m4KFRHR5o4vo9DSlTmlCKu/u7dtE5sUHVIPB+xpXxYQvgBgA6wEIeCz6Yfn0Z52/72WYsToCEPJnrw==",
       "type": "package",
       "path": "runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
@@ -7562,7 +7560,7 @@
       ]
     },
     "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "/p8IQT2brFMDa7BHMH71LV+w5Tb3OxoLHxhn6+MGqN5xeqhM2HRHmj+7xQGJnaRn73d7ZTvp6yRCFMvolws4wA==",
+      "sha512": "X7IdhILzr4ROXd8mI1BUCQMSHSQwelUlBjF1JyTKCjXaOGn2fB4EKBxQbCK2VjO3WaWIdlXZL3W6TiIVnrhX4g==",
       "type": "package",
       "path": "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
@@ -7726,11 +7724,7 @@
       ]
     },
     "System.Buffers/4.5.0": {
-<<<<<<< HEAD
-      "sha512": "xpHYjjtyTEpzMwtSQBWdVc3dPjLdQtvyUg6fBlBqcLl1r2Y7gDG/W/enAYOB98nG3oD3Q153Y2FBO8JDWd+0Xw==",
-=======
       "sha512": "pL2ChpaRRWI/p4LXyy4RgeWlYF2sgfj/pnVMvBqwNFr5cXg7CXNnWZWxrOONLg8VGdFB8oB+EG2Qw4MLgTOe+A==",
->>>>>>> 0a65d6c69945228048fd072ee0d9c26e7f12e960
       "type": "package",
       "path": "system.buffers/4.5.0",
       "files": [
@@ -7992,11 +7986,7 @@
       ]
     },
     "System.ComponentModel.Annotations/4.5.0": {
-<<<<<<< HEAD
-      "sha512": "IjDa643EO77A4CL9dhxfZ6zzGu+pM8Ar0NYPRMN3TvDiga4uGDzFHOj/ArpyNxxKyO5IFT2LZ0rK3kUog7g3jA==",
-=======
       "sha512": "UxYQ3FGUOtzJ7LfSdnYSFd7+oEv6M8NgUatatIN2HxNtDdlcvFAf+VIq4Of9cDMJEJC0aSRv/x898RYhB4Yppg==",
->>>>>>> 0a65d6c69945228048fd072ee0d9c26e7f12e960
       "type": "package",
       "path": "system.componentmodel.annotations/4.5.0",
       "files": [
@@ -9495,11 +9485,7 @@
       ]
     },
     "System.Numerics.Vectors/4.5.0": {
-<<<<<<< HEAD
-      "sha512": "MNcaYxUJvUcoXOa+jgKl/GDw/Mh+wMrxDjW4dre7qrp35LUGTjUBNtZsNjxsWX592ocdyqt1X5hMJB+5OStoYw==",
-=======
       "sha512": "QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
->>>>>>> 0a65d6c69945228048fd072ee0d9c26e7f12e960
       "type": "package",
       "path": "system.numerics.vectors/4.5.0",
       "files": [
@@ -10753,11 +10739,7 @@
       ]
     },
     "System.Security.Cryptography.Cng/4.5.0": {
-<<<<<<< HEAD
-      "sha512": "DsHSZoBeVe2bAknPwdrgnCQlgd80XRcS8V3ev952BF8ZE4jUi2i7+tIaFth6md9nure1SJL2hfQt4IgjpNybxQ==",
-=======
       "sha512": "WG3r7EyjUe9CMPFSs6bty5doUqT+q9pbI80hlNzo2SkPkZ4VTuZkGWjpp77JB8+uaL4DFPRdBsAY+DX3dBK92A==",
->>>>>>> 0a65d6c69945228048fd072ee0d9c26e7f12e960
       "type": "package",
       "path": "system.security.cryptography.cng/4.5.0",
       "files": [
@@ -10891,7 +10873,7 @@
       ]
     },
     "System.Security.Cryptography.OpenSsl/4.3.0": {
-      "sha512": "vOYy7Jv9KsG3ld2hLt0GoERd82SZi4BelrbXLwI9yFBYX7kpbvUCWYo4eyevk47cuJXZ9ZLVAryANcc7iY71aA==",
+      "sha512": "h4CEgOgv5PKVF/HwaHzJRiVboL2THYCou97zpmhjghx5frc7fIvlkY1jL+lnIQyChrJDMNEXS6r7byGif8Cy4w==",
       "type": "package",
       "path": "system.security.cryptography.openssl/4.3.0",
       "files": [
@@ -11651,7 +11633,6 @@
       "path": "system.threading.tasks.parallel/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -12090,46 +12071,30 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
-    "/Users/sophiadobe/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
-=======
     "C:\\Users\\NirRauch\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
->>>>>>> 0a65d6c69945228048fd072ee0d9c26e7f12e960
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "/Users/sophiadobe/Documents/GitHub/sp19team9finalproject/sp19team9finalproject copy/sp19team9finalproject/sp19team9finalproject.csproj",
-      "projectName": "sp19team9finalproject",
-      "projectPath": "/Users/sophiadobe/Documents/GitHub/sp19team9finalproject/sp19team9finalproject copy/sp19team9finalproject/sp19team9finalproject.csproj",
-      "packagesPath": "/Users/sophiadobe/.nuget/packages/",
-      "outputPath": "/Users/sophiadobe/Documents/GitHub/sp19team9finalproject/sp19team9finalproject copy/sp19team9finalproject/obj",
-=======
       "projectUniqueName": "C:\\Users\\NirRauch\\Documents\\MIS333K\\sp19team9finalproject\\sp19team9finalproject copy\\sp19team9finalproject\\sp19team9finalproject.csproj",
       "projectName": "sp19team9finalproject",
       "projectPath": "C:\\Users\\NirRauch\\Documents\\MIS333K\\sp19team9finalproject\\sp19team9finalproject copy\\sp19team9finalproject\\sp19team9finalproject.csproj",
       "packagesPath": "C:\\Users\\NirRauch\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\NirRauch\\Documents\\MIS333K\\sp19team9finalproject\\sp19team9finalproject copy\\sp19team9finalproject\\obj\\",
->>>>>>> 0a65d6c69945228048fd072ee0d9c26e7f12e960
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-<<<<<<< HEAD
-        "/Users/sophiadobe/.config/NuGet/NuGet.Config"
-=======
         "C:\\Users\\NirRauch\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
->>>>>>> 0a65d6c69945228048fd072ee0d9c26e7f12e960
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -12149,7 +12114,8 @@
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2.2.0, )"
+            "version": "[2.2.0, )",
+            "autoReferenced": true
           },
           "Microsoft.AspNetCore.Razor.Design": {
             "suppressParent": "All",
@@ -12170,5 +12136,13 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\NirRauch\\Documents\\MIS333K\\sp19team9finalproject\\sp19team9finalproject copy\\sp19team9finalproject\\obj\\sp19team9finalproject.csproj.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

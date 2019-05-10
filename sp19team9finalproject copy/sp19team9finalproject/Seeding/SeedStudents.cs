@@ -40,7 +40,7 @@ namespace sp19team9finalproject.Seeding
                     a1.Email = "cbaker@example.com";
                     a1.FirstName = "Christopher";
                     a1.LastName = "Baker";
-                    a1.GradDate = new DateTime(2019);
+                    a1.GradDate = new DateTime (2019);
                     a1.PositionType = PositionType.FullTime;
                     a1.GPA = 3.91m;
                     a1.Major = _db.Majors.FirstOrDefault(o => o.Name == "MIS");
