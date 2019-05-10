@@ -34,10 +34,6 @@ namespace sp19team9finalproject.Controllers
             Companies = _context.Companies.Include(o => o.Positions).ToList();
 
             //Routes user to the correct view/path
-            if (User.IsInRole("CSO"))
-            {
-                return View(Companies);
-            }
             if (User.IsInRole("Recruiter"))
             {
                 foreach (Company d in Companies)
@@ -54,6 +50,11 @@ namespace sp19team9finalproject.Controllers
                     }
                 }
             }
+            else if (User.IsInRole("CSO") || User.IsInRole("Student"))
+            {
+                return View(Companies);
+            }
+
             return View("Error", new string[] { "You are not authorized to access this page!" });
 
  

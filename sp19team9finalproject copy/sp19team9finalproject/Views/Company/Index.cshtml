@@ -5,9 +5,15 @@
 }
 
 <h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
+<form asp-action="Index" asp-controller="Company" method="get">
+    <p class="form-group">
+        @*Search: <input name="SearchString" class="form-control" /><br />
+            <button type="submit" class="btn btn-secondary">Search</button>*@
+        <a asp-action="CompanySearch" class="btn btn-success">Detailed Search</a>
+        <a asp-action="Index" class="btn btn-danger">Show All</a>
+    <p>
+</form>
+<a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -28,44 +34,45 @@
                 @Html.DisplayNameFor(model => model.Location)
             </th>
             @*<th>
-                @Html.DisplayNameFor(model => model.Position.Title)
-            </th>
-            @*<th> TO-DO: show all interview dates for that company 
-            @Html.DisplayNameFor(model => model.Interview.Date)
-            </th>*@
+                    @Html.DisplayNameFor(model => model.Position.Title)
+                </th>
+                @*<th> TO-DO: show all interview dates for that company
+                @Html.DisplayNameFor(model => model.Interview.Date)
+                </th>*@
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmailAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Industry)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            @*<td> //positions has to be a list in company details 
-                @Html.DisplayFor(modelItem => item.Position.Title)
-            </td>
-            @*<td> TO-DO: show all interview dates for that company
-            @Html.DisplayFor(modelItem => item.Interview.DateTime)
-            </td>*@
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.CompanyID">Edit</a>
-                <a asp-action="Details" asp-route-id="@item.CompanyID">Details</a>
-                <a asp-action="Delete" asp-route-id="@item.CompanyID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Industry)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                @*<td> //positions has to be a list in company details
+                        @Html.DisplayFor(modelItem => item.Position.Title)
+                    </td>
+                    @*<td> TO-DO: show all interview dates for that company
+                    @Html.DisplayFor(modelItem => item.Interview.DateTime)
+                    </td>*@
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CompanyID">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.CompanyID">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.CompanyID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
