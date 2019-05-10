@@ -46,10 +46,14 @@ namespace sp19team9finalproject.Controllers
                 {
                     if (d.Name == user.Company.Name)
                     {
-                        Companies = _context.Companies.Where(o => d.Name == user.Company.Name).Include(o => o.Positions).ToList();
+                        String us = User.Identity.Name;
+                        AppUser usr = _context.Users.Include(m => m.Company).FirstOrDefault(u => u.UserName == id);
+                        List<Company> comp = new List<Company>();
+                        comp = _context.Companies.Where(o => o.Name == user.Company.Name).ToList();
                         ViewBag.AllCompanies = _context.Companies.Count();
-                        ViewBag.SelectedCompanies = Companies.Count();
-                        return View(Companies);
+                        ViewBag.SelectedCompanies = comp.Count();
+                        return View(comp);
+
                     }
                     else
                     {
