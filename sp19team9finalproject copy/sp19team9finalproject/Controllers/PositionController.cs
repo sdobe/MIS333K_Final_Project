@@ -28,6 +28,7 @@ namespace sp19team9finalproject.Controllers
                 String id = User.Identity.Name;
                 AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
 
+<<<<<<< HEAD
                 //var query = from c in _context.Positions
                 //select c;
 
@@ -36,6 +37,10 @@ namespace sp19team9finalproject.Controllers
                 Positions = _context.Positions.Include(o => o.Company).Where(c => c.Company.CompanyID == user.Company.CompanyID).ToList();
 
                
+=======
+                List<Position> Positions = new List<Position>();
+                Positions = _context.Positions.Where(b => b.Company.Name == user.Company.Name).Include(b => b.Title).ToList();
+>>>>>>> parent of 4e17d26... Merge branch 'master' of https://github.com/mis333k-spr19/sp19team9finalproject
                 return View(Positions.OrderByDescending(b => b.PositionID));
 
             }
