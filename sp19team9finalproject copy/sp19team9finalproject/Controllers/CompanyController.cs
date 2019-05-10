@@ -195,13 +195,7 @@ namespace sp19team9finalproject.Controllers
         {
             return View();
         }
-<<<<<<< HEAD
 
-
-=======
-        [HttpPost]
-        [ValidateAntiForgeryToken]
->>>>>>> 0a65d6c69945228048fd072ee0d9c26e7f12e960
         public ActionResult DisplayCompSearchResults(string SearchName, string SearchLocation, PositionType SelectedPositionType, string SearchIndustry)
         {
             var query = from com in _context.Companies
