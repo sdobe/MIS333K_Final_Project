@@ -6,14 +6,20 @@
 
 <h1>Index</h1>
 
-<form asp-action="Index" asp-controller="Position" method="get">
-    <p class="form-group">
-    @*Search: <input name="SearchString" class="form-control" /><br />
-        <button type="submit" class="btn btn-secondary">Search</button>*@
-    <a asp-action="CompanySearch" class="btn btn-success">Detailed Search</a>
-    <a asp-action="Index" class="btn btn-danger">Show All</a>
-    <a asp-action="Create">Create New</a>
-    </p>
+<form asp-action="Index" asp-controller="Company" method="get">
+    @if (User.IsInRole("Student") || User.IsInRole("CSO"))
+    {
+        @Html.ActionLink("Company Search", "CompanySearch", "Company", null, new { @class = "btn btn-danger" })
+        @Html.ActionLink("Show All", "Index", "Company", null, new { @class = "btn btn-danger" })
+
+
+        //< p class="form-group">
+        //    <a asp-action="CompanySearch" class="btn btn-success">Detailed Search</a>
+        //    <a asp-action= "Index" class="btn btn-danger">Show All</a>
+        //    <a asp-action= "Create" > Create New</a>
+        // </p>
+    }
+
 </form>
 
 <p>
@@ -71,9 +77,11 @@
                     }
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.CompanyID">Edit</a>
+                    @if (User.IsInRole("Recruiter") || User.IsInRole("CSO"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.CompanyID">Edit</a>
+                    }
                     <a asp-action="Details" asp-route-id="@item.CompanyID">Details</a>
-                    <a asp-action="Delete" asp-route-id="@item.CompanyID">Delete</a>
                 </td>
             </tr>
         }
