@@ -38,7 +38,7 @@ namespace sp19team9finalproject.Controllers
 
                 //find applications associated with this user 
                 //TO-DO: fix this underline 
-                List<Application> Applications = _context.Applications.Where(o => o.AppUser.UserName == User.Identity.Name).Include(o => o.Position).ToList();
+                List<Application> Applications = _context.Applications.Where(o => o.AppUser.UserName == User.Identity.Name).Include(o => o.Position).ThenInclude(o => o.Company).ToList();
 
                 //send the view only the applications that belong to this user
                 return View(Applications);
@@ -53,7 +53,7 @@ namespace sp19team9finalproject.Controllers
                 return NotFound();
             }
 
-            var application = await _context.Applications
+            var application = await _context.Applications.Include(r => r.Position).ThenInclude(r => r.Company)
                 .FirstOrDefaultAsync(m => m.ApplicationID == id);
             if (application == null)
             {

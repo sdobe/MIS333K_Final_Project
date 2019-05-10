@@ -7,8 +7,6 @@
 
 <form asp-action="Index" asp-controller="Home" method="get">
     <p class="form-group">
-        @Html.ActionLink("Seed Majors", "SeedInterviews", "Seed", null, new { @class = "btn btn-danger" })
-
 
 
         @if (User.Identity.IsAuthenticated)
@@ -32,8 +30,6 @@
             if (User.IsInRole("CSO"))
             {
                 @Html.ActionLink("Users", "Index", "Position", null, new { @class = "btn btn-danger" })
-
-                //TODO: This is probably wrong
                 @Html.ActionLink("Positions", "Index", "Account", null, new { @class = "btn btn-danger" })
                 @Html.ActionLink("Companies", "Index", "Company", null, new { @class = "btn btn-danger" })
                 @Html.ActionLink("Users", "Index", "Account", null, new { @class = "btn btn-danger" })
