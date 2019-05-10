@@ -49,14 +49,19 @@ namespace sp19team9finalproject.Controllers
                     }
                     else
                     {
-                        return RedirectToAction(nameof(Create));
 
+                        return RedirectToAction(nameof(Create));
+                        
                     }
                 }
             }
-            return View("Error", new string[] { "You are not authorized to access this page!" });
+            if (User.IsInRole("Student"))
+            {
+                List<Company> _Companies = _context.Companies.ToList();
+                return View(_Companies);
+            }
 
- 
+            return View();
         }
 
 
