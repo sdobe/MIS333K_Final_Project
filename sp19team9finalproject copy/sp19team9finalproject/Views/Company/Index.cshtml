@@ -13,6 +13,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.EmailAddress)
             </th>
             <th>
@@ -20,9 +23,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Industry)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Location)
@@ -40,6 +40,9 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.EmailAddress)
             </td>
             <td>
@@ -49,10 +52,11 @@
                 @Html.DisplayFor(modelItem => item.Industry)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
+                @foreach (Position p in item.Positions)
+                {
+                    @Html.DisplayFor(modelItem => p.Location)
+                }
+
             </td>
             @*<td> //positions has to be a list in company details 
                 @Html.DisplayFor(modelItem => item.Position.Title)
