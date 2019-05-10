@@ -79,7 +79,7 @@ namespace sp19team9finalproject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FirstName,LastName,Major,GradDate,PositionType,GPA")] AppUser student)
+        public async Task<IActionResult> Edit(int id, [Bind("FirstName,LastName,Email,GradDate,GPA")] AppUser student)
         {
             //if (id != student.Id)
             //{
