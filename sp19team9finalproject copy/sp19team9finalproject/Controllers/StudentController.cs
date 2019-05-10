@@ -33,9 +33,9 @@ namespace sp19team9finalproject.Controllers
 
             //query app users where app user is in role "student", if user is a student, they would have to have a gpa 
             query = query.Where(s => s.GPA != 0);
-
+            List<AppUser> AppUsers = query.Include(s => s.Major).ToList();
             //.ToList and return to view 
-            return View(___db.AppUsers.Include(s => s.Major).ToList());
+            return View(AppUsers);
         }
 
         public ActionResult StudentSearch()
