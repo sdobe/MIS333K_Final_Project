@@ -29,18 +29,11 @@
                     <li class="nav-item">
                         @Html.ActionLink("Interviews", "Index", "Interview", null, new { @class = "nav-link" })
                     </li>
-                    @if (User.IsInRole("Recruiter"))
-                    {
+                    @*TO-DO: Add button for users*@
                     <li class="nav-item">
-                        @Html.ActionLink("Company Profile", "Index", "Company", null, new { @class = "nav-link" })
-                    </li>
-                    }
-                    @if (User.IsInRole("CSO"))
-                    {
-                        <li class="nav-item">
                         @Html.ActionLink("Company Profiles", "Index", "Company", null, new { @class = "nav-link" })
                     </li>
-                    }
+
                 </ul>
             </div>
             @await Html.PartialAsync("_LoginPartial")
