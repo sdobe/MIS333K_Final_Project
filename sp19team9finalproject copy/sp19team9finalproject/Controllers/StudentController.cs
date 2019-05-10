@@ -30,11 +30,13 @@ namespace sp19team9finalproject.Controllers
         {
             if (User.IsInRole("CSO") || User.IsInRole("Recruiter"))
             {
+                String id = User.Identity.Name;
+                AppUser user = ___db.Users.FirstOrDefault(a => a.UserName == id);
+              
                 var query = from s in ___db.AppUsers
                             select s;
 
-                //query app users where app user is in role "student", if user is a student, they would have to have a gpa 
-                query = query.Where(s => s.GPA != 0);
+                query = query.Where(s => s.Id != user.Id);
                 List<AppUser> AppUsers = query.Include(s => s.Major).ToList();
                 //.ToList and return to view 
                 return View(AppUsers);
@@ -59,14 +61,14 @@ namespace sp19team9finalproject.Controllers
         }
 
         // GET: Company/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string Id)
         {
-            if (id == null)
+            if (Id == null)
             {
                 return NotFound();
             }
 
-            var student = await ___db.AppUsers.FindAsync(id);
+            var student = await ___db.AppUsers.FindAsync(Id);
             if (student == null)
             {
                 return NotFound();
@@ -74,37 +76,28 @@ namespace sp19team9finalproject.Controllers
             return View(student);
         }
 
-        // POST: Company/Edit/5
+        // POST: Student/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FirstName,LastName,Email,GradDate,GPA")] AppUser student)
+        public async Task<IActionResult> Edit(string Id, [Bind("FirstName,Lastname,Email,GradDate,GPA")] AppUser student)
         {
-            //if (id != student.Id)
-            //{
-                //return NotFound();
-            //}
+            //String id = User.Identity.Name;
+            AppUser user = ___db.Users.FirstOrDefault(u => u.Id == Id);
+
+            if (Id != user.Id)
+            {
+                return NotFound();
+            }
 
             if (ModelState.IsValid)
             {
-                //try
-                //{
-                    ___db.Update(student);
-                    await ___db.SaveChangesAsync();
-                //}
-                //catch (DbUpdateConcurrencyException)
-                //{
-                    //if (!StudentExists(student.Id))
-                    //{
-                        //return NotFound();
-                    //}
-                    //else
-                    //{
-                        //throw;
-                    //}
-                //}
-                return RedirectToAction(nameof(Index));
+
+               ___db.Update(student);
+               await ___db.SaveChangesAsync();
+               
+              return RedirectToAction(nameof(Index));
             }
             return View(student);
         }
