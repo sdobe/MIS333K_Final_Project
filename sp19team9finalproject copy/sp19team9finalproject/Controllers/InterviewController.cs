@@ -30,7 +30,7 @@ namespace sp19team9finalproject.Controllers
                 AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
 
                 List<Interview> Interviews = new List<Interview>();
-                Interviews = _context.Interviews.Where(inv => inv.Interviewer.Id == user.Id).Include(inv => inv.Position.Title).ToList();
+                Interviews = _context.Interviews.Where(inv => inv.Interviewer.UserName == user.UserName).Include(inv => inv.Position).ToList();
                 return View(Interviews.OrderByDescending(inv => inv.Position.PositionID));
             }
             if (User.IsInRole("Student"))
@@ -55,17 +55,17 @@ namespace sp19team9finalproject.Controllers
             }
         }
 
-        public IActionResult Index(Int32 posID)
-        {
-            var query = from inter in _context.Interviews
-                        select inter;
-            query = query.Where(inter => inter.Position.PositionID == posID);
-            query = query.Where(inter => inter.Interviewee == null);
+        //public IActionResult Index(Int32 posID)
+        //{
+        //    var query = from inter in _context.Interviews
+        //                select inter;
+        //    query = query.Where(inter => inter.Position.PositionID == posID);
+        //    query = query.Where(inter => inter.Interviewee == null);
 
-            List<Interview> inters = query.Include(inv => inv.Position).ToList();
-            return View(inters);
+        //    List<Interview> inters = query.Include(inv => inv.Position).ToList();
+        //    return View(inters);
 
-        }
+        //}
 
         // GET: Interview/Details/5
         public async Task<IActionResult> Details(int id)
@@ -109,16 +109,16 @@ namespace sp19team9finalproject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("InterviewID,Position,Date,Time,RoomNumber,Interviewer")] Interview interview, int SelectedPosition, int SelectedInterviewer)
+        public async Task<IActionResult> Create([Bind("InterviewID,Position,Date,Time,RoomNumber")] Interview interview, int SelectedPosition, int SelectedInterviewer)
         {
             var query = from i in _context.Interviews
                         select i;
 
             List <Interview> AllInterviews = query.ToList();
 
-            foreach(Interview i in AllInterviews)
+            foreach (Interview i in AllInterviews)
             {
-                if (i.Date == interview.Date && i.Time == interview.Time && i.RoomNumber ==interview.RoomNumber)
+                if (i.Date == interview.Date && i.Time == interview.Time && i.RoomNumber == interview.RoomNumber)
                 {
                     //if this turns out to be true then return to page where they create interview 
                     string u = User.Identity.Name;
@@ -135,7 +135,8 @@ namespace sp19team9finalproject.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(interview);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
+
 
                 //add navigational data
                 // find the position with the same 
@@ -243,6 +244,11 @@ namespace sp19team9finalproject.Controllers
 
             List<Position> SelectedPositions = new List<Position>();
 
+            //String id = User.Identity.Name;
+            //AppUser user = _context.Users.Include(m => m.Company).FirstOrDefault(u => u.UserName == id);
+            //List<Position> Positions = new List<Position>();
+            //Positions = _context.Positions.Where(o => o.Company.Name == user.Company.Name).ToList();
+
             foreach (Position cd in AllPositions)
             {
                 if(cd.Company == user.Company)
@@ -258,19 +264,20 @@ namespace sp19team9finalproject.Controllers
 
         public SelectList GetAllInterviewers(AppUser user)
         {
+
             List<AppUser> AllAppUsers = _context.AppUsers.ToList();
 
             List<AppUser> SelectedUsers = new List<AppUser>();
 
             foreach (AppUser cd in AllAppUsers)
             {
-                if (cd.Company == user.Company)
+                if (cd.Company == cd.Company)
                 {
                     SelectedUsers.Add(cd);
                 }
             }
 
-            SelectList interviewers = new SelectList(SelectedUsers, "Id", "FullName");
+            SelectList interviewers = new SelectList(SelectedUsers, "Id", "LastName");
 
             return interviewers;
         }
