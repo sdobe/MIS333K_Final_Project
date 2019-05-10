@@ -41,7 +41,7 @@ namespace sp19team9finalproject.Controllers
 
                 //Shows positions who have deadlines today or beyond
                 DateTime thisDay = DateTime.Today;
-                query = query.Where(b => b.Deadline > thisDay).Include(b => b.MajorDetails).ThenInclude(b => b.Major);
+                query = query.Where(b => b.Deadline >= thisDay).Include(b => b.MajorDetails).ThenInclude(b => b.Major);
                 List<Position> SelectedPositions = query.Include(b => b.Company).ToList();
 
                 ViewBag.SelectedPositionsCount = SelectedPositions.Count();
