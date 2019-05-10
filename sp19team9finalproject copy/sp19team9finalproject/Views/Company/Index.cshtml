@@ -33,46 +33,55 @@
             <th>
                 @Html.DisplayNameFor(model => model.Location)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Positions)
+            </th>
             @*<th>
-                    @Html.DisplayNameFor(model => model.Position.Title)
-                </th>
-                @*<th> TO-DO: show all interview dates for that company
-                @Html.DisplayNameFor(model => model.Interview.Date)
-                </th>*@
+            @Html.DisplayNameFor(model => model.Position.Title)
+        </th>
+        @*<th> TO-DO: show all interview dates for that company
+        @Html.DisplayNameFor(model => model.Interview.Date)
+        </th>*@
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EmailAddress)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Industry)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Location)
-                </td>
-                @*<td> //positions has to be a list in company details
-                        @Html.DisplayFor(modelItem => item.Position.Title)
-                    </td>
-                    @*<td> TO-DO: show all interview dates for that company
-                    @Html.DisplayFor(modelItem => item.Interview.DateTime)
-                    </td>*@
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.CompanyID">Edit</a>
-                    <a asp-action="Details" asp-route-id="@item.CompanyID">Details</a>
-                    <a asp-action="Delete" asp-route-id="@item.CompanyID">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Industry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @foreach (Position md in item.Positions)
+                {
+                    @Html.DisplayFor(modelItem => md.PositionType)
+                }
+            </td>
+            @*<td> //positions has to be a list in company details
+            @Html.DisplayFor(modelItem => item.Position.Title)
+        </td>
+        @*<td> TO-DO: show all interview dates for that company
+        @Html.DisplayFor(modelItem => item.Interview.DateTime)
+        </td>*@
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CompanyID">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.CompanyID">Details</a>
+                <a asp-action="Delete" asp-route-id="@item.CompanyID">Delete</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
