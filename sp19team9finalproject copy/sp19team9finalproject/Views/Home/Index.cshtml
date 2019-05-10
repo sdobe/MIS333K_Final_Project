@@ -22,7 +22,7 @@
     if (User.IsInRole("Recruiter"))
     {
         @Html.ActionLink("Positions", "Index", "Position", null, new { @class = "btn btn-danger" })
-        @Html.ActionLink("Account", "Index", "Account", null, new { @class = "btn btn-danger" })
+        @Html.ActionLink("Account", "Index", "Student", null, new { @class = "btn btn-danger" })
         @Html.ActionLink("Company Profile", "Index", "Company", null, new { @class = "btn btn-danger" })
         @Html.ActionLink("Interviews", "Index", "Interview", null, new { @class = "btn btn-danger" })
         @Html.ActionLink("Students", "Index", "Student", null, new { @class = "btn btn-danger" })
@@ -32,7 +32,7 @@ if (User.IsInRole("CSO"))
 {
     @Html.ActionLink("Positions", "Index", "Position", null, new { @class = "btn btn-danger" })
 
-    @Html.ActionLink("Account", "Index", "Account", null, new { @class = "btn btn-danger" })
+    @Html.ActionLink("Account", "Index", "Student", null, new { @class = "btn btn-danger" })
     @Html.ActionLink("Students", "Index", "Student", null, new { @class = "btn btn-danger" })
     @Html.ActionLink("Companies", "Index", "Company", null, new { @class = "btn btn-danger" })
     @Html.ActionLink("Applications", "Index", "Application", null, new { @class = "btn btn-danger" })
