@@ -6,12 +6,16 @@
 }
 
 <h2>Search for Students</h2>
-<form asp-action="AcceptStudents" asp-controller="Application" method="get">
+<form asp-action="AcceptStudents" asp-controller="Application" method="post">
     <div class="alert-danger"></div>
 
     <div class="form-group">
-        <label>Select Major:</label>
-        @Html.DropDownList("AcceptedStudents", (SelectList)ViewBag.ListSelectedApplications, new { @class = "form-control" })
+        <label>Select Students:</label>
+        @Html.DropDownList("AcceptedStudents", (MultiSelectList)ViewBag.ListSelectedApplications, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-danger">Accept interviews</button>
     </div>
 
 </form>

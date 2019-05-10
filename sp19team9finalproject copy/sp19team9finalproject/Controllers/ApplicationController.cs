@@ -24,12 +24,25 @@ namespace sp19team9finalproject.Controllers
         // GET: Application
         public IActionResult Index()
         {
-
+            
             List<Application> applications = _context.Applications.Include(r => r.Position).ToList();
             //TO-DO: change this to change functionality for CSO (can see all applications)
-            if (User.IsInRole("Manager"))
+            if (User.IsInRole("CSO"))
             {
-                return View(_context.Applications.ToList());
+                return View(applications);
+            }
+            if (User.IsInRole("Recruiter"))
+            {
+                
+                String UserID = User.Identity.Name;
+                AppUser user = _context.Users.Include(b => b.Company).FirstOrDefault(c => c.UserName == UserID);
+
+                var query = from b in _context.Applications select b;
+                query = query.Include(b => b.Position).ThenInclude(b => b.Company);
+                query = query.Where(b => b.Position.Company.Name == user.Company.Name);
+                List<Application> apps = query.ToList();
+                return View(apps);
+
             }
             else //user is a student - only get to see their own
             {
@@ -238,15 +251,17 @@ namespace sp19team9finalproject.Controllers
         //GET: Application/AcceptStudents
         public IActionResult AcceptStudents(int? id)
         {
+
+
             //make a list of all applications for the position clicked on from
             var query = from ap in _context.Applications
                         select ap;
             //Shows positions who have deadlines today or beyond
             DateTime thisDay = DateTime.Today;
 
-            query = query.Where(ap => ap.Position.PositionID >= id);
+            query = query.Where(ap => ap.Position.PositionID == id);
 
-            query = query.Where(ap => ap.Position.Deadline >= thisDay);
+            //query = query.Where(ap => ap.Position.Deadline >= thisDay);
 
             List<Application> SelectedApplications = query.Include(ap => ap.AppUser).ToList();
 
@@ -265,7 +280,7 @@ namespace sp19team9finalproject.Controllers
         //can I pass a multiselect list, that includes a number of application objects 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> AcceptStudentsAsync(int[] AcceptedStudents)
+        public async Task<ActionResult> AcceptStudents(int[] AcceptedStudents)
         {
             //get a list of all applications where the int in the retreived multiselect list matches the int
             var query = from app in _context.Applications

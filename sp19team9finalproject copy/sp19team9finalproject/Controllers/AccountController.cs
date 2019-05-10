@@ -113,7 +113,7 @@ namespace sp19team9finalproject.Controllers
                     GradDate = model.GradDate,
                     PositionType = model.PositionType,
                     GPA = model.GPA,
-                    Major = model.Major,
+                    //Major = model.Major,
                     
                     
                 };

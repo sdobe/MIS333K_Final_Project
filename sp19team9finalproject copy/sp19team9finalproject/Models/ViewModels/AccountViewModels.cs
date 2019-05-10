@@ -46,11 +46,11 @@ namespace sp19team9finalproject.Models
 
         [Required(ErrorMessage = "GPA is required.")]
         [Display(Name = "GPA")]
-        public int GPA { get; set; }
+        public decimal GPA { get; set; }
 
-        [Required(ErrorMessage = "Major is required.")]
-        [Display(Name = "Major")]
-        public Major Major { get; set; }
+        //[Required(ErrorMessage = "Major is required.")]
+        //[Display(Name = "Major")]
+        //public Major Major { get; set; }
 
         //NOTE: Here is the property for email
         [Required]
