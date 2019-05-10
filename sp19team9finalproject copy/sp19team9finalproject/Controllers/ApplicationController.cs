@@ -64,25 +64,39 @@ namespace sp19team9finalproject.Controllers
         }
 
         // GET: Application/Create
-        public IActionResult Create(Int32 positionId)
+        public IActionResult Create()
         {
-            //to-do: format the view for create 
-            //TO-DO:return error message if student type doesnt match position type (full time or internship). They can't apply so cant create application for them.
-            //TO-DO:return error message if student major is not included in applicable majors for this position 
-
-            Application ap = new Application();
-            ap.Position = _context.Positions.Find(positionId);
-
-            //pass newly created application
-            return View(ap);
+            ViewBag.AllPositions = GetAllPositions();
+            return View();
         }
+
+        public SelectList GetAllPositions()
+        {
+            List<Position> positions = _context.Positions.ToList();
+            SelectList AllPositions = new SelectList(positions.OrderBy(g => g.PositionID), "PositionID", "Title");
+
+            return AllPositions;
+        }
+
+        //public IActionResult Create(Int32 positionId)
+        //{
+        //    //to-do: format the view for create 
+        //    //TO-DO:return error message if student type doesnt match position type (full time or internship). They can't apply so cant create application for them.
+        //    //TO-DO:return error message if student major is not included in applicable majors for this position 
+
+        //    Application ap = new Application();
+        //    ap.Position = _context.Positions.Find(positionId);
+
+        //    //pass newly created application
+        //    return View(ap);
+        //}
 
         // POST: Application/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ApplicationID,Result")] Application application)
+        public async Task<IActionResult> Create([Bind("ApplicationID,Result")] Application application, Int32 SelectedPosition)
         {
             if (ModelState.IsValid)
             {
@@ -95,6 +109,12 @@ namespace sp19team9finalproject.Controllers
 
                 bool ApplicableMajors = false;
 
+                Position pos = _context.Positions.Find(SelectedPosition);
+                application.Position = pos;
+
+                application.AppUser = user;
+                application.Result = "Pending";
+
                 foreach (MajorDetail md in application.Position.MajorDetails)
                 {
                     if (md.Major == user.Major)
@@ -103,6 +123,7 @@ namespace sp19team9finalproject.Controllers
                     }
 
                 }
+                
 
                 if (user.PositionType == application.Position.PositionType || ApplicableMajors == true )
                 {
@@ -204,7 +225,7 @@ namespace sp19team9finalproject.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var application = await _context.Applications.FindAsync(id);
-            _context.Applications.Remove(application);
+            application.Result = "Withdrawn";
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
