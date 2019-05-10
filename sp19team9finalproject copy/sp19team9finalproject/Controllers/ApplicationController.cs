@@ -251,24 +251,23 @@ namespace sp19team9finalproject.Controllers
         //GET: Application/AcceptStudents
         public IActionResult AcceptStudents(int? id)
         {
-            
-           
+
+
             //make a list of all applications for the position clicked on from
-            var query = from ap in _context.AppUsers
+            var query = from ap in _context.Applications
                         select ap;
             //Shows positions who have deadlines today or beyond
             DateTime thisDay = DateTime.Today;
-            query = query.Include(ap => ap.Applications).ThenInclude(ap => ap.Position);
 
-            query = query.Where(ap => ap.Applications.Any(p => p.Position.PositionID == id)); // && p.Position.Deadline >= thisDay));
+            query = query.Where(ap => ap.Position.PositionID == id);
 
-         
+            //query = query.Where(ap => ap.Position.Deadline >= thisDay);
 
-            List<AppUser> SelectedUsers = query.ToList();
+            List<Application> SelectedApplications = query.Include(ap => ap.AppUser).ToList();
 
             //convert list to multi select list 
-            MultiSelectList ListSelectedUsers = new MultiSelectList(SelectedUsers.OrderBy(ap => ap.Id), "Id", "LastName");
-            ViewBag.ListSelectedUsers = ListSelectedUsers;
+            MultiSelectList ListSelectedApplications = new MultiSelectList(SelectedApplications.OrderBy(ap => ap.ApplicationID), "ApplicationID", "AppUser.LastName");
+            ViewBag.ListSelectedApplications = ListSelectedApplications;
 
             return View();
 
@@ -281,7 +280,7 @@ namespace sp19team9finalproject.Controllers
         //can I pass a multiselect list, that includes a number of application objects 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> AcceptStudentsAsync(int[] AcceptedStudents)
+        public async Task<ActionResult> AcceptStudents(int[] AcceptedStudents)
         {
             //get a list of all applications where the int in the retreived multiselect list matches the int
             var query = from app in _context.Applications
