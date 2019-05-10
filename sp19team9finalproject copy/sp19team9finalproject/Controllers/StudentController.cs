@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace sp19team9finalproject.Controllers
 {
     //also authorize CSO 
-    [Authorize(Roles = "Recruiter, CSO")]
+    [Authorize]
     public class StudentController : Controller
     {
         private AppDbContext ___db;
@@ -28,14 +28,34 @@ namespace sp19team9finalproject.Controllers
         // GET: Student 
         public ActionResult Index()
         {
-            var query = from s in ___db.AppUsers
-                        select s;
+            if (User.IsInRole("CSO") || User.IsInRole("Recruiter"))
+            {
+                var query = from s in ___db.AppUsers
+                            select s;
 
-            //query app users where app user is in role "student", if user is a student, they would have to have a gpa 
-            query = query.Where(s => s.GPA != 0);
-            List<AppUser> AppUsers = query.Include(s => s.Major).ToList();
-            //.ToList and return to view 
-            return View(AppUsers);
+                //query app users where app user is in role "student", if user is a student, they would have to have a gpa 
+                query = query.Where(s => s.GPA != 0);
+                List<AppUser> AppUsers = query.Include(s => s.Major).ToList();
+                //.ToList and return to view 
+                return View(AppUsers);
+            }
+            else //is a student 
+            {
+
+                String id = User.Identity.Name;
+                AppUser user = ___db.Users.FirstOrDefault(u => u.UserName == id);
+
+                var query = from s in ___db.AppUsers
+                            select s;
+
+                //query app users to get students own profile 
+                query = query.Where(s => s.Id == user.Id);
+
+                List<AppUser> AppUsers = query.Include(s => s.Major).ToList();
+
+                //.ToList and return to view 
+                return View(AppUsers);
+            }
         }
 
         public ActionResult StudentSearch()
