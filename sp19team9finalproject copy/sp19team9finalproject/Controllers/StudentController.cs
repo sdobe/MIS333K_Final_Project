@@ -37,6 +37,7 @@ namespace sp19team9finalproject.Controllers
                             select s;
 
                 query = query.Where(s => s.Id != user.Id);
+                query = query.Where(c => c.GPA == 0);
                 List<AppUser> AppUsers = query.Include(s => s.Major).ToList();
                 //.ToList and return to view 
                 return View(AppUsers);

@@ -109,7 +109,7 @@ namespace sp19team9finalproject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("InterviewID,Position,Date,Time,RoomNumber")] Interview interview, int SelectedPosition, int SelectedInterviewer)
+        public async Task<IActionResult> Create([Bind("InterviewID,Position,Date,Time,RoomNumber")] Interview interview, int SelectedPosition, string SelectedInterviewer)
         {
             var query = from i in _context.Interviews
                         select i;

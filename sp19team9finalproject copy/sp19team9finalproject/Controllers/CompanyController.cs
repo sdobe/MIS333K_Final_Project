@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using sp19team9finalproject.DAL;
 using sp19team9finalproject.Models;
+using Microsoft.AspNetCore.Authorization;
 
 
 
@@ -196,6 +197,7 @@ namespace sp19team9finalproject.Controllers
             return _context.Companies.Any(e => e.CompanyID == id);
         }
 
+        [Authorize(Roles = "CSO, Student")]
         public ActionResult CompanySearch()
         {
             return View();

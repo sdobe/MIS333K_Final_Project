@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using sp19team9finalproject.DAL;
 using sp19team9finalproject.Models;
+using Microsoft.AspNetCore.Authorization;
 
 //need to change all _context to ___db 
 namespace sp19team9finalproject.Controllers
@@ -50,6 +51,7 @@ namespace sp19team9finalproject.Controllers
             }
 
         }
+        [Authorize(Roles = "CSO, Student")]
         public ActionResult DetailedSearch()
         {
             //Populates viewbag for majors 
