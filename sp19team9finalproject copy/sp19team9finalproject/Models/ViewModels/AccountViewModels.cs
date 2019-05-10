@@ -38,7 +38,7 @@ namespace sp19team9finalproject.Models
 
         [Required(ErrorMessage = "Graduation Date is required.")]
         [Display(Name = "Graduation Date")]
-        public DateTime GradDate { get; set; }
+        public String GradDate { get; set; }
 
         [Required(ErrorMessage = "Position Type is required.")]
         [Display(Name = "PositionType")]
