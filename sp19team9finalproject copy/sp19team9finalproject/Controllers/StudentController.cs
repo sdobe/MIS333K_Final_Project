@@ -109,7 +109,7 @@ namespace sp19team9finalproject.Controllers
             return View(student);
         }
 
-        public ActionResult StudentSearch()
+        public ActionResult DetailedSearch()
         {
             //Populates viewbag for majors 
             ViewBag.AllMajors = GetAllMajors();
