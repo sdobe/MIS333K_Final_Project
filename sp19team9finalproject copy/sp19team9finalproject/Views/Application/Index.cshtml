@@ -16,7 +16,7 @@
                 @Html.DisplayNameFor(model => model.Result)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Position.Company.Name)
+                @Html.DisplayNameFor(model => model.Position.Company)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Position.Title)
@@ -39,7 +39,7 @@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ApplicationID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.ApplicationID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ApplicationID">Delete</a>
+                <a asp-action="Delete" asp-route-id="@item.ApplicationID">Remove</a>
             </td>
         </tr>
 }
