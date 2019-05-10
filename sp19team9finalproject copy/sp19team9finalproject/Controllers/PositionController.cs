@@ -28,8 +28,9 @@ namespace sp19team9finalproject.Controllers
                 String id = User.Identity.Name;
                 AppUser user = _context.Users.FirstOrDefault(u => u.UserName == id);
 
-                List<Position> Positions = new List<Position>();
-                Positions = _context.Positions.Where(b => b.Company.Name == user.Company.Name).Include(b => b.Title).ToList();
+                var query = from c in _context.Positions select c;
+                query = query.Where(c => c.Company.CompanyID == user.Company.CompanyID);
+                List<Position> Positions = query.ToList();
                 return View(Positions.OrderByDescending(b => b.PositionID));
 
             }
