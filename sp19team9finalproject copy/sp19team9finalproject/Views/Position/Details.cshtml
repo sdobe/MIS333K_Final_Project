@@ -77,7 +77,7 @@
         }
         if (User.IsInRole("Recruiter"))
         {
-            <a asp-action="AcceptStudents" asp-controller="Application" asp-route-orderId="@Model.PositionID" class="btn btn-warning">
+            <a asp-action="AcceptStudents" asp-controller="Application" asp-route-positionId="@Model.PositionID" class="btn btn-warning">
                 Accept students applications for this position
             </a>
         }

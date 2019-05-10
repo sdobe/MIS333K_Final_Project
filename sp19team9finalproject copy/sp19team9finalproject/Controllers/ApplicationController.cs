@@ -24,12 +24,25 @@ namespace sp19team9finalproject.Controllers
         // GET: Application
         public IActionResult Index()
         {
-
+            
             List<Application> applications = _context.Applications.Include(r => r.Position).ToList();
             //TO-DO: change this to change functionality for CSO (can see all applications)
-            if (User.IsInRole("Manager"))
+            if (User.IsInRole("CSO"))
             {
-                return View(_context.Applications.ToList());
+                return View(applications);
+            }
+            if (User.IsInRole("Recruiter"))
+            {
+                
+                String UserID = User.Identity.Name;
+                AppUser user = _context.Users.Include(b => b.Company).FirstOrDefault(c => c.UserName == UserID);
+
+                var query = from b in _context.Applications select b;
+                query = query.Include(b => b.Position).ThenInclude(b => b.Company);
+                query = query.Where(b => b.Position.Company.Name == user.Company.Name);
+                List<Application> apps = query.ToList();
+                return View(apps);
+
             }
             else //user is a student - only get to see their own
             {
@@ -238,21 +251,24 @@ namespace sp19team9finalproject.Controllers
         //GET: Application/AcceptStudents
         public IActionResult AcceptStudents(int? id)
         {
+            
+           
             //make a list of all applications for the position clicked on from
-            var query = from ap in _context.Applications
+            var query = from ap in _context.AppUsers
                         select ap;
             //Shows positions who have deadlines today or beyond
             DateTime thisDay = DateTime.Today;
+            query = query.Include(ap => ap.Applications).ThenInclude(ap => ap.Position);
 
-            query = query.Where(ap => ap.Position.PositionID >= id);
+            query = query.Where(ap => ap.Applications.Any(p => p.Position.PositionID == id)); // && p.Position.Deadline >= thisDay));
 
-            query = query.Where(ap => ap.Position.Deadline >= thisDay);
+         
 
-            List<Application> SelectedApplications = query.Include(ap => ap.AppUser).ToList();
+            List<AppUser> SelectedUsers = query.ToList();
 
             //convert list to multi select list 
-            MultiSelectList ListSelectedApplications = new MultiSelectList(SelectedApplications.OrderBy(ap => ap.ApplicationID), "ApplicationID", "AppUser.LastName");
-            ViewBag.ListSelectedApplications = ListSelectedApplications;
+            MultiSelectList ListSelectedUsers = new MultiSelectList(SelectedUsers.OrderBy(ap => ap.Id), "Id", "LastName");
+            ViewBag.ListSelectedUsers = ListSelectedUsers;
 
             return View();
 
