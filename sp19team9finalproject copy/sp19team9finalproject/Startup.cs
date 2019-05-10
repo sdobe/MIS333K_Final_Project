@@ -54,8 +54,6 @@ namespace sp19team9finalproject
             //Uncomment this line after the first time this code runs successfully - you don't need 
             //to seed repeatedly
             //Seeding.SeedIdentity.AddAdmin(service).Wait();          
-            
-
 
         }
 

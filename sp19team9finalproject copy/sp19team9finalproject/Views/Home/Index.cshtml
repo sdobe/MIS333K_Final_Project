@@ -8,7 +8,6 @@
 <form asp-action="Index" asp-controller="Home" method="get">
     <p class="form-group">
 
-
         @if (User.Identity.IsAuthenticated)
          {
             if (User.IsInRole("Student"))
