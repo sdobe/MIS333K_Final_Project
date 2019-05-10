@@ -84,10 +84,10 @@ namespace sp19team9finalproject.Controllers
                         select stu;
 
             //TO-DO: should the search for grad date show students with grad dates before or equal to the date they picked or smthing else 
-            if (GradDate != null)
-            {
-                query = query.Where(s => s.GradDate == GradDate);
-            }
+            //if (GradDate != null)
+            //{
+                //query = query.Where(s => s.GradDate == GradDate);
+            //}
 
             if (SelectedMajor != 0) //if not selected all majors 
             {

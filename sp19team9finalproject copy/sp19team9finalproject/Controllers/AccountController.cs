@@ -110,7 +110,7 @@ namespace sp19team9finalproject.Controllers
                     Email = model.Email,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
-                    GradDate = model.GradDate,
+                    //GradDate = model.GradDate,
                     PositionType = model.PositionType,
                     GPA = model.GPA,
                     Major = model.Major,
