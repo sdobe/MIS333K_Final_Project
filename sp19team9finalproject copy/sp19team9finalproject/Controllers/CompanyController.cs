@@ -195,9 +195,13 @@ namespace sp19team9finalproject.Controllers
         {
             return View();
         }
+<<<<<<< HEAD
 
+
+=======
         [HttpPost]
         [ValidateAntiForgeryToken]
+>>>>>>> 0a65d6c69945228048fd072ee0d9c26e7f12e960
         public ActionResult DisplayCompSearchResults(string SearchName, string SearchLocation, PositionType SelectedPositionType, string SearchIndustry)
         {
             var query = from com in _context.Companies
@@ -229,7 +233,7 @@ namespace sp19team9finalproject.Controllers
                 query = query.Where(com => com.Industry.Contains(SearchName));
             }
 
-            List<Company> SelectedCompanies = query.ToList();
+            List<Company> SelectedCompanies = query.Include(com => com.Positions).ToList();
 
             return View("Index", SelectedCompanies);
         }

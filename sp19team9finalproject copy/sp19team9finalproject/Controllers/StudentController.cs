@@ -57,8 +57,7 @@ namespace sp19team9finalproject.Controllers
             return AllMajors;
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+
         public ActionResult DisplaySearchResults(DateTime? GradDate, int SelectedMajor, PositionType SelectedPositionType, string EnteredGPA)
         {
             var query = from stu in ___db.AppUsers

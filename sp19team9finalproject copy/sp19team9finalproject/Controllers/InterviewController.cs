@@ -55,6 +55,18 @@ namespace sp19team9finalproject.Controllers
             }
         }
 
+        public IActionResult Index(Int32 posID)
+        {
+            var query = from inter in _context.Interviews
+                        select inter;
+            query = query.Where(inter => inter.Position.PositionID == posID);
+            query = query.Where(inter => inter.Interviewee == null);
+
+            List<Interview> inters = query.Include(inv => inv.Position).ToList();
+            return View(inters);
+
+        }
+
         // GET: Interview/Details/5
         public async Task<IActionResult> Details(int id)
         {
